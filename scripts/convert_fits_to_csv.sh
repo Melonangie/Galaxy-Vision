@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# 
+# Single file
+# topcat -stilts tpipe in=file.fits out=file.csv ofmt=csv
 
 set -u
 
