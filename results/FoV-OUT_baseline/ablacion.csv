@@ -1,0 +1,22 @@
+conjunto,esquema,n_features,BA
+Solo M*,detallado,1,0.16835495366292205
+Catálogo,detallado,4,0.23075109789330409
+Espectro edad+SF,detallado,4,0.20571142670051953
+Espectro completo,detallado,46,0.2553870876876379
+Top-10,detallado,10,0.30358226204524014
+Top-10 sin b/a,detallado,9,0.2651694240442137
+Todas,detallado,51,0.30287615357063696
+Solo M*,tres_clases,1,0.46731006362008115
+Catálogo,tres_clases,4,0.6501027373348202
+Espectro edad+SF,tres_clases,4,0.6970702024040826
+Espectro completo,tres_clases,46,0.7291184843562538
+Top-10,tres_clases,10,0.7586705816330022
+Top-10 sin b/a,tres_clases,9,0.7351182961869572
+Todas,tres_clases,51,0.7711371762738098
+Solo M*,intervalos,1,0.3038922848697525
+Catálogo,intervalos,4,0.45615939950564394
+Espectro edad+SF,intervalos,4,0.4346639669044317
+Espectro completo,intervalos,46,0.4791816374130676
+Top-10,intervalos,10,0.5526791139609809
+Top-10 sin b/a,intervalos,9,0.49745910386462416
+Todas,intervalos,51,0.5501567822118384
