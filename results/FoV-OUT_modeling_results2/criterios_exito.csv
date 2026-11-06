@@ -1,0 +1,4 @@
+esquema,elegido,C1 IC95(ΔBA) > 0,C2 κ ≥ baseline,C3 robustez ≥ 0.95,C4 < 1 ms/galaxia,C5 ρ(consenso) > 0,C6 σ semillas < 0.01,C7 BA ≤ techo + 0.02,BA test,BA baseline,techo
+tres_clases,C2 HGB pequeño (comprimido),True,True,True,True,True,True,True,0.784,0.76,0.829
+intervalos,C2 HGB pequeño (comprimido),True,True,False,True,True,True,True,0.613,0.561,0.695
+detallado,M4 Random Forest,True,True,True,True,True,False,True,0.331,0.277,0.405

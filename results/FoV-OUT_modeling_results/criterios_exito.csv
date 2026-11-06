@@ -1,0 +1,4 @@
+esquema,elegido,C1 IC95(ΔBA) > 0,C2 κ ≥ baseline,C3 robustez ≥ 0.95,C4 < 1 ms/galaxia,C5 ρ(consenso) > 0,C6 |test − CV| ≤ 0.03,decisión
+detallado,M4 SVM RBF,True,True,True,True,False,True,desplegar elegido
+tres_clases,M6 HistGradientBoosting,True,True,True,True,True,True,desplegar elegido
+intervalos,M1 Logística regularizada,False,True,False,True,True,True,mantener baseline (regresar a datos/features)

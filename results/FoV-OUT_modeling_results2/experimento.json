@@ -1,0 +1,157 @@
+{
+ "fecha": "2026-11-05 23:25",
+ "proceso": "CRISP-ML(Q), Studer et al. 2021, Mach. Learn. Knowl. Extr. 3, 392 (arXiv:2003.05155)",
+ "versiones": {
+  "python": "3.13.18",
+  "numpy": "2.4.6",
+  "pandas": "2.2.3",
+  "scikit-learn": "1.6.1",
+  "astropy": "7.2.3",
+  "astroML": "1.0.2"
+ },
+ "semillas": [
+  42,
+  7,
+  2026
+ ],
+ "n_pliegues": 5,
+ "modo_rapido": false,
+ "features_por_esquema": {
+  "tres_clases": [
+   "log_OIII_Hb",
+   "log_SII_Ha",
+   "PC5",
+   "log_HaHb",
+   "PC3",
+   "AV_estelar",
+   "b_a",
+   "PC2",
+   "PC4",
+   "NaD",
+   "logZ_L",
+   "LogMass",
+   "log_R90_kpc",
+   "log_sigma",
+   "mY_1Gyr",
+   "Mgb",
+   "MgFe",
+   "log_EW_Ha",
+   "log_EW_OIII",
+   "PC1",
+   "HdA",
+   "D4000n_syn",
+   "Delta_edad",
+   "xO",
+   "log_NII_Ha",
+   "logEdad_M",
+   "Fe5270",
+   "log_Sigma90",
+   "Ha_detectada",
+   "Fe5335",
+   "Mgb_Fe",
+   "CaT"
+  ],
+  "intervalos": [
+   "log_OIII_Hb",
+   "log_SII_Ha",
+   "PC5",
+   "log_HaHb",
+   "PC3",
+   "AV_estelar",
+   "b_a",
+   "PC2",
+   "PC4",
+   "NaD",
+   "logZ_L",
+   "LogMass",
+   "log_R90_kpc",
+   "log_sigma",
+   "mY_1Gyr",
+   "Mgb",
+   "MgFe",
+   "log_EW_Ha",
+   "log_EW_OIII",
+   "PC1",
+   "HdA",
+   "D4000n_syn",
+   "Delta_edad",
+   "xO",
+   "log_NII_Ha",
+   "logEdad_M",
+   "Fe5270",
+   "log_Sigma90",
+   "Ha_detectada",
+   "Fe5335",
+   "Mgb_Fe",
+   "CaT"
+  ],
+  "detallado": [
+   "log_EW_Ha",
+   "D4000n_syn",
+   "log_NII_Ha",
+   "PC1",
+   "HdA",
+   "log_Sigma90",
+   "Mgb",
+   "LogMass",
+   "log_EW_OIII",
+   "b_a"
+  ]
+ },
+ "miembros_ensamble": {
+  "tres_clases": [
+   "M5 HistGradientBoosting",
+   "M4 Random Forest",
+   "M3 Logística afinada"
+  ],
+  "intervalos": [
+   "M4 Random Forest",
+   "M3 Logística afinada",
+   "M5 HistGradientBoosting"
+  ],
+  "detallado": [
+   "M4 Random Forest",
+   "M5 HistGradientBoosting",
+   "M3 Logística afinada"
+  ]
+ },
+ "elegido": {
+  "tres_clases": "C2 HGB pequeño (comprimido)",
+  "intervalos": "C2 HGB pequeño (comprimido)",
+  "detallado": "M4 Random Forest"
+ },
+ "mejores_hiperparametros": {
+  "M3 | tres_clases": "{'logisticregression__C': 0.1}",
+  "M4 | tres_clases": "{'randomforestclassifier__max_features': 0.3, 'randomforestclassifier__min_samples_leaf': 20}",
+  "M5 | tres_clases": "{'l2_regularization': 0.0, 'learning_rate': 0.05, 'max_leaf_nodes': 15}",
+  "M3 | intervalos": "{'logisticregression__C': 10}",
+  "M4 | intervalos": "{'randomforestclassifier__max_features': 0.3, 'randomforestclassifier__min_samples_leaf': 20}",
+  "M5 | intervalos": "{'l2_regularization': 1.0, 'learning_rate': 0.05, 'max_leaf_nodes': 15}",
+  "M3 | detallado": "{'logisticregression__C': 1}",
+  "M4 | detallado": "{'randomforestclassifier__max_features': 'sqrt', 'randomforestclassifier__min_samples_leaf': 20}",
+  "M5 | detallado": "{'l2_regularization': 1.0, 'learning_rate': 0.05, 'max_leaf_nodes': 15}",
+  "M6 | tres_clases": "{'C': 1}",
+  "M6 | intervalos": "{'C': 10}",
+  "M6 | detallado": "{'C': 10}",
+  "M7 | tres_clases": "{'pca__n_components': 60}",
+  "M7 | intervalos": "{'pca__n_components': 60}",
+  "M7 | detallado": "{'pca__n_components': 60}"
+ },
+ "delta_BA_test": {
+  "tres_clases": [
+   0.0242,
+   0.011,
+   0.0372
+  ],
+  "intervalos": [
+   0.0517,
+   0.0206,
+   0.0814
+  ],
+  "detallado": [
+   0.0543,
+   0.0078,
+   0.1118
+  ]
+ }
+}
