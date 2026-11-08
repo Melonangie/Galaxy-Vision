@@ -607,10 +607,11 @@ Durante entrenamiento:
 - Rotaciones de múltiplos de 90 grados.
 - Flips horizontales.
 - Flips verticales.
+- Opcional: selección aleatoria de FOV (`data.image.train_fov_columns`, ver sección 8.3). Se aplica antes de las transformaciones geométricas.
 
 Estas transformaciones deben preservar la etiqueta binaria.
 
-No aplicar transformaciones geométricas a validación o test.
+No aplicar transformaciones geométricas ni selección aleatoria de FOV a validación o test; estos splits usan siempre `data.image.fov_column`.
 
 Evitar inicialmente cambios de color o brillo agresivos que puedan destruir información astronómica.
 
@@ -781,6 +782,38 @@ Activar con `data.modalities = ["image"]` o junto con otras modalidades. Requier
 `data.image.fov_column`; el valor habitual es `fov_0`, que hace que el Dataset
 use `fov_0_path` del manifest. Cada fila solicitada debe marcar ese FOV como
 disponible y su JPEG debe existir: no se omiten ejemplos ausentes.
+
+Opcionalmente, `data.image.train_fov_columns` (por ejemplo
+`["fov_-1", "fov_0", "fov_+1"]`) actúa como una augmentation más:
+
+```python
+"image": {
+    "fov_column": "fov_0",                                  # FOV fijo de validation/test
+    "train_fov_columns": ["fov_-1", "fov_0", "fov_+1"],     # pool aleatorio solo en train
+    "size": 256,
+    "normalization": "none",
+},
+```
+
+- En **train**, cada vez que se accede a una galaxia (`__getitem__`) se elige un
+  FOV de la lista con `random.choice`: distribución uniforme (1/N por FOV),
+  independiente entre accesos y con el RNG global de Python, por lo que
+  `set_seed` la hace reproducible con `num_workers=0`. Los duplicados de la
+  lista se eliminan, así que repetir un FOV no aumenta su probabilidad.
+- La selección ocurre antes de las transformaciones geométricas.
+- Validation y test usan siempre `fov_column`, sin aleatoriedad.
+- No cambia el tamaño del dataset (cada época sigue teniendo una muestra por
+  galaxia) ni la forma del tensor.
+- Todos los FOV de la lista deben estar disponibles (`fov_X == True`) y tener
+  JPEG existente para todas las filas de train; si no, `build_dataloaders` lanza
+  `ValueError`. Sin esta clave, el comportamiento es el de un único `fov_column`.
+- `GalaxyDataset` recibe la lista mediante `random_image_fov_columns`.
+- Al generar predicciones de train tras entrenar, usar una copia del dataset con
+  `image_transform = build_image_transform(size, train=False, ...)` y
+  `random_image_path_columns = ()`; de lo contrario las predicciones incluyen
+  augmentations y FOV aleatorio. El notebook
+  `notebook/julio/experiments_fov/experimento_binario_imagenes_gpu_acc_fov.ipynb`
+  lo implementa en `predict_split`.
 
 Transformaciones implementadas en `src.dataloader.multimodal_transforms`:
 

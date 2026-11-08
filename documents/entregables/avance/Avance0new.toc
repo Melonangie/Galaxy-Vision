@@ -1,0 +1,38 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Datos generales del proyecto}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Empresa / Institución}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Sector Industrial}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Lugar de Aplicación}{2}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Patrocinador o Sponsor}{3}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Dominio de aplicación}{4}{subsection.1.5}%
+\contentsline {subsubsection}{\numberline {1.5.1}Estrategia}{4}{subsubsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.6}Plan de entregables}{4}{subsection.1.6}%
+\contentsline {subsection}{\numberline {1.7}Repositorio del proyecto}{5}{subsection.1.7}%
+\contentsline {section}{\numberline {2}Planteamiento del Proyecto Integrado}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Antecedentes}{5}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Instituto de Astronomía de la UNAM}{5}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Clasificación Morfológica de Galaxias}{6}{subsubsection.2.1.2}%
+\contentsline {subsubsection}{\numberline {2.1.3} Proceso Impactado: Clasificación de Galaxias }{7}{subsubsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.2}Entendimiento del Negocio}{7}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Formulación del problema}{7}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Contexto}{8}{subsubsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.3}Objetivos}{9}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Objetivo General}{9}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Objetivos Específicos}{9}{subsubsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.3}Preguntas Clave}{9}{subsubsection.2.3.3}%
+\contentsline {subsubsection}{\numberline {2.3.4}Involucrados}{10}{subsubsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.4}Entendimiento de los Datos}{10}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Descripción de los datos de entrada}{10}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}Descripción de los datos de salida}{12}{subsubsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.3}Técnica de ML}{13}{subsubsection.2.4.3}%
+\contentsline {subsubsection}{\numberline {2.4.4}Identificación de las variables}{13}{subsubsection.2.4.4}%
+\contentsline {subsection}{\numberline {2.5}Metodología}{14}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}Fase 1: Entendimiento del negocio y de los datos}{15}{subsubsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.2}Fase 2: Preparación de los datos}{16}{subsubsection.2.5.2}%
+\contentsline {subsubsection}{\numberline {2.5.3}Fase 3: Modelado}{17}{subsubsection.2.5.3}%
+\contentsline {subsubsection}{\numberline {2.5.4}Fase 4: Evaluación}{17}{subsubsection.2.5.4}%
+\contentsline {section}{\numberline {3}Anexos}{19}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Convenio}{19}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Introducción del Proyecto Integrador}{23}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Revisión técnica de resultados}{34}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Referencias}{51}{section.4}%

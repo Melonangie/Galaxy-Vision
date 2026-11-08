@@ -1,0 +1,1032 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[toc,page]{appendix}
+\usepackage{pdfpages}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+\graphicspath{ {images/} }
+
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!50!black},
+    stringstyle=\color{red},
+    showstringspaces=false,
+    breaklines=true,
+    frame=single,
+    numberstyle=\tiny,
+    tabsize=4
+}
+
+\pagestyle{headings}
+\textwidth=6.5in
+
+\begin{document}
+
+\newcommand{\jhead}{Proyecto integrador}
+
+\topmargin=-.5in
+\oddsidemargin=.001in
+\evensidemargin=.001in
+\textheight=9in
+\textwidth=6.5in
+
+\pagestyle{fancy}
+
+\fancyhead[L]{\protect\small \jhead}
+\fancyhead[R]{\protect\small AD4036.10}
+
+\fancypagestyle{firstpage}{%
+ \lhead{\protect\small \jhead}
+ \rhead{\protect\small TC5035.10}
+}
+
+
+% ============================================================
+% PORTADA
+% ============================================================
+
+\begin{titlepage}
+
+\centering
+
+\vspace{1.5cm}
+
+{\includegraphics[width=0.50\textwidth]{tc_logo.png}\par}
+
+\vfill
+
+{\scshape\Large
+Clasificación morfológica de galaxias mediante fusión multimodal de imágenes DESI Legacy y espectros integrados MaNGA
+\par}
+
+\vspace{1cm}
+
+{\itshape\Large Proyecto Integrador \par}
+
+\vspace{1cm}
+
+{\large
+\textbf{Presenta:}\par
+Alexander Carreño (A01796955)\par
+María Rabelero (A01793031)\par
+Julio Ricardo Velázquez (A01796953)\par
+}
+
+\vspace{0.8cm}
+
+{\large
+\textbf{Equipo 26: Galaxy Vision}
+\par}
+
+\vfill
+
+{\large
+\textbf{Sponsor:}\par
+Dr. José Antonio Vázquez Mata\par
+Dr. Hector Manuel Hernandez Toledo\par
+Instituto de Astronomía, UNAM
+\par}
+
+\vspace{0.8cm}
+
+{\large
+\textbf{Profesor:}\par
+Dra. Grettel Barceló Alonso
+\par}
+
+\vfill
+
+{\large México, 16 de septiembre de 2026 \par}
+
+\end{titlepage}
+
+
+\newpage
+
+% ============================================================
+% ÍNDICE
+% ============================================================
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+% ============================================================
+% 1. DATOS GENERALES DEL PROYECTO
+% ============================================================
+
+\section{Datos generales del proyecto}
+
+% ------------------------------------------------------------
+\subsection{Empresa / Institución}
+% ------------------------------------------------------------
+
+El beneficiario es el Instituto de Astronomía de la Universidad Nacional Autónoma de México (IA-UNAM), entidad pública de investigación dedicada a la investigación astronómica y astrofísica, a la formación de recursos humanos especializados y a la operación de infraestructura observacional nacional. El instituto participa de forma activa en colaboraciones internacionales de gran escala, entre ellas el APO (Apache Point Observatory) en Nuevo México, con el cual desarrollaron el programa de observación MaNGA (\textit{Mapping Nearby Galaxies at Apache Point}).
+
+Dentro del instituto el beneficiario es el grupo de investigación en Galaxias y Cosmología. Este es responsable del \textit{Visual Morphology Value Added Catalogue} del MaNGA, un catálogo público de clasificación morfológica visual de 10,059 galaxias que incorpora imágenes de Hubble para la detección de rasgos y clasificación de galaxias. Este catálogo es la fuente de etiquetas del proyecto y la fuente de datos que este proyecto busca ampliar.
+
+% ------------------------------------------------------------
+\subsection{Sector Industrial}
+% ------------------------------------------------------------
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{0.20\textwidth}|p{0.12\textwidth}|p{0.57\textwidth}|}
+\hline
+\textbf{Nivel} & \textbf{Clave} & \textbf{Denominación} \\ \hline
+
+Sector &
+54 &
+Servicios profesionales, científicos y técnicos \\ \hline
+
+Rama / Subrama &
+5417 &
+Servicios de investigación científica y desarrollo \\ \hline
+
+Clase de actividad &
+541712 &
+Servicios de investigación científica y desarrollo en ciencias naturales y exactas, ingeniería, y ciencias de la vida, prestados por el sector público.
+
+\begin{itemize}
+    \item Observatorios astronómicos, servicios del sector público.
+\end{itemize}
+\\ \hline
+
+\end{tabular}
+\caption{Sector Industrial}
+\label{sector-industrial}
+\end{table}
+
+% ------------------------------------------------------------
+\subsection{Lugar de Aplicación}
+% ------------------------------------------------------------
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{0.30\textwidth}|p{0.60\textwidth}|}
+\hline
+
+\textbf{País} &
+México \\ \hline
+
+\textbf{Estado} &
+Ciudad de México \\ \hline
+
+\textbf{Ciudad} &
+Alcaldía Coyoacán \\ \hline
+
+\textbf{Domicilio} &
+Instituto de Astronomía, UNAM. Circuito Exterior s/n, Ciudad Universitaria, C.P. 04510 \\ \hline
+
+\textbf{Área / Departamento / División} &
+Área de investigación en Galaxias y Cosmología \\ \hline
+
+\end{tabular}
+\caption{Lugar de Aplicación}
+\label{aplicacion}
+\end{table}
+
+% ------------------------------------------------------------
+\subsection{Patrocinador o Sponsor}
+% ------------------------------------------------------------
+
+% Sponsor 1 --------------------------------------------------
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{0.27\textwidth}|p{0.63\textwidth}|}
+\hline
+
+\textbf{Nombre} &
+Dr. José Antonio Vázquez Mata \\ \hline
+
+\textbf{Cargo} &
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}
+    \item Investigador posdoctoral, Instituto de Astronomía, UNAM (programa Estancias Posdoctorales por México).
+    \item Profesor de asignatura en la Facultad de Ciencias, UNAM.
+\end{itemize}
+\end{minipage}
+\\ \hline
+
+\textbf{Adscripción} &
+Instituto de Astronomía, UNAM Ciudad Universitaria, CDMX \\ \hline
+
+\textbf{Correo institucional} &
+\href{mailto:jvazquez@astro.unam.mx}{jvazquez@astro.unam.mx} \\ \hline
+
+\textbf{Formación} &
+Doctorado en Astronomía por la University of Sussex, Reino Unido \\ \hline
+
+\textbf{Área de investigación} &
+Galaxias y Cosmología; especialidad en astronomía óptica \\ \hline
+
+\textbf{Reconocimientos} &
+Sistema Nacional de Investigadoras e Investigadores \\ \hline
+
+\end{tabular}
+\end{table}
+
+% Sponsor 2 --------------------------------------------------
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{0.27\textwidth}|p{0.63\textwidth}|}
+\hline
+
+\textbf{Nombre} &
+Dr. Hector Manuel Hernandez Toledo \\ \hline
+
+\textbf{Cargo} &
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}
+    \item Investigador titular de tiempo completo, Instituto de Astronomía, UNAM
+    \item Profesor de asignatura en la Facultad de Ciencias, UNAM
+\end{itemize}
+\end{minipage}
+\\ \hline
+
+\textbf{Adscripción} &
+Instituto de Astronomía, UNAM Ciudad Universitaria, CDMX \\ \hline
+
+\textbf{Correo institucional} &
+\href{mailto:hector@astro.unam.mx}{hector@astro.unam.mx} \\ \hline
+
+\textbf{Formación} &
+Doctorado en Astrofísica por la UNAM, con tesis doctoral en la Universidad de Alabama, EUA \\ \hline
+
+\textbf{Área de investigación} &
+Astrofísica extragaláctica y cosmología observacional \\ \hline
+
+\textbf{Reconocimientos} &
+Sistema Nacional de Investigadores Nivel II, disciplina Astronomía Óptica \\ \hline
+
+\end{tabular}
+\caption{Sponsors}
+\label{Sponsors}
+\end{table}
+
+Los sponsor son autores de varios artículos de investigación sobre clasificación morfológica de galaxias y de formación estelar usando \textit{machine learning}. También son los autores del catálogo de etiquetas con el cual trabajaremos en este proyecto. Esto reduce dos de los riesgos críticos del CRISP-ML porque ambos convergen en las mismas personas.
+
+\begin{itemize}
+    \item Separación de los expertos de dominio y los científicos de datos.
+    \item Definición de los objetivos de ML y los objetivos de negocio.
+\end{itemize}
+
+En sus roles como sponsors del proyecto:
+
+\begin{itemize}
+    \item Nos darán acceso e interpretación de los datos del catálogo morfológico de espectros MaNGA, y de las imágenes del catálogo DESI Legacy Imaging Survey, el cual cuenta con la mejor base óptica para clasificar morfología de galaxias en el hemisferio norte.
+    \item Validarán el éxito y aceptación del modelo.
+    \item Actuarán como experto en la fase de evaluación.
+\end{itemize}
+
+% ------------------------------------------------------------
+\subsection{Dominio de aplicación}
+% ------------------------------------------------------------
+
+El enfoque de IA es modelos predictivos con aprendizaje supervisado.
+
+El problema se formula como clasificación supervisada. El objetivo es aprender una función capaz de replicar el criterio experto en galaxias no vistas, que produce una probabilidad calibrada. El aprendizaje supervisado es el enfoque correcto por dos razones:
+
+\begin{itemize}
+    \item El criterio a aprender es un criterio humano basado en conocimientos especializados que sólo puede transferirse por ejemplos.
+    \item Lo que se necesita como salida es una decisión bajo incertidumbre discreta, no un agrupamiento.
+\end{itemize}
+
+% ------------------------------------------------------------
+\subsubsection{Estrategia}
+% ------------------------------------------------------------
+
+Planeamos usar visión por computador, redes convolucionales sobre recortes de imagen de DESI Legacy, que extraen la estructura espacial, resolución de brazos espirales y grado de enrollamiento.
+
+También se plantea aplicar redes convolucionales o \textit{transformers} sobre el espectro, ya que los tipos tardíos son más jóvenes, azules, ricos en formación estelar y pobres en metales que los tempranos, y esas diferencias quedan impresas en el espectro.
+
+% ------------------------------------------------------------
+\subsection{Plan de entregables}
+% ------------------------------------------------------------
+
+Los siguientes entregables son de referencia del curso y una guía para nuestro proyecto, siguen el calendario de 11 semanas de la materia. Los entregables comprometidos para el proyecto solo son cuatro: Planteamiento del proyecto, Avance 6: Producto de difusión, Avance 7: Resumen ejecutivo, y Presentación final.
+
+\small
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.05\textwidth}|>{\raggedright\arraybackslash}p{0.22\textwidth}|>{\raggedright\arraybackslash}p{0.50\textwidth}|>{\raggedright\arraybackslash}p{0.18\textwidth}|}
+
+\hline
+\textbf{Sem.} &
+\textbf{Entregable} &
+\textbf{Qué se espera} &
+\textbf{Comprometido}
+\\ \hline
+\endfirsthead
+
+\hline
+\textbf{Sem.} &
+\textbf{Entregable} &
+\textbf{Qué se espera} &
+\textbf{Comprometido}
+\\ \hline
+\endhead
+
+1 &
+Planteamiento del proyecto &
+Este documento. Propuesta, problemática del sector y de la institución, objetivos general y específicos, casos de uso de ML, metodología CRISP-ML, título, institución beneficiaria, lugar de aplicación, sponsor, dominio y enfoque de IA, y plan de entregables. &
+Sí
+\\ \hline
+
+3 &
+Avance 1: Análisis exploratorio de datos &
+Notebook con el análisis de los datos, cuantificación de valores faltantes e inspección visual de espectros e imágenes de ejemplo por clase, verificación de calidad de datos, riesgos y esquema de datos. &
+No
+\\ \hline
+
+4 &
+Avance 2: Ingeniería de características &
+Pipeline de preparación, construcción de las etiquetas, limpieza, corrección y remuestreo de espectros, normalización, recorte y ajuste de zoom de imágenes, y cálculo de características tabulares derivadas. Conjuntos de entrenamiento, validación y prueba. &
+No
+\\ \hline
+
+5 &
+Avance 3: Baseline &
+Modelos entrenados y evaluados, con métricas, matriz de confusión y análisis de importancia de características. Documentado y reproducible que establece el piso de desempeño obligatorio. &
+No
+\\ \hline
+
+6 &
+Avance 4: Modelos alternativos &
+Modelos de \textit{deep learning} (sólo imagen y sólo espectro) y también modelo fundacional tabular (sólo espectro), evaluados bajo el mismo protocolo, con costos computacionales y comparados contra el baseline. &
+No
+\\ \hline
+
+7 &
+Avance 5: Modelo final &
+Modelo multimodal de fusión, ablación cuantificando la ganancia atribuible a la fusión, análisis de calibración y desempeño desagregado por inclinación, masa estelar, corrimiento al rojo y bandera de galaxia tenue, difusa, compacta. El modelo seleccionado se justificará y validará. &
+No
+\\ \hline
+
+8 &
+Avance 6: Producto de difusión &
+Documentación del proyecto y sus resultados, ejemplos de aciertos y errores, y explicación de la contribución multimodal. Material autocontenido dirigido a un público sin conocimiento previo de ML. &
+Sí
+\\ \hline
+
+9 &
+Avance 7: Resumen ejecutivo &
+Versión final del documento con los resultados del proyecto, con conclusiones y dirigido a un tomador de decisiones, incluye recomendaciones sobre las mejores aplicaciones en el sector. &
+Sí
+\\ \hline
+
+10--11 &
+Presentación final &
+Exposición de la solución implementada ante asesor y sponsor, con sesión de preguntas y respuestas. &
+Sí
+\\ \hline
+
+\caption{Entregables}
+\label{Entregables}
+\end{longtable}
+
+\normalsize
+
+% ------------------------------------------------------------
+\subsection{Repositorio del proyecto}
+% ------------------------------------------------------------
+
+\begin{itemize}
+    \item \url{https://github.com/AlexanderCarreno/clasificacion-galaxias}
+\end{itemize}
+
+% ============================================================
+% 2. PLANTEAMIENTO
+% ============================================================
+
+% ------------------------------------------------------------
+\section{Planteamiento del Proyecto Integrado}
+\subsection{Antecedentes}
+\subsubsection{Instituto de Astronomía de la UNAM}
+% ------------------------------------------------------------
+
+El Instituto de Astronomía de la Universidad Nacional Autónoma de México (IA-UNAM) es la institución encargada de la investigación en astronomía y astrofísica dentro de la UNAM, así como del resguardo, mantenimiento y operación del Observatorio Astronómico Nacional (OAN). Está integrado por dos sedes académicas en Ciudad Universitaria, en la Ciudad de México, y en Ensenada, Baja California.
+
+Su misión es desarrollar la astrofísica en México a través de la investigación, la enseñanza y el desarrollo de instrumentación astronómica. El Instituto cuenta con una planta de más de 80 investigadores y un número similar de técnicos académicos, y desde 2012 la UNAM forma parte de la colaboración Sloan Digital Sky Survey (SDSS).
+
+El es responsable del \textit{Visual Morphology Value Added Catalogue} del sondeo MaNGA (parte de SDSS-IV), un catálogo público de clasificación morfológica visual de 10,059 galaxias que incorpora imágenes de Hubble para la detección de rasgos y clasificación de galaxias. Este catálogo es la fuente de etiquetas del proyecto y la fuente de datos que este proyecto busca ampliar.
+
+Esto es relevante para este proyecto ya que los espectros que usaremos han sido analizados por el instituto lo que garantiza acceso, experiencia previa y continuidad científica sobre los datos que usaremos.
+
+% ------------------------------------------------------------
+\subsubsection{Clasificación Morfológica de Galaxias}
+% ------------------------------------------------------------
+
+La morfología de una galaxia es uno de los descriptores más antiguos y más informativos de la historia de formación estelar y el ambiente en que la galaxia evolucionó. El tipo morfológico describe la forma y la estructura visible de las galaxias. Las galaxias se ordenan mediante sus rasgos como la concentración de estrellas en su centro, la presencia de disco y el grado de apertura de los brazos espirales mediante la secuencia de Hubble.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.70\textwidth]{tipos_galaxias.png}
+    \caption{Secuencia de Hubble. Elípticas (E0--E6), Espirales normales y barradas (S0--Sc y SB0--SBc), Irregulares (Irr).}
+    \label{fig:Escala-Ttype}
+\end{figure}
+
+La secuencia de Hubble separa sistemas de galaxias tempranas (\textit{early-type} ETG) de sistemas tardías (\textit{late-type}, LTG), y que se resume numéricamente mediante el índice T-Type. El índice T-Type debe tratarse como una anotación con incertidumbre, no como una medición libre de error.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.70\textwidth]{escala_ttype.png}
+    \caption{Esquema de índice T-Type. Las galaxias con T-Type $\leq$ 0 se etiquetan como tempranas (ETG) y las que cumplen 1 $\leq$ T-Type $\leq$ 10 como tardías (LTG)}
+    \label{fig:hubble}
+\end{figure}
+
+% ------------------------------------------------------------
+\subsubsection{ Proceso Impactado: Clasificación de Galaxias }
+% ------------------------------------------------------------
+
+El proceso impactado es la generación y uso de catálogos de clasificación morfológica. Actualmente el proceso de la clasificación morfológica se realiza de forma visual. Un experto observa la imagen de la galaxia y decide el tipo morfológico. La clasificación visual es científicamente útil pero incorpora variabilidad entre observadores y depende de la profundidad, resolución, orientación, longitud de onda y relación señal-ruido de la imagen. También afecta la inclinación, el polvo y la banda de observación que pueden afectar la apariencia de estructuras.
+
+La clasificación visual implica la aplicación de criterios morfológicos, conciliación de discrepancias y publicación de una etiqueta. La propuesta incorpora automatizar la organización de datos, predecir una probabilidad y derivar los casos ambiguos a revisión experta.
+
+Hasta el momento no existe un trabajo que combine espectros e imágenes con fines de clasificación morfológica. La literatura de \textit{machine learning} en el tema es abundante pero solo están basadas en imágenes. Lo que no existe al momento es un trabajo que combine espectros e imágenes. Ahí se sitúa la contribución del proyecto.
+
+% ------------------------------------------------------------
+\subsection{Entendimiento del Negocio}
+\subsubsection{Formulación del problema}
+% ------------------------------------------------------------
+
+Los sondeos producen catálogos de cientos de millones a miles de millones de objetos, y el método predominante de clasificación morfológica sigue siendo la inspección visual, lo que plantea limitaciones:
+
+\begin{itemize}
+
+    \item La clasificación depende de cuán abiertos o cerrados se perciban los brazos espirales. En el MaNGA cerca del 10 \% tienen clasificación dudosa por su aspecto tenue, difuso o compacto, y 67 objetos resultaron inclasificables.
+
+    \item El tiempo de integración del telescopio y el brillo superficial límite de la cámara impiden capturar la estructura en los extremos de los brazos y las estructuras de bajo brillo superficial, lo que sesga sistemáticamente la clasificación hacia tipos más tempranos.
+
+    \item Los catálogos morfológicos derivados de imágenes tipo Hubble contienen entre 20–30 mil galaxias clasificadas, y los catálogos de ciencia ciudadana alcanzan aproximadamente medio millón. Frente al volumen de los cartografiados actuales y futuros, la clasificación visual no es sostenible.
+
+\end{itemize}
+
+La necesidad de un cambio se vuelve crítica ante la llegada de una nueva generación de instrumentos. En junio de 2026, el Observatorio Vera C. Rubin inició el Legacy Survey of Space and Time (LSST), un sondeo de diez años que cartografiará el cielo austral con una cámara de 3,200 megapíxeles y generará aproximadamente 10 terabytes de datos por noche.
+
+A lo largo del sondeo, cada región del cielo será observada unas 800 veces. La combinación de todas estas observaciones permitirá obtener imágenes más profundas y nítidas, detectar galaxias más débiles y mejorar sustancialmente su clasificación morfológica.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.62\textwidth]{telescopio.png}
+    \caption{El Observatorio Vera C. Rubin, su sondeo LSST redefine la escala del problema.}
+    \label{fig:rubin}
+\end{figure}
+
+El Instituto, a través del APO, ha invertido un esfuerzo humano considerable en clasificar visualmente las galaxias del MaNGA. Sin embargo, replicar este procedimiento para los millones de galaxias que observará LSST resulta materialmente imposible. La institución necesita transformar ese capital intelectual en un clasificador automático.
+
+% ------------------------------------------------------------
+\subsubsection{Contexto}
+% ------------------------------------------------------------
+
+\begin{itemize}
+
+    \item \textbf{Escala:} La inspección manual no crece al ritmo de los cartografiados astronómicos y de los futuros, que producirán mayor cantidad y profundidad.
+
+    \item \textbf{Reproducción:} Un modelo versionado aplica reglas consistentes y poder repetir el mismo resultado con los mismos datos.
+
+    \item \textbf{Complementar:} La imagen aporta la estructura espacial (grado de apertura de los brazos espirales), el espectro aporta la composición física (edad, metalicidad, tasa de formación estelar, contenido de gas ionizado), usar ambas para poder clasificarlas según la secuencia de Hubble.
+
+\end{itemize}
+
+% ------------------------------------------------------------
+\subsection{Objetivos}
+\subsubsection{Objetivo General}
+% ------------------------------------------------------------
+
+Desarrollar y evaluar un clasificador morfológico de galaxias que integre imágenes del DESI Legacy Imaging Surveys y espectros de MaNGA, comparando arquitecturas de \textit{deep learning}, con el fin de determinar cuál constituye la mejor aplicación para el sector astronómico ante el volumen de datos de la nueva generación de sondeos.
+
+% ------------------------------------------------------------
+\subsubsection{Objetivos Específicos}
+% ------------------------------------------------------------
+
+\begin{itemize}
+
+    \item Realizar un análisis exploratorio de la distribución de T- Type, balance entre clases tempranas y tardías, cobertura de \textit{redshift}, masa estelar, inclinación y tamaño angular, e identificar los casos en los que existe mayor incertidumbre en las etiquetas.
+
+    \item Definir y ejecutar la ingeniería de características: normalización del espectro, remuestreo de longitud de onda, y ajuste del zoom del recorte de imagen para homogeneizar el tamaño de las galaxias.
+
+    \item Definir un modelo de referencia para establecer el umbral mínimo de desempeño (\textit{baseline}) para las arquitecturas subsecuentes.
+
+    \item Entrenar y comparar modelos unimodales (sólo imagen, sólo espectro) y multimodales (fusión de \textit{embeddings}), evaluar cuánto mejora el desempeño gracias a la fusión de modalidades.
+
+    \item Evaluar los modelos en términos de exactitud, calibración, costo computacional y esfuerzo de ajuste de hiperparámetros.
+
+    \item Analizar los errores de la inclinación, masa estelar, clasificación de galaxia, para definir las condiciones bajo las cuales el modelo produce resultados fiables.
+
+    \item Presentar una recomendación sobre la adopción del enfoque en el sector astronómico, junto con un modelo de difusión y un resumen ejecutivo para la toma de decisiones.
+
+\end{itemize}
+
+% ------------------------------------------------------------
+\subsubsection{Preguntas Clave}
+% ------------------------------------------------------------
+
+\begin{itemize}
+
+    \item ¿La combinación de imagen y espectro mejora de forma significativa la clasificación respecto a usar únicamente imágenes o únicamente espectros?
+
+    \item ¿Cuánta información morfológica contiene realmente un espectro y sus resultados de ajuste espectral, medida como desempeño de un clasificador que sólo lo utiliza?
+
+    \item ¿Qué regiones del espectro y de su ajuste espectral (población estelar, líneas de emisión, forma del continuo) resultan más útiles para separar tempranas de tardías?
+
+    \item ¿Un modelo fundacional tabular alcanza un desempeño competitivo frente a las redes profundas, con menor costo de entrenamiento y menos datos etiquetados?
+
+    \item ¿Cómo se comporta el clasificador en la zona de transición -1 < T-Type < 2, y qué porcentaje de casos requieren revisión humana?
+
+    \item ¿Es transferible el modelo a imágenes de mayor profundidad, como las que producirá el nuevo telescopio por empalme de exposiciones?
+
+\end{itemize}
+
+% ------------------------------------------------------------
+\subsubsection{Involucrados}
+% ------------------------------------------------------------
+
+En el proyecto participan varios grupos: el grupo científico del IA-UNAM que aporta el dominio y la validación, el equipo de estudiantes que construye los modelos; y los académicos, cuya participación es supervisar el proyecto.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|}
+\hline
+\textbf{Participante} &
+\textbf{Etapa de participación} &
+\textbf{Tipo de involucramiento} &
+\textbf{Nivel}
+\\ \hline
+
+Investigadores en evolución de galaxias, IA-UNAM  &
+Antecedentes, entendimiento del negocio y validación de resultados  &
+Definición del problema científico, criterios morfológicos, interpretación astrofísica de los resultados  &
+Alto, patrocinador científico y validador final
+\\ \hline
+
+Estudiantes de posgrado, ITESM &
+Preparación de datos, construcción de modelos y experimentación  &
+Descarga y control de calidad de imágenes, experimentos de ajuste de hiperparámetros  &
+Medio, participación operativa
+\\ \hline
+
+Cuerpo académico, ITESM  &
+Hitos y liberación  &
+Recepción de la metodología &
+Revisa la metodología, riesgos, resultados y condiciones de aceptación
+\\ \hline
+
+\end{tabular}
+\caption{Matriz de Involucrados}
+\label{involucrados}
+\end{table}
+
+
+% ------------------------------------------------------------
+\subsection{Entendimiento de los Datos}
+\subsubsection{Descripción de los datos de entrada}
+% ------------------------------------------------------------
+
+El conjunto de datos del proyecto es multimodal. Cada galaxia es descrita simultáneamente por una imagen, un espectro, un ajuste espectral y por un conjunto de atributos tabulares, todos ellos vinculados mediante el identificador de la galaxia en el catalogo MaNGA. Las modalidades provienen de fuentes distintas y fueron producidas con propósitos distintos y con un control de calidad distinto.
+
+Los principales datos que utilizaremos provienen de imágenes de galaxias. Las descargaremos del catálogo DESI Legacy Imaging Surveys en formato \texttt{.fits}. Estas sólo se pueden bajar por cada banda (canal) \texttt{grz}. Se usarán las imágenes en su escala natural, adecuando el zoom de las galaxias para tener una mejor clasificación, mediante el radio aproximado de la galaxia (\texttt{PETRO\_TH90}). Con este se pretende variar la escala que es el valor que modifica el zoom.
+
+Las galaxias que usaremos provienen de un archivo compartido por el sponsor \texttt{morfologia.fits}, el cual contiene 10,127 registros con nueve columnas:
+
+\begin{itemize}
+
+    \item \texttt{name}: Identificador MaNGA.
+    \item \texttt{objra} y \texttt{objdec}: Ascensión recta y declinación en grados.
+    \item \texttt{Type}: Tipo de Hubble, variantes barradas SB/SAB y S-merger.
+    \item \texttt{Ttype}: Tipo de convención.
+    \item \texttt{nsa\_z}: \textit{Redshift} del NASA-Sloan Atlas.
+    \item \texttt{LogMass}: Logaritmo de la masa estelar.
+    \item \texttt{incl}: Inclinación en grados.
+    \item \texttt{PETRO\_TH90}: Radio petrosiano.
+
+\end{itemize}
+
+También se compartió un archivo ZIP MPL-11 con 10,127 archivos de formato \texttt{.fits} con información de los espectros. Cada archivo contiene cinco columnas:
+
+\begin{itemize}
+
+    \item \texttt{WAVE}: Longitud de onda. Se usa para generar el espectro y se remuestrea a una malla común para que cada posición del vector signifique lo mismo en todas las galaxias.
+    \item \texttt{flux\_1re}: Radio Efectivo. Resume la energía observada dentro de campo observado. Es el portador de la señal espectral, el continuo espectral y las líneas de emisión y absorción reflejan la población estelar y la actividad de formación estelar que covarían con la morfología.
+    \item \texttt{flux\_fov}: Campo Visual. Espectro integrado sobre todo el campo de visión del instrumento. Provee las mismas carecteriricas que el radio eefectivo.
+    \item \texttt{error\_1re}: Indice de error de la metrica \texttt{flux\_1re}.
+    \item \texttt{error\_fov}: Indice de error de la metrica \texttt{flux\_1re}.
+
+\end{itemize}
+
+De igual manera, también se compartió un archivo ZIP FoV-OUT con 10,127 archivos de texto de extensión \texttt{.out}. Estos son los resultados del ajuste de los espectros anteriores. Se construyo un espectro modelo usando componentes de un espectro y la combinación de poblaciones estelares, su polvo y su movimiento, ajustando todo a un modelo base que se estima mejor reproduce la luz de la galaxia. La sección principal del archivo contiene una fila por cada componente del modelo, que normalmente es una población con una edad y una metalicidad dadas, de él salen las edades medias, las metalicidades medias y la historia de formación estelar. Y quince columnas:
+
+\begin{itemize}
+
+    \item \texttt{j}: Índice del componente. Identifica a qué modelo corresponde la fila.
+    \item \texttt{x\_j(\%)}: Contribución de luz del componente en la longitud de onda de normalización \texttt{l\_norm}. Se expresa porcentualmente respecto a la escala de normalización del ajuste.
+    \item \texttt{Mini\_j(\%)}:Fracción de la masa estelar inicial, contando la masa que se devolvió al medio interestelar por evolución estelar.
+    \item \texttt{Mcor\_j(\%)}: Fracción de la masa estelar actual, ya descontada la masa devuelta al medio interestelar por supernovas y vientos.
+    \item \texttt{age\_j(yr)}: Edad del componente en años. Es una propiedad del modelo base, no una edad ajustada continuamente.
+    \item \texttt{Z\_j}: Metalicidad. La fracción de masa en elementos más pesados que el helio, con \texttt{Z = 0.02}.
+    \item \texttt{(L/M)\_j}: Valor del espectro en la longitud de onda de normalización, conservando las unidades originales de la base. P.
+    \item \texttt{YAV?}: Indicador de extinción. Indicador (0 o 1) de si el componente puede tener la extinción extra.
+    \item \texttt{Mstars}: Fracción de la masa inicial que permanece en estrellas a la edad del componente. Se utiliza para convertir contribuciones de luz en fracciones de masa actual.
+    \item \texttt{component\_j}: identificador del componente tomado del archivo maestro de la base.
+    \item \texttt{a\/Fe}: Relación de abundancia del componente.
+    \item \texttt{SSP\_chi2r}: Es el chi-cuadrado dividido entre el número de píxeles utilizados de ese ajuste con un solo componente.
+    \item \texttt{SSP\_adev(\%)}: Desviación relativa media porcentual de ese ajuste con un solo componente.
+    \item \texttt{SSP\_AV}: Extinción \texttt{AVA\_VAV} en magnitudes, de ese ajuste con un solo componente.
+    \item \texttt{SSP\_x(\%)}: Factor de normalización equivalente a \texttt{sum-of-x} de ese ajuste con un solo componente.
+
+\end{itemize}
+
+% ------------------------------------------------------------
+\subsubsection{Descripción de los datos de salida}
+% ------------------------------------------------------------
+
+La salida del modelo sera el T-Type de las galaxias, mediante una regla: y = 0 para tempranas cuando T-Type \texttt{$\leq$ 0}; y = 1 para tardías cuando 1 \texttt{$\leq$ T-Type $\leq$ 10.} Deben excluirse o marcarse para revisión los valores faltantes, no numéricos o fuera del dominio acordado. La codificación debe conservar también T-Type original para auditoría y análisis de errores cerca de la frontera 0/1.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{0.22\textwidth}|p{0.22\textwidth}|p{0.12\textwidth}|p{0.32\textwidth}|}
+\hline
+\textbf{Condición en T-Type} & \textbf{Clase} & \textbf{Código} & \textbf{Tratamiento} \\ \hline
+
+T-Type $\leq$  0 &
+Temprana &
+0 &
+Incluir si cumple controles de calidad. \\ \hline
+
+1 $\leq$ Ttype $\leq$ 10 &
+Tardía &
+1 &
+Incluir si cumple controles de calidad. \\ \hline
+
+Faltante o fuera del rango definido &
+No asignada &
+NA &
+No usar para entrenamiento supervisado; revisar por separado. \\ \hline
+
+\end{tabular}
+\caption{Regla de construcción de la etiqueta}
+\label{etiquetas}
+\end{table}
+
+% ------------------------------------------------------------
+\subsubsection{Técnica de ML}
+% ------------------------------------------------------------
+
+La técnica es aprendizaje supervisado de clasificación binaria. Disponemos de una variable conocida, previamente etiquetada para cada galaxia, T-Type, lo que descarta el aprendizaje no supervisado. Esta variable se segmenta en 2 clases, tempranas y tardías, lo que define una clasificación y no una regresión. La elección del aprendizaje profundo es debido a la naturaleza de las entradas, las arquitecturas convolucionales extraen rasgos espaciales y espectrales de los datos.
+
+La evaluación de un modelo fundacional tabular es para comprobar si es posible alcanzar un mejor desempeño y resultados con un costo computacional menor. Dado que el volumen de galaxias etiquetadas es limitado (decenas de miles) esta comparación es pertinente.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{0.12\textwidth}|p{0.35\textwidth}|p{0.35\textwidth}|}
+\hline
+\textbf{Familia} & \textbf{Configuración} & \textbf{Por qué se incluye} \\ \hline
+
+Deep Learning &
+Red convolucional 2D para la imagen, red convolucional 1D o codificador para el espectro, y fusión de las representaciones antes de la capa de decisión.  &
+Extrae automáticamente rasgos a nivel de píxel y es el enfoque con desempeño demostrado en clasificación morfológica a partir de imágenes. \\ \hline
+
+Modelo Fundacional Tabular  &
+Aplicación sobre un vector de atributos derivados del espectro y de descriptores de la imagen, sin entrenamiento extenso &
+Ofrece predicciones competitivas en conjuntos pequeños y medianos con un costo de entrenamiento muy reducido, lo que lo vuelve una línea base exigente. \\ \hline
+
+Modelo de referencia  &
+Regresión logística regularizada sobre los mismos atributos tabulares.  &
+Sirve de piso comparativo y permite atribuir la ganancia observada a la complejidad del modelo o a la información añadida. \\ \hline
+
+\end{tabular}
+\caption{Familias de modelos que se evaluarán}
+\label{modelos}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.62\textwidth]{modelos.png}
+    \caption{Arquitectura conceptual del clasificador multimodal. Cada modalidad se procesa en una rama independiente y sus representaciones se fusionan antes de la decisión final.}
+    \label{fig:modelos}
+\end{figure}
+
+% ------------------------------------------------------------
+\subsubsection{Identificación de las variables}
+% ------------------------------------------------------------
+
+La distinción entre entradas, salida y variables de control es explícita para evitar fuga de información. ningún identificador ni ninguna variable derivada de la clasificación visual puede entrar al modelo como predictor. 
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{0.13\textwidth}|p{0.13\textwidth}|p{0.30\textwidth}|p{0.33\textwidth}|}
+\hline
+\textbf{Variable} & \textbf{Rol} & \textbf{Descripción} & \textbf{Justificación} \\ \hline
+
+T-Type  &
+Origen de la salida &
+Índice morfológico numérico de la secuencia de Hubble, asignado por clasificación de referencia  &
+Se dicotomiza como 0 = temprana (T-Type $\leq$  0), 1 = tardía (1 $\leq$  T-Type $\leq$  10)  \\ \hline
+
+Clase morfológica binaria &
+Salida y &
+Etiqueta objetivo del clasificador: temprana (ETG) vs. tardía (LTG) &
+Variable dependiente; se predice como probabilidad y se umbraliza. \\ \hline
+
+WAVE &
+Entrada, modalidad espectro &
+Eje de longitudes de onda del espectro integrado &
+Conversión al sistema en reposo y remuestreo a rejilla común. \\ \hline
+
+\textit{Flux\_1re} &
+Entrada, modalidad espectro &
+Flujo integrado dentro de un radio efectivo, principal señal espectral del proyecto &
+Normalización del flujo, enmascarado de regiones defectuosas, suavizado opcional. \\ \hline
+
+PETRO\_TH90 &
+Entrada auxiliar, control de encuadre &
+Radio aproximado de la galaxia &
+Determina el parámetro scale del recorte. \\ \hline
+
+\textit{Redshift} y coordenadas &
+Entrada auxiliar &
+Ubicación y distancia de la galaxia &
+Corrección al sistema en reposo, pareo entre modalidades y verificación de sesgos por distancia. \\ \hline
+
+\textit{Flux\_fov} &
+Entrada potencial, fase posterior &
+Espectro integrado sobre todo el campo de visión del instrumento  &
+Reservado para experimentos de ablación una vez consolidada la línea base con \textit{Flux\_1re} \\ \hline
+
+\end{tabular}
+\caption{Variables de entrada y salida}
+\label{variables}
+\end{table}
+
+
+% ------------------------------------------------------------
+\subsection{Metodología}
+% ------------------------------------------------------------
+
+El proyecto se desarrolla siguiendo CRISP-ML(Q) (\textit{Cross-Industry Standard Process model for the development of Machine Learning applications with Quality assurance methodology}), el cual combina entendimiento del negocio y de los datos en una sola fase e introduce en cada tarea la identificación de riesgos y el método de calidad que los mitiga.
+
+Este proyecto solo cubre las primeras cuatro fases; despliegue y monitoreo quedan documentados como trabajo futuro.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{crisp.png}
+    \caption{Las seis fases de CRISP-ML.}
+    \label{fig:crisp}
+\end{figure}
+
+
+% ------------------------------------------------------------
+\subsubsection{Fase 1: Entendimiento del negocio y de los datos}
+% ------------------------------------------------------------
+
+\begin{itemize}
+
+    \item \textbf{Alcance de la aplicación de ML.}
+    El alcance lo acordó el sponsor, quien es a la vez el experto de dominio y el autor del catálogo de etiquetas.
+
+    \item \textbf{Criterios de éxito en tres niveles.}
+
+    \begin{itemize}
+
+        \item \textbf{Negocio:}
+        El modelo de clasificación deberá reproducir la clasificación visual con una incertidumbre igual o inferior al proceso de evaluación visual. Asimismo, deberá procesar la muestra completa en un tiempo significativamente menor que el requerido para realizar la tarea de forma manual.
+
+        \item \textbf{ML:}
+        Umbral mínimo de desempeño establecido previamente al modelado, definido mediante \textit{F1 macro} y \textit{ROC AUC} sobre un conjunto de pruebas reservadas. Ningún modelo debe situarse por debajo de la línea base.
+
+        \item \textbf{Económico (KPI):}
+        Horas de trabajo experto ahorradas por cada mil galaxias clasificadas, y costo computacional en GPU-hora por cada mil galaxias procesadas.
+
+    \end{itemize}
+
+    \item \textbf{Factibilidad.}
+    Revisando la literatura sobre la clasificación morfológica con aprendizaje profundo el tamaño muestral ($\sim$10 mil objetos etiquetados visualmente) resulta suficiente para un clasificador automático, y existen precedentes de CNN bayesianas con alta exactitud sobre imágenes. No se identifican restricciones legales, ya que los datos son públicos y de acceso abierto.
+
+    \item \textbf{Recolección de datos.}
+    Los sponsors son los responsables de brindar el catálogo de trabajo, el cual incluye:
+
+    \begin{itemize}
+
+        \item Un archivo \texttt{morfologia.csv}, con 10,127 registros de galaxias.
+        \item Un archivo ZIP MPL-11 con 10,127 archivos \texttt{.fits} con información de los espectros de cada galaxia.
+        \item un archivo ZIP FoV-OUT con 10,127 archivos de texto \texttt{.out} con información de los ajustes de los espectros de cada galaxia.
+
+    \end{itemize}
+
+    El equipo de estudiantes es el responsable de descargar las 10,127 imágenes de las galaxias del catálogo DESI Legacy Imaging Surveys.
+
+\end{itemize}
+
+
+% ------------------------------------------------------------
+\subsubsection{Fase 2: Preparación de los datos}
+% ------------------------------------------------------------
+
+\textbf{Actividades sobre los datos tabulares}
+
+\begin{itemize}
+
+    \item Limpieza: sustitución de los valores \texttt{-9999.0} por valores faltantes explícitos, tratamiento de registros incompletos y eliminación de duplicados.
+
+    \item Codificación, escalado y transformaciones de las variables auxiliares.
+
+\end{itemize}
+
+
+\textbf{Actividades sobre los espectros}
+
+\begin{itemize}
+
+    \item Corrección al marco en reposo utilizando \texttt{nsa\_z}, de modo que todas las galaxias compartan la misma representación vectorial.
+
+    \item Normalización del flujo para eliminar la dependencia del brillo aparente y de la distancia.
+
+    \item Tratamiento de regiones enmascaradas, píxeles defectuosos y residuos de líneas.
+
+    \item Ingeniería de características espectrales: medidas de continuo y pendientes, índices de absorción, intensidad y cocientes de líneas de emisión asociadas a formación estelar, y reducción de dimensionalidad mediante componentes principales.
+
+\end{itemize}
+
+
+\textbf{Actividades sobre las imágenes}
+
+\begin{itemize}
+
+    \item Descarga desde el servicio del Legacy Survey a partir de las coordenadas de cada galaxia.
+
+    \item Ajuste del zoom mediante el parámetro de escala del servicio, de modo que todas las galaxias ocupen una fracción comparable del campo; se evaluará experimentalmente el beneficio de esta normalización frente al uso de la escala natural.
+
+    \item Redimensionamiento de la resolución de entrada del modelo, normalización de intensidades y aumento de datos mediante rotaciones y reflexiones, transformaciones legítimas dado que la morfología es invariante ante la orientación en el cielo.
+
+\end{itemize}
+
+
+% ------------------------------------------------------------
+\subsubsection{Fase 3: Modelado}
+% ------------------------------------------------------------
+
+Se entrenarán y compararán tres familias de modelos bajo un protocolo idéntico de partición, semillas y métricas.
+
+\begin{table}[H]
+\centering
+\scriptsize
+
+\begin{tabular}{
+|p{0.15\textwidth}
+|p{0.25\textwidth}
+|p{0.20\textwidth}
+|p{0.29\textwidth}|}
+
+\hline
+
+\textbf{Familia} &
+\textbf{Modelos} &
+\textbf{Entrada} &
+\textbf{Justificación}
+\\ \hline
+
+Baseline &
+Regresión logística regularizada, Random Forest, gradient boosting &
+Características tabulares (CAS, índices espectrales, color, LogMass) &
+Existe evidencia consolidada de que los modelos basados en árboles siguen superando al deep learning en datos tabulares típicos, por lo que este baseline no es un trámite: es un competidor real.
+\\ \hline
+
+Deep learning &
+CNN 2D sobre el recorte de imagen; CNN 1D o transformer sobre el espectro; fusión intermedia de embeddings de ambas ramas &
+Imagen cruda + espectro procesado &
+Es el enfoque predominante en la literatura de clasificación morfológica y el único capaz de explotar de manera conjunta la información espacial y espectral sin recurrir a ingeniería manual de características.
+\\ \hline
+
+Modelo fundacional tabular &
+TabPFN &
+Características tabulares y embeddings reducidos &
+Realiza entrenamiento y predicción. Se realiza con la configuración por defecto.
+\\ \hline
+
+\end{tabular}
+
+\end{table}
+
+
+% ------------------------------------------------------------
+\subsubsection{Fase 4: Evaluación}
+% ------------------------------------------------------------
+
+\begin{itemize}
+
+    \item \textbf{Métricas de desempeño.}
+
+    \begin{itemize}
+
+        \item \textbf{Clasificación:}
+        Usaremos F1 macro y \textit{balanced accuracy} como métricas primarias (robustas al desbalance), ROC AUC y PR AUC como secundarias, y matriz de confusión desagregada.
+
+        \item \textbf{Calibración:}
+        Curva de fiabilidad y \textit{Expected Calibration Error}. Es un criterio de primer orden y no un adorno: el caso de uso 2 (triaje por incertidumbre) sólo funciona si las probabilidades predichas son honestas.
+
+        \item \textbf{Costo:}
+        Tiempo de ajuste más inferencia, memoria y GPU-hora por cada mil galaxias, reportados junto al desempeño para sustentar la recomendación operativa.
+
+    \end{itemize}
+
+
+    \item \textbf{Robustez y validación del ajuste.}
+
+    \begin{itemize}
+
+        \item Evaluación del desempeño por subgrupos definidos por inclinación, masa estelar y corrimiento al rojo, además de objetos tenues, difusos o compactos. Un buen desempeño global no es suficiente si el modelo presenta fallas sistemáticas en subconjuntos relevantes, como las galaxias vistas de canto.
+
+        \item Comparación de los desacuerdos del modelo con aquellas galaxias en las que la clasificación visual es intrínsecamente ambigua, pues constituyen el límite natural de una frontera binaria.
+
+        \item Evaluación de los modelos entrenados únicamente con imagen, únicamente con espectro, y ambas modalidades, bajo una partición idéntica de los datos, con intervalos de confianza y una prueba estadística pareada sobre las diferencias de desempeño, con el fin de determinar si la ganancia de la fusión es real o se encuentra dentro del margen de ruido.
+
+    \end{itemize}
+
+
+    \item \textbf{Aceptación por el usuario.}
+
+    \begin{itemize}
+
+        \item Revisión de una muestra de predicciones junto con el sponsor, incluidos los errores en los que el modelo mostró mayor confianza, con el fin de evaluar su comprensibilidad y utilidad real.
+
+        \item Documentación entregada junto con el modelo, donde se explican su funcionamiento y sus límites, así como una advertencia de que el modelo fue entrenado sobre una muestra incompleta en volumen.
+
+    \end{itemize}
+
+\end{itemize}
+
+
+% ------------------------------------------------------------
+\clearpage
+\section{Anexos}
+% ------------------------------------------------------------
+
+% ------------------------------------------------------------
+\subsection{Convenio}
+% ------------------------------------------------------------
+\includepdf[pages=-,scale=0.9,offset=0 0]{anexos/convenio.pdf}
+
+% ------------------------------------------------------------
+\subsection{Introducción del Proyecto Integrador}
+% ------------------------------------------------------------
+\includepdf[pages=-,scale=0.9,offset=0 0]{anexos/introduccion.pdf}
+
+% ------------------------------------------------------------
+\subsection{Revisión técnica de resultados}
+% ------------------------------------------------------------
+\includepdf[pages=-,scale=0.9,offset=0 0]{anexos/avances.pdf}
+
+% ------------------------------------------------------------
+\clearpage
+\section{Referencias}
+% ------------------------------------------------------------
+
+\begin{itemize}
+
+    \item Dey, A., Schlegel, D. J., Lang, D., Blum, R., Burleigh, K., Fan, X., Findlay, J. R., Finkbeiner, D., Herrera, D., Juneau, S., Landriau, M., Levi, M., McGreer, I., Meisner, A., Myers, A. D., Moustakas, J., Nugent, P., Patej, A., Schlafly, E. F., \& Walker, A. R. (2019). Overview of the DESI Legacy Imaging Surveys. \textit{The Astronomical Journal, 157}(5), 168. \url{https://doi.org/10.3847/1538-3881/ab089d}
+
+    \item Karttunen, H., Kröger, P., Oja, H., Poutanen, M., \& Donner, K. J. (2007). \textit{Fundamental astronomy} (5th ed.). Springer. \url{https://doi.org/10.1007/978-3-540-34144-4}
+
+    \item Studer, S., Bui, T. B., Drescher, C., Hanuschkin, A., Winkler, L., Peters, S., \& Müller, K.-R. (2021). Towards CRISP-ML(Q): A machine learning process model with quality assurance methodology. \textit{Machine Learning and Knowledge Extraction, 3}(2), 392--413. \url{https://doi.org/10.3390/make3020020}
+
+    \item Vázquez-Mata, J. A., Hernández-Toledo, H. M., Avila-Reese, V., Cortes-Suárez, E., Aquino-Ortíz, E., \& Negrete, C. A. (2022). The SDSS-IV MaNGA visual morphology catalogue. \textit{Monthly Notices of the Royal Astronomical Society, 512}(2), 2222--2244.
+
+    \item Hubble, E. P. (1926). Extragalactic nebulae. \textit{The Astrophysical Journal, 64}, 321--369. \url{https://doi.org/10.1086/143018}
+
+    \item SeTIC-Ufsc. (n.d.). STARLIGHT Project. Universidade Federal De Santa Catarina. Fernandes, R. C. \url{https://minerva.ufsc.br/starlight/files/papers/Manual_StCv04.pdf}
+
+    \item Fernandes, R. C., Gu, Q., Melnick, J., Terlevich, E., Terlevich, R., Kunth, D., Lacerda, R. R., \& Joguet, B. (2004). The star formation history of Seyfert 2 nuclei. \textit{Monthly Notices of the Royal Astronomical Society, 355}(1), 273–296. \url{https://doi.org/10.1111/j.1365-2966.2004.08321.x}
+
+\end{itemize}
+
+\end{document}
