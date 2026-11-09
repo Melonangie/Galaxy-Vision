@@ -845,10 +845,9 @@ Este proyecto solo cubre las primeras cuatro fases; despliegue y monitoreo queda
 
 \begin{itemize}
 
-    \item \textbf{Alcance de la aplicación de ML.}
-    El alcance lo acordó el sponsor, quien es a la vez el experto de dominio y el autor del catálogo de etiquetas.
-
-    \item \textbf{Criterios de éxito en tres niveles.}
+    \item \textbf{Alcance}
+    Hoy la morfología de una galaxia se decide a simple vista, sobre todo por qué tan abiertos o cerrados están sus brazos, y eso introduce subjetividad. El proyecto busca una clasificación binaria más objetiva entre galaxias tempranas y tardías. Para ello combina dos tipos de datos que se complementan: imágenes y espectros. Quedan fuera las barras, los anillos y la inferencia a partir de fotometría.
+    \item \textbf{Criterios de éxito en tres niveles}
 
     \begin{itemize}
 
@@ -979,7 +978,7 @@ Este proyecto solo cubre las primeras cuatro fases; despliegue y monitoreo queda
 \subsubsection{Fase 3: Modelado}
 % ------------------------------------------------------------
 
-Se entrenarán y compararán tres familias de modelos bajo un protocolo idéntico de partición, semillas y métricas. Los modelos se entrenaron con un solo tipo de dato para ver cuánto aporta cada uno. Después se combinaron para ver si juntos clasifican mejor. A esto se le llama ablación: probar las piezas por separado y en combinación.
+Revisión de literatura y líneas base. Siguiendo la recomendación de empezar con modelos de poca capacidad e ir aumentándola, se hizo una ablación (comparar ramas por separado y en combinación):
 
 
 
