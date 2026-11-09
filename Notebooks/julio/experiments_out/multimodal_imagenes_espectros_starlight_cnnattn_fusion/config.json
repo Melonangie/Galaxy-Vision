@@ -1,0 +1,40 @@
+{
+  "experiment_group": "multimodal_imagenes_espectros_starlight_cnnattn",
+  "seed": 42,
+  "data": {
+    "project_root": "/home/albertor/Documents/deep_learning/repos/clasificacion-galaxias",
+    "manifest": "data/galaxy_manifest.csv",
+    "splits": "data/processed/splits_seed42_obj-label_FoV.csv",
+    "modalities": [
+      "image",
+      "spectrum"
+    ],
+    "image": {
+      "fov_column": "fov_0",
+      "size": 256,
+      "normalization": "none"
+    },
+    "spectrum": {
+      "cache_dir": "data/processed/spectra/spectra_cache_starlight"
+    }
+  },
+  "model": {
+    "image_embedding_dim": 128,
+    "spectrum_embedding_dim": 128,
+    "classifier_hidden_dim": 128,
+    "dropout": 0.3
+  },
+  "training": {
+    "batch_size": 32,
+    "num_workers": 0,
+    "pin_memory": true,
+    "epochs": 50,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "max_grad_norm": 1.0,
+    "early_stopping_patience": 8
+  },
+  "selection_metric": "roc_auc",
+  "experiment_name": "multimodal_imagenes_espectros_starlight_cnnattn_fusion",
+  "variant": "fusion"
+}

@@ -1,0 +1,28 @@
+{
+  "experiment_name": "experimento_binario_imagenes_cnn",
+  "seed": 42,
+  "data": {
+    "project_root": "/Users/juliovelazquez/Documents/maestria/proyecto_integrador/clasificacion-galaxias",
+    "manifest": "data/galaxy_manifest.csv",
+    "splits": "data/processed/splits_seed42_obj-label.csv",
+    "modalities": [
+      "image"
+    ],
+    "image": {
+      "fov_column": "fov_0",
+      "size": 256,
+      "normalization": "none"
+    }
+  },
+  "training": {
+    "batch_size": 32,
+    "num_workers": 0,
+    "pin_memory": false,
+    "epochs": 30,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "max_grad_norm": 1.0,
+    "early_stopping_patience": 8
+  },
+  "selection_metric": "roc_auc"
+}
