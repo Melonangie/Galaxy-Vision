@@ -1,19 +1,19 @@
 \documentclass[12pt]{article}
 
-\usepackage[utf8]{inputenc}
-\usepackage[spanish,es-tabla]{babel}
 \usepackage[toc,page]{appendix}
-\usepackage{pdfpages}
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage{fancyhdr}
-\usepackage{hyperref}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[utf8]{inputenc}
 \usepackage{amsmath}
-\usepackage{longtable}
 \usepackage{array}
-\usepackage{listings}
-\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{pdfpages}
+\usepackage{textcomp}
+\usepackage{xcolor}
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
@@ -323,7 +323,7 @@ El problema se formula como clasificación supervisada. El objetivo es aprender 
 \subsubsection{Estrategia}
 % ------------------------------------------------------------
 
-Planeamos usar visión por computador, redes convolucionales sobre recortes de imagen de DESI Legacy Imaging Survey, que extraen la estructura espacial, resolución de brazos espirales y grado de enrollamiento.
+Planeamos usar visión por computador, redes convolucionales sobre recortes de imagen de DESI Legacy Imaging Survey, que extraen la estructura, resolución de brazos y grado de inclinamiento.
 
 También se plantea aplicar redes convolucionales o \textit{transformers} sobre el espectro y los ajustes de los espectros, ya que los tipos tardíos son más jóvenes, azules, ricos en formación estelar y pobres en metales que los tempranos, y esas diferencias quedan impresas en el espectro.
 
@@ -452,7 +452,7 @@ La morfología de una galaxia es uno de los descriptores más antiguos y más in
     \label{fig:Escala-Ttype}
 \end{figure}
 
-La secuencia de Hubble separa sistemas de galaxias tempranas (\textit{early-type} ETG) de sistemas tardías (\textit{late-type}, LTG), y que se resume numéricamente mediante el índice T-Type. El índice T-Type debe tratarse como una anotación con incertidumbre, no como una medición libre de error.
+La secuencia de Hubble separa sistemas de galaxias tempranas (\textit{early-type} ETG) de sistemas tardías (\textit{late-type}, LTG), y que se resume numéricamente mediante el índice T-Type.
 
 \begin{figure}[H]
     \centering
@@ -465,9 +465,7 @@ La secuencia de Hubble separa sistemas de galaxias tempranas (\textit{early-type
 \subsubsection{ Proceso Impactado: Clasificación de Galaxias }
 % ------------------------------------------------------------
 
-El proceso impactado es la generación y uso de catálogos de clasificación morfológica. Actualmente el proceso de la clasificación morfológica se realiza de forma visual. Un experto observa la imagen de la galaxia y decide el tipo morfológico. La clasificación visual es científicamente útil pero incorpora variabilidad entre observadores y depende de la profundidad, resolución, orientación, longitud de onda y relación señal-ruido de la imagen. También afecta la inclinación, el polvo y la banda de observación que pueden afectar la apariencia de estructuras.
-
-La clasificación visual implica la aplicación de criterios morfológicos, conciliación de discrepancias y publicación de una etiqueta. La propuesta incorpora automatizar la organización de datos, predecir una probabilidad y derivar los casos ambiguos a revisión experta.
+El proceso impactado es la generación y uso de catálogos de clasificación morfológica. Actualmente el proceso de la clasificación morfológica se realiza de forma visual. Un experto observa la imagen de la galaxia y decide el tipo morfológico. La clasificación visual es útil pero incorpora incertidumbre y depende de la profundidad, resolución, orientación, longitud de onda y relación señal-ruido de la imagen. También afecta la inclinación, el polvo y la banda de observación que pueden afectar la apariencia de estructuras.
 
 Hasta el momento no existe un trabajo que combine espectros e imágenes con fines de clasificación morfológica. La literatura de \textit{machine learning} en el tema es abundante pero solo están basadas en imágenes. Lo que no existe al momento es un trabajo que combine espectros e imágenes. Ahí se sitúa la contribución del proyecto.
 
@@ -573,13 +571,8 @@ En el proyecto participan varios grupos: el grupo científico del IA-UNAM que ap
 \begin{table}[H]
 \centering
 \small
-\begin{tabular}{|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|}
-\hline
-\textbf{Participante} &
-\textbf{Etapa de participación} &
-\textbf{Tipo de involucramiento} &
-\textbf{Nivel}
-\\ \hline
+\begin{tabular}{|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|} \hline
+\textbf{Participante} & \textbf{Etapa de participación} & \textbf{Tipo de involucramiento} & \textbf{Nivel} \\ \hline
 
 Investigadores en evolución de galaxias, IA-UNAM  &
 Antecedentes, entendimiento del negocio y validación de resultados  &
@@ -724,22 +717,8 @@ A continuación se presentan las familias de modelos evaluados en los experiment
 \small
 
 \begin{longtable}{|>{\raggedright\arraybackslash}p{0.22\textwidth}|>{\raggedright\arraybackslash}p{0.12\textwidth}|>{\raggedright\arraybackslash}p{0.32\textwidth}|>{\raggedright\arraybackslash}p{0.22\textwidth}|}
-
-\hline
-\textbf{Experimento} &
-\textbf{Familia} &
-\textbf{Configuración} &
-\textbf{Por qué se incluye}
-\\ \hline
-\endfirsthead
-
-\hline
-\textbf{Experimento} &
-\textbf{Familia} &
-\textbf{Configuración} &
-\textbf{Por qué se incluye}
-\\ \hline
-\endhead
+\hline \textbf{Experimento} & \textbf{Familia} & \textbf{Configuración} & \textbf{Por qué se incluye} \\ \hline \endfirsthead
+\hline \textbf{Experimento} & \textbf{Familia} & \textbf{Configuración} & \textbf{Por qué se incluye} \\ \hline \endhead
 
 Binario solo imágenes con opción GPU &
 CNN 2D compacta &
@@ -846,56 +825,130 @@ Este proyecto solo cubre las primeras cuatro fases; despliegue y monitoreo queda
 \begin{itemize}
 
     \item \textbf{Alcance}
-    Hoy la morfología de una galaxia se decide a simple vista, sobre todo por qué tan abiertos o cerrados están sus brazos, y eso introduce subjetividad. El proyecto busca una clasificación binaria más objetiva entre galaxias tempranas y tardías. Para ello combina dos tipos de datos que se complementan: imágenes y espectros. Quedan fuera las barras, los anillos y la inferencia a partir de fotometría.
+   El proyecto busca desarrollar y evaluar un sistema de inteligencia artificial para la clasificación morfológica binaria de galaxias tempranas y tardías, combinando imágenes y espectros integrados. Se plantea que ambas fuentes contienen información complementaria y que su combinación podría producir una clasificación más fiable que el uso de una sola modalidad.
+
+   Se compararán modelos de \textit{machine learning} tanto por su capacidad predictiva como por su utilidad para aplicaciones en el sector astronómico.
+
     \item \textbf{Criterios de éxito en tres niveles}
 
     \begin{itemize}
 
         \item \textbf{Negocio:}
-        El modelo de clasificación deberá reproducir la clasificación visual con una incertidumbre igual o inferior al proceso de evaluación visual. Asimismo, deberá procesar la muestra completa en un tiempo significativamente menor que el requerido para realizar la tarea de forma manual.
+        Obtener una clasificación científicamente útil y determinar si la combinación de imágenes y espectros integrados aporta valor.
 
         \item \textbf{ML:}
-        Umbral mínimo de desempeño establecido previamente al modelado, definido mediante \textit{F1 macro} y \textit{ROC AUC} sobre un conjunto de pruebas reservadas. Ningún modelo debe situarse por debajo de la línea base.
+        Alcanzar un rendimiento mínimo que sobrepase al trabajo anterior, \textit{Accuracy: 0.829} y \textit{F1-score: 83\%}. Los modelos deberán alcanzar sensibilidad adecuada en ambas clases y probabilidades fiables. Ningún modelo debe situarse por debajo de la línea base.
 
         \item \textbf{Económico (KPI):}
-        Horas de trabajo experto ahorradas por cada mil galaxias clasificadas, y costo computacional en GPU-hora por cada mil galaxias procesadas.
+        Reducir el esfuerzo de clasificacion y revisión, en terminos de tiempo por galaxia, memoria y proporción de objetos que requieren revisión humana. Mientras se mantiene un costo computacional razonable.
 
     \end{itemize}
 
     \item \textbf{Factibilidad.}
-    Revisando la literatura sobre la clasificación morfológica con aprendizaje profundo el tamaño muestral ($\sim$10 mil objetos etiquetados visualmente) resulta suficiente para un clasificador automático, y existen precedentes de CNN bayesianas con alta exactitud sobre imágenes. No se identifican restricciones legales, ya que los datos son públicos y de acceso abierto.
+    Revisando la literatura sobre la clasificación morfológica con \textit{machine learning} el tamaño muestral ($\sim$10 mil objetos etiquetados visualmente) resulta suficiente para un clasificador automático, y existen precedentes de \textit{CNN bayesianas} con alta exactitud usando solo imágenes. No hay restricciones legales o economicas ya que los datos son públicos y de acceso abierto.
 
     \item \textbf{Recolección de datos.}
-    Los sponsors son los responsables de brindar el catálogo de trabajo, el cual incluye:
+    Los sponsors son los responsables de brindar el catálogo de trabajo, el equipo de estudiantes es el responsable de descargar las 10,127 imágenes de las galaxias del catálogo DESI Legacy Imaging Surveys.
 
-    \begin{itemize}
+    \begin{table}[H]
+    \centering
+    \small
+    \begin{tabular}{|p{0.15\textwidth}|p{0.20\textwidth}|p{0.20\textwidth}|p{0.20\textwidth}|}
+    \hline
+    \textbf{Datos} & \textbf{Fuente} & \textbf{Contenido} & \textbf{Uso en el proyecto} \\ \hline
 
-        \item Un archivo \texttt{morfologia.csv}, con 10,127 registros de galaxias.
-        \item Un archivo ZIP MPL-11 con 10,127 archivos \texttt{.fits} con información de los espectros de cada galaxia.
-        \item un archivo ZIP FoV-OUT con 10,127 archivos de texto \texttt{.out} con información de los ajustes de los espectros de cada galaxia.
 
-    \end{itemize}
+    \textbf{Catálogo} &
+    \texttt{morfologia.fits} &
+    \textit{name, objra, objdec, Type, Ttype, nsa\_z, LogMass, incl, PETRO\_TH90} &
+    Etiquetas, llave de integración textit{name} y tamaño angular para el zoom. \\ \hline
 
-    El equipo de estudiantes es el responsable de descargar las 10,127 imágenes de las galaxias del catálogo DESI Legacy Imaging Surveys.
+    \textbf{Espectros} &
+    \texttt{MaNGA MPL-11.zip} (manga-plate-ifu-1D.fits) &
+    \textit{WAVE, FLUX\_1RE, FLUX\_FoV, ERROR\_1RE, ERROR\_FoV} &
+    Modalidad espectral. \\ \hline
+
+    \textbf{STARLIGHT} &
+    \texttt{Starlight FoV-OUT.zip} (manga-plate-ifu-1D.out) &
+    Espectro modelado, 45 poblaciones (BC03) y propiedades derivadas. &
+    Modalidad espectral modelada y \textit{poblaciones estelares}.\\ \hline
+
+    \textbf{Imágenes} &
+    \texttt{legacysurvey.org} &
+    Cutouts grz (DR11). &
+    Modalidad visual\\ \hline
+
+    \end{tabular}
+    \caption{Fuentes de datos}
+    \label{aplicacion}
+    \end{table}
 
 \end{itemize}
-
 
 % ------------------------------------------------------------
 \subsubsection{Fase 2: Preparación de los datos}
 % ------------------------------------------------------------
 
+Esta tarea comprende Feature selection, Data selection y Unbalanced Classes.
+
+\begin{itemize}
+
+    \item \textbf{Selección de muestras}. Se unen todas las fuentes por la columna textit{name}. Los cruces son uno a uno y nunca dependen del orden de los archivos. Resultado: 10,014 galaxias en el catálogo, 10,013 con FITS y 9,351 en la cohorte experimental.
+
+    \item \textbf{Clases desbalanceadas}. El 62\% de la muestra son galaxias tardías. Por eso la partición es estratificada y la evaluación usa métricas que no premian a la clase mayoritaria.
+
+    \item \textbf{Reducción de ruido}. Se crea una máscara de color de la galaxia central para quitar estrellas de campo. Existen dos limitaciones: borra discos externos débiles y no separa galaxias vecinas. Cualquier filtro hay que evaluarlo comparándolo con la imagen original antes de adoptarlo.
+
+    \item \textbf{Valores faltantes e inválidos}. En los espectros, en vez de imputar valores, se rellena con ceros y se añade una máscara (spectrum\_mask), de modo que el modelo nunca confunda el relleno con flujo real. En los metadatos se imputa la mediana calculada solo con el conjunto de entrenamiento.
+
+    \item \textbf{Aumento de datos}. Rotaciones de 0\textdegree, 90\textdegree, 180\textdegree y 270\textdegree y volteos horizontal y vertical, solo durante el entrenamiento. La morfología no cambia con la orientación.
+
+    \item \textbf{Formato de archivos}. Manifest en CSV, cachés .npy con metadata.json que guarda la configuración y una huella de la cohorte y un index.csv con el estado de cada galaxia.
+
+    \item \textbf{Normalización}. Las estadísticas se calculan con el conjunto de entrenamiento y se aplican sin cambios a validación y prueba.
+
+    \begin{table}[H]
+    \centering
+    \small
+    \begin{tabular}{|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|}
+    \hline
+    \textbf{Partición} & \textbf{Total} & \textbf{Tempranas} & \textbf{Tardías} \\ \hline
+
+    \textbf{Entrenamiento} &
+    6,545 &
+    2,467 &
+    4,078 \\ \hline
+
+    \textbf{Validación} &
+    1,403 &
+    529 &
+    874 \\ \hline
+
+    \textbf{Prueba} &
+    1,403 &
+    528 &
+    875\\ \hline
+
+    \end{tabular}
+    \caption{Conjunto de entrenamiento }
+    \label{aplicacion}
+    \end{table}
+
+    \item \textbf{Salida de la fase}. Manifest, partición persistente, cachés versionadas e informe de exclusiones (10,014 → 9,351 galaxias, con el motivo de cada exclusión).
+
+\end{itemize}
+
 \textbf{Actividades sobre las imágenes}
 
 \begin{itemize}
 
-    \item Descarga desde el servicio del Legacy Survey a partir de las coordenadas de cada galaxia.
+    \item Descarga desde el servicio del Legacy Survey a partir de las coordenadas de cada galaxia, con información de las bandas g, r y z.
 
     \item Ajuste del zoom mediante el parámetro de escala del servicio, de modo que todas las galaxias ocupen una fracción comparable del campo; se evaluará experimentalmente el beneficio de esta normalización frente al uso de la escala natural.
 
     \item Redimensionamiento de la resolución de entrada del modelo, normalización de intensidades y aumento de datos mediante rotaciones y reflexiones, transformaciones legítimas dado que la morfología es invariante ante la orientación en el cielo.
 
-    \item Encuadre adaptativo:  \texttt{FOV = k × PETRO\_TH90} y  \texttt{pixscale = FOV\/256}.
+    \item Zoom adaptativo:  \texttt{FOV = k × PETRO\_TH90} y  \texttt{pixscale = FOV\/256}.
 
     \item Experimentos ABC con la misma muestra y una variable cambiada a la vez:
 
@@ -980,8 +1033,6 @@ Este proyecto solo cubre las primeras cuatro fases; despliegue y monitoreo queda
 
 Revisión de literatura y líneas base. Siguiendo la recomendación de empezar con modelos de poca capacidad e ir aumentándola, se hizo una ablación (comparar ramas por separado y en combinación):
 
-
-
 \begin{table}[H]
 \centering
 \scriptsize
@@ -1027,48 +1078,97 @@ Realiza entrenamiento y predicción. Se realiza con la configuración por defect
 \subsubsection{Fase 4: Evaluación}
 % ------------------------------------------------------------
 
+Comparación de modalidades en el conjunto de prueba:ROC\-AUC y balanced accuracy de cada experimento (fase4comparacionmodalidades.png)
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{0.15\textwidth}|p{0.10\textwidth}|p{0.10\textwidth}|p{0.10\textwidth}|p{0.10\textwidth}|}
+\hline
+\textbf{Modelo} & \textbf{ROC-AUC} & \textbf{Balanced acc} & \textbf{Recall temprana} & \textbf{Recall tardía} \\ \hline
+
+Espectro FoV · CNN1D &
+0,857 &
+0,772 &
+0,682&
+0,863 \\ \hline
+
+Poblaciones STARLIGHT · MLP&
+0,895 &
+0,830 &
+0,799 &
+0,861 \\ \hline
+
+Espectro FoV · patch-BiGRU &
+0,917 &
+0,850 &
+0,839 &
+0,861\\ \hline
+
+Imagen · ResNet-18 (control) &
+0,963 &
+0,882&
+0,860 &
+0,905\\ \hline
+
+Imagen + Espectro FoV &
+0,963 &
+0,877 &
+0,837 &
+0,918\\ \hline
+
+Imagen + Esp. SL + Poblaciones &
+0,965 &
+0,888 &
+0,883 &
+0,894\\ \hline
+\end{tabular}
+\caption{Comparacion Modalidades}
+\label{aplicacion}
+\end{table}
+
+
+
+\textbf{Métricas de desempeño.}
+
 \begin{itemize}
 
-    \item \textbf{Métricas de desempeño.}
+    \item \textbf{Clasificación:}
+    Usaremos F1 macro y \textit{balanced accuracy} como métricas primarias (robustas al desbalance), ROC AUC y PR AUC como secundarias, y matriz de confusión desagregada.
 
-    \begin{itemize}
+    \item \textbf{Calibración:}
+    Curva de fiabilidad y \textit{Expected Calibration Error}. Es un criterio de primer orden y no un adorno: el caso de uso 2 (triaje por incertidumbre) sólo funciona si las probabilidades predichas son honestas.
 
-        \item \textbf{Clasificación:}
-        Usaremos F1 macro y \textit{balanced accuracy} como métricas primarias (robustas al desbalance), ROC AUC y PR AUC como secundarias, y matriz de confusión desagregada.
-
-        \item \textbf{Calibración:}
-        Curva de fiabilidad y \textit{Expected Calibration Error}. Es un criterio de primer orden y no un adorno: el caso de uso 2 (triaje por incertidumbre) sólo funciona si las probabilidades predichas son honestas.
-
-        \item \textbf{Costo:}
-        Tiempo de ajuste más inferencia, memoria y GPU-hora por cada mil galaxias, reportados junto al desempeño para sustentar la recomendación operativa.
-
-    \end{itemize}
-
-
-    \item \textbf{Robustez y validación del ajuste.}
-
-    \begin{itemize}
-
-        \item Evaluación del desempeño por subgrupos definidos por inclinación, masa estelar y corrimiento al rojo, además de objetos tenues, difusos o compactos. Un buen desempeño global no es suficiente si el modelo presenta fallas sistemáticas en subconjuntos relevantes, como las galaxias vistas de canto.
-
-        \item Comparación de los desacuerdos del modelo con aquellas galaxias en las que la clasificación visual es intrínsecamente ambigua, pues constituyen el límite natural de una frontera binaria.
-
-        \item Evaluación de los modelos entrenados únicamente con imagen, únicamente con espectro, y ambas modalidades, bajo una partición idéntica de los datos, con intervalos de confianza y una prueba estadística pareada sobre las diferencias de desempeño, con el fin de determinar si la ganancia de la fusión es real o se encuentra dentro del margen de ruido.
-
-    \end{itemize}
-
-
-    \item \textbf{Aceptación por el usuario.}
-
-    \begin{itemize}
-
-        \item Revisión de una muestra de predicciones junto con el sponsor, incluidos los errores en los que el modelo mostró mayor confianza, con el fin de evaluar su comprensibilidad y utilidad real.
-
-        \item Documentación entregada junto con el modelo, donde se explican su funcionamiento y sus límites, así como una advertencia de que el modelo fue entrenado sobre una muestra incompleta en volumen.
-
-    \end{itemize}
+    \item \textbf{Costo:}
+    Tiempo de ajuste más inferencia, memoria y GPU-hora por cada mil galaxias, reportados junto al desempeño para sustentar la recomendación operativa.
 
 \end{itemize}
+
+
+\textbf{Robustez y validación del ajuste.}
+
+\begin{itemize}
+
+    \item Evaluación del desempeño por subgrupos definidos por inclinación, masa estelar y corrimiento al rojo, además de objetos tenues, difusos o compactos. Un buen desempeño global no es suficiente si el modelo presenta fallas sistemáticas en subconjuntos relevantes, como las galaxias vistas de canto.
+
+    \item Comparación de los desacuerdos del modelo con aquellas galaxias en las que la clasificación visual es intrínsecamente ambigua, pues constituyen el límite natural de una frontera binaria.
+
+    \item Evaluación de los modelos entrenados únicamente con imagen, únicamente con espectro, y ambas modalidades, bajo una partición idéntica de los datos, con intervalos de confianza y una prueba estadística pareada sobre las diferencias de desempeño, con el fin de determinar si la ganancia de la fusión es real o se encuentra dentro del margen de ruido.
+
+\end{itemize}
+
+
+\textbf{Aceptación por el usuario.}
+
+\begin{itemize}
+
+    \item Revisión de una muestra de predicciones junto con el sponsor, incluidos los errores en los que el modelo mostró mayor confianza, con el fin de evaluar su comprensibilidad y utilidad real.
+
+    \item Documentación entregada junto con el modelo, donde se explican su funcionamiento y sus límites, así como una advertencia de que el modelo fue entrenado sobre una muestra incompleta en volumen.
+
+\end{itemize}
+
+
 
 
 % ------------------------------------------------------------

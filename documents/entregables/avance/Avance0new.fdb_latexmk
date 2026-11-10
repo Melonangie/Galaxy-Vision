@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1794207659.45807 "Avance0new.tex" "Avance0new.pdf" "Avance0new" 1794207660.68123 0
+["pdflatex"] 1794268934.80478 "Avance0new.tex" "Avance0new.pdf" "Avance0new" 1794268936.01908 0
   "/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1136768653 1536 02c06700a42be0f5a28664c7273f82e7 ""
@@ -71,6 +71,7 @@
   "/usr/local/texlive/2026/texmf-dist/tex/latex/base/ifthen.sty" 1748806692 5525 1593ca62a2554dd7423fc8a4e5a82125 ""
   "/usr/local/texlive/2026/texmf-dist/tex/latex/base/inputenc.sty" 1738182759 5048 0270515b828149155424600fd2d58ac5 ""
   "/usr/local/texlive/2026/texmf-dist/tex/latex/base/size12.clo" 1748806692 8449 8dc66c6c313c8eb2d774af83bca435dd ""
+  "/usr/local/texlive/2026/texmf-dist/tex/latex/base/textcomp.sty" 1738182759 2846 e26604d3d895e65d874c07f30c291f3f ""
   "/usr/local/texlive/2026/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1579991033 13886 d1306dcf79a944f6988e688c1785f9ce ""
   "/usr/local/texlive/2026/texmf-dist/tex/latex/eso-pic/eso-pic.sty" 1765400421 11838 c56b1b2e06d66f65afcf19adbfba71b5 ""
   "/usr/local/texlive/2026/texmf-dist/tex/latex/etoolbox/etoolbox.sty" 1759437024 46885 8953c67ffba03252c6090aa19568b8ba ""
@@ -116,10 +117,10 @@
   "/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1790231171 5573038 b99aad5e4898a9034e953632f940512b ""
   "/usr/local/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt" 1774209607 3636776 dc5fa9b6b1453b9d196cd42edf876004 ""
   "/usr/local/texlive/2026/texmf.cnf" 1774209515 577 648cd9f92f9c0eac486f4c71c85cfbbe ""
-  "Avance0new.aux" 1794207660.59067 8669 3c637c8377c17419304bfab0729ce844 "pdflatex"
-  "Avance0new.out" 1794207660.59221 6481 dd8fab6daef491d5f3311cbff002f4e4 "pdflatex"
-  "Avance0new.tex" 1794207656.34567 54339 0e6ec265fb0d4f736962b32613db7eb6 ""
-  "Avance0new.toc" 1794207660.5924 3369 cd2bfa0a6e13430b83a1429d30663971 "pdflatex"
+  "Avance0new.aux" 1794268935.92356 9264 d19078159e3810a6de9e1e4ac0c0d574 "pdflatex"
+  "Avance0new.out" 1794268935.92562 6481 dd8fab6daef491d5f3311cbff002f4e4 "pdflatex"
+  "Avance0new.tex" 1794268743.98904 57984 ae25039cfb8d6ec429e728280e45b49b ""
+  "Avance0new.toc" 1794268935.92579 3369 e918910d2c32da869ab6c3b4d5c6a695 "pdflatex"
   "anexos/avances.pdf" 1794127169.58281 226878 b9800225bbe7afe0d2bc52e9046b327d ""
   "anexos/convenio.pdf" 1794100473.07164 850488 04ba687db04264192e3871d5bafbbaae ""
   "anexos/introduccion.pdf" 1793991378.98815 704817 594ed3751138f2f7fa8b9d73b6375923 ""
