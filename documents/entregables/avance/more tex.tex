@@ -1,0 +1,181 @@
+more tex
+
+% Imagenes
+% Gráficas
+% Fig. 1: clases en cada partición (train/validation/test).
+% Fig. 2: ROC-AUC en test de todos los experimentos.
+% Fig. 3: tasa de error según Ttype.
+% Fig. 4: diferencia entre la pérdida de entrenamiento y la de validación, para ver sobreajuste o subajuste.
+% Fig. 5: cómo cambia la escala de píxel según PETRO_TH90.
+% Curvas de entrenamiento: copiadas tal cual del repositorio.
+% Diagramas
+% diag1: ciclo de aseguramiento de calidad de CRISP-ML(Q).
+% diag2: encadenamiento de las fases.
+% diag3: flujo de datos de la fase 2.
+% diag4: selección de modelos.
+% diag5: arquitectura multimodal.
+% diag6: decisión de la fase 4 y regreso a fases anteriores.
+
+
+En resumen estos fueron el tratamiento que se le dieron a los datos.
+
+\textbf{Actividades sobre las imágenes}
+
+\begin{itemize}
+
+    \item Descarga desde el servicio del Legacy Survey a partir de las coordenadas de cada galaxia, con información de las bandas g, r y z.
+
+    \item Ajuste del zoom mediante el parámetro de escala del servicio, de modo que todas las galaxias ocupen una fracción comparable del campo; se evaluará experimentalmente el beneficio de esta normalización frente al uso de la escala natural.
+
+    \item Redimensionamiento de la resolución de entrada del modelo, normalización de intensidades y aumento de datos mediante rotaciones y reflexiones, transformaciones legítimas dado que la morfología es invariante ante la orientación en el cielo.
+
+    \item Zoom adaptativo:  \texttt{FOV = k × PETRO\_TH90} y  \texttt{pixscale = FOV\/256}.
+
+    \item Experimentos ABC con la misma muestra y una variable cambiada a la vez:
+
+            \begin{itemize}
+
+                \item \textbf{Zoom:} \texttt{k} entre 4 y 8, el rango razonable resultó ser 5–8.
+
+                \item \textbf{Release:} \texttt{DR9} vs \texttt{DR11}, sin diferencias relevantes.
+
+                \item \textbf{Color:} \texttt{grz} explícito vs render por defecto, resultó ser también \texttt{grz}.
+
+            \end{itemize}
+
+    \item Se descargaron 7 variantes de FoV (de \textpm3 a \textminus3, 0 es la referencia), con 10,006 imágenes por variante. La descarga fue concurrente, con reintentos y validación de cada JPEG.
+
+    \item Control de calidad heurístico basadas en mediana y MAD (\texttt{Median Absolute Deviation}), perfiles por fila y columna, y componentes conectados. Detectan líneas o artefactos \texttt{line\_flag 1.9 \%} de la muestra y contaminación brillante \texttt{bright\_flag 27.6 \%}, y se resumen en la bandera \texttt{is\_suspicious}.
+
+    \item Máscara de la galaxia central. Modelo de color galaxia/cielo con distancia de Mahalanobis más conectividad, para eliminar estrellas que no tocan la galaxia.
+
+\end{itemize}
+
+\textbf{Actividades sobre los espectros}
+
+\begin{itemize}
+
+    \item Corrección al marco en reposo utilizando \texttt{nsa\_z}, de modo que todas las galaxias compartan la misma representación vectorial.
+
+    \item Normalización del flujo para eliminar la dependencia del brillo aparente y de la distancia. Usando la mediana del continuo entre 5400-5500Å.
+
+    \item Tratamiento de regiones enmascaradas, píxeles defectuosos y residuos de líneas.
+
+    \item Interpolación a una malla común de 3600–9000Å con 4,096 puntos y 3600–8900Å para STARLIGHT, sin extrapolar.
+
+    \item Relleno con 0 fuera de cobertura, acompañado de una máscara de validez.
+
+    \item Ingeniería de características espectrales: medidas de continuo y pendientes, índices de absorción, intensidad y cocientes de líneas de emisión asociadas a formación estelar, y reducción de dimensionalidad mediante componentes principales.
+
+\end{itemize}
+
+\textbf{Actividades sobre los datos tabulares }
+
+\begin{itemize}
+
+    \item Limpieza: sustitución de los valores \texttt{-9999.0} por valores faltantes explícitos, tratamiento de registros incompletos y eliminación de duplicados.
+
+    \item Codificación, escalado y transformaciones de las variables auxiliares.
+
+    \item Manifest maestro unido por nombre, disponibilidad, ruta y calidad de cada FoV.
+
+    \item Cohorte de 9,351 galaxias. Imágenes no sospechosas en los FOV \textminus1, 0 y \textpm1, y con espectro disponible.
+
+\end{itemize}
+
+\textbf{Integración y particiones de datos}
+
+\begin{itemize}
+
+    \item Split estratificado 70/15/15 con semilla 42. Todas los modelos usan el mismo split y el conjunto de prueba queda reservado.
+
+        \begin{itemize}
+
+            \item \textbf{Entrenamiento:} 6,545
+
+            \item \textbf{Validación:} 1,403
+
+            \item \textbf{Prueba:} 1,403.
+
+        \end{itemize}
+
+    \item Prevención de fuga de datos: \texttt{Ttype}, \texttt{Type}, \texttt{label}, \texttt{name} y las coordenadas nunca se usan como entradas. Las estadísticas de las variables tabulares se ajustan solo con el conjunto de entrenamiento.
+
+    \item Aumentos de datos (solo en entrenamiento): rotaciones de 90°, volteos horizontales y verticales.
+
+    \item \texttt{GalaxyDataset} devuelve un lote multimodal alineado, con cualquier combinación de imagen, espectro y metadatos.
+
+\end{itemize}
+
+
+
+\begin{table}[H]
+\centering
+\scriptsize
+
+\begin{tabular}{
+|p{0.15\textwidth}
+|p{0.25\textwidth}
+|p{0.20\textwidth}
+|p{0.29\textwidth}|}
+
+\hline
+
+\textbf{Familia} &
+\textbf{Modelos} &
+\textbf{Entrada} &
+\textbf{Justificación}
+\\ \hline
+
+Baseline &
+Regresión logística regularizada, Random Forest, gradient boosting &
+Características tabulares (CAS, índices espectrales, color, LogMass) &
+Existe evidencia consolidada de que los modelos basados en árboles siguen superando al deep learning en datos tabulares típicos, por lo que este baseline no es un trámite: es un competidor real.
+\\ \hline
+
+Deep learning &
+CNN 2D sobre el recorte de imagen; CNN 1D o transformer sobre el espectro; fusión intermedia de embeddings de ambas ramas &
+Imagen cruda + espectro procesado &
+Es el enfoque predominante en la literatura de clasificación morfológica y el único capaz de explotar de manera conjunta la información espacial y espectral sin recurrir a ingeniería manual de características.
+\\ \hline
+
+Modelo fundacional tabular &
+TabPFN &
+Características tabulares y embeddings reducidos &
+Realiza entrenamiento y predicción. Se realiza con la configuración por defecto.
+\\ \hline
+
+\end{tabular}
+
+\end{table}
+
+
+\textbf{Robustez y validación del ajuste.}
+
+\begin{itemize}
+    \item \textbf{Clasificación:}
+    Usaremos F1 macro y \textit{balanced accuracy} como métricas primarias (robustas al desbalance), ROC AUC y PR AUC como secundarias, y matriz de confusión desagregada.
+    \item \textbf{Calibración:}
+    Curva de fiabilidad y \textit{Expected Calibration Error}. Es un criterio de primer orden y no un adorno: el caso de uso 2 (triaje por incertidumbre) sólo funciona si las probabilidades predichas son honestas.
+    \item \textbf{Costo:}
+    Tiempo de ajuste más inferencia, memoria y GPU-hora por cada mil galaxias, reportados junto al desempeño para sustentar la recomendación operativa.
+\end{itemize}
+
+
+\textbf{Robustez y validación del ajuste.}
+
+\begin{itemize}
+    \item Evaluación del desempeño por subgrupos definidos por inclinación, masa estelar y corrimiento al rojo, además de objetos tenues, difusos o compactos. Un buen desempeño global no es suficiente si el modelo presenta fallas sistemáticas en subconjuntos relevantes, como las galaxias vistas de canto.
+    \item Comparación de los desacuerdos del modelo con aquellas galaxias en las que la clasificación visual es intrínsecamente ambigua, pues constituyen el límite natural de una frontera binaria.
+    \item Evaluación de los modelos entrenados únicamente con imagen, únicamente con espectro, y ambas modalidades, bajo una partición idéntica de los datos, con intervalos de confianza y una prueba estadística pareada sobre las diferencias de desempeño, con el fin de determinar si la ganancia de la fusión es real o se encuentra dentro del margen de ruido.
+\end{itemize}
+
+
+\textbf{Aceptación por el usuario.}
+
+\begin{itemize}
+    \item Revisión de una muestra de predicciones junto con el sponsor, incluidos los errores en los que el modelo mostró mayor confianza, con el fin de evaluar su comprensibilidad y utilidad real.
+    \item Documentación entregada junto con el modelo, donde se explican su funcionamiento y sus límites, así como una advertencia de que el modelo fue entrenado sobre una muestra incompleta en volumen.
+\end{itemize}
+
+

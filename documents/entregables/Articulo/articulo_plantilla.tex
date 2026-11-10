@@ -75,7 +75,11 @@
 
 % --- Resumen (sin número) ---
 \begin{abstract}
-El resumen ocupa un solo párrafo de 150 a 250 palabras. Se escribe al final, cuando las cifras del artículo ya están cerradas, y debe entenderse sin leer el resto: qué problema se atendió, con qué datos, qué se obtuvo y qué se recomienda. Este párrafo es solo un ejemplo de su ubicación y de su forma.
+En la actualidad la morfología de las galaxias se clasifican visualmente, un experto observa la imagen de la galaxia y decide el tipo morfologico. La clasificacion visual es util pero incorpora incertidumbre. Junto con el Instituto de Astronomía de la UNAM, evaluamos si combinar imágenes ópticas del DESI Legacy Survey con espectros integrados de MaNGA y productos de síntesis de poblaciones estelares de STARLIGHT mejora la clasificación binaria contra a una sola modalidad.
+
+Trabajamos con una cohorte de 9,351 galaxias y una partición estratificada fija de 6,545 / 1,403 / 1,403 galaxias para entrenamiento, validación y prueba. Con un protocolo común comparamos configuraciones de una sola modalidad y de varias. Las imágenes dominan. Una red convolucional compacta de 1.2 millones de parámetros alcanza en prueba un ROC‑AUC de 0.9667, una exactitud de 0.8952 y una exactitud balanceada de 0.8980. El baseline ResNet‑18 obtiene 0.9633, 0.8881 y 0.8825. El modelo final supera en 6.6 puntos el umbral de aceptación heredado del trabajo previo (exactitud de 0.829).
+
+El espectro tenía más información de la que extraía una red convolucional 1D: el AUC subió de 0.857 a 0.917 con codificadores de atención y BiGRU. Aun así, fusionar por concatenación no mejoró a la imagen. Con el codificador espectral más fuerte, la fusión incluso empeoró (ΔAUC = −0.033; el intervalo de confianza del 95\% excluye el cero). Las poblaciones estelares corrigen el 51.6\% de los errores visuales, pero ninguna regla de combinación probada aprovecha esa complementariedad. Los errores se concentran en la frontera T‑Type 0–1, que reúne el 16\% de las galaxias y el 48\% de los errores. Recomendamos desplegar el clasificador visual con triaje por confianza y mantener la fusión adaptativa como línea de investigación.
 \end{abstract}
 
 \begin{nota}

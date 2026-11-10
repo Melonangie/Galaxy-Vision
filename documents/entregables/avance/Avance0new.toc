@@ -24,14 +24,15 @@
 \contentsline {subsection}{\numberline {2.4}Entendimiento de los Datos}{10}{subsection.2.4}%
 \contentsline {subsubsection}{\numberline {2.4.1}Descripción de los datos de entrada}{10}{subsubsection.2.4.1}%
 \contentsline {subsubsection}{\numberline {2.4.2}Descripción de los datos de salida}{12}{subsubsection.2.4.2}%
-\contentsline {subsubsection}{\numberline {2.4.3}Técnica de ML}{13}{subsubsection.2.4.3}%
-\contentsline {subsection}{\numberline {2.5}Metodología}{16}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.4.3}Técnica de ML}{12}{subsubsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.5}Metodología}{15}{subsection.2.5}%
 \contentsline {subsubsection}{\numberline {2.5.1}Fase 1: Entendimiento del negocio y de los datos}{16}{subsubsection.2.5.1}%
-\contentsline {subsubsection}{\numberline {2.5.2}Fase 2: Preparación de los datos}{17}{subsubsection.2.5.2}%
+\contentsline {subsubsection}{\numberline {2.5.2}Fase 2: Preparación de los datos}{16}{subsubsection.2.5.2}%
 \contentsline {subsubsection}{\numberline {2.5.3}Fase 3: Modelado}{20}{subsubsection.2.5.3}%
-\contentsline {subsubsection}{\numberline {2.5.4}Fase 4: Evaluación}{20}{subsubsection.2.5.4}%
-\contentsline {section}{\numberline {3}Anexos}{23}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Convenio}{23}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Introducción del Proyecto Integrador}{27}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Revisión técnica de resultados}{38}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Referencias}{55}{section.4}%
+\contentsline {subsubsection}{\numberline {2.5.4}Fase 4: Evaluación}{22}{subsubsection.2.5.4}%
+\contentsline {subsubsection}{\numberline {2.5.5}Concluciones}{26}{subsubsection.2.5.5}%
+\contentsline {section}{\numberline {3}Anexos}{27}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Convenio}{27}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Introducción del Proyecto Integrador}{31}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Revisión técnica de resultados}{42}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Referencias}{59}{section.4}%
