@@ -1,17 +1,9 @@
 [0] Config.pm:329> INFO - This is Biber 2.22
 [0] Config.pm:332> INFO - Logfile is 'articulo_plantilla.blg'
-[27] biber-darwin:342> INFO - === Mon Nov  9, 2026, 18:48:55
+[26] biber-darwin:342> INFO - === Tue Nov 10, 2026, 20:10:08
 [33] Biber.pm:421> INFO - Reading 'articulo_plantilla.bcf'
-[75] Biber.pm:1002> INFO - Found 4 citekeys in bib section 0
-[84] Biber.pm:4487> INFO - Processing section 0
-[89] Biber.pm:4680> INFO - Looking for bibtex file 'referencias.bib' for section 0
-[90] bibtex.pm:1713> INFO - LaTeX decoding ...
-[92] bibtex.pm:1519> INFO - Found BibTeX data source 'referencias.bib'
-[118] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
-[118] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[118] Biber.pm:4307> INFO - Sorting list 'apa/apasortcite//global/global/global' of type 'entry' with template 'apa' and locale 'es-ES'
-[124] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[124] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
-[124] Biber.pm:4307> INFO - Sorting list 'apa/global//global/global/global' of type 'entry' with template 'apa' and locale 'es-ES'
-[127] bbl.pm:676> INFO - Writing 'articulo_plantilla.bbl' with encoding 'UTF-8'
-[129] bbl.pm:779> INFO - Output to articulo_plantilla.bbl
+[74] Biber.pm:1002> INFO - Found 0 citekeys in bib section 0
+[82] bbl.pm:676> INFO - Writing 'articulo_plantilla.bbl' with encoding 'UTF-8'
+[82] bbl.pm:779> INFO - Output to articulo_plantilla.bbl
+[82] Biber.pm:132> WARN - The file 'articulo_plantilla.bcf' does not contain any citations!
+[82] Biber.pm:134> INFO - WARNINGS: 1
