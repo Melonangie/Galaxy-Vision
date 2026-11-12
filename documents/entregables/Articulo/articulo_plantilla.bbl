@@ -16,5 +16,362 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{apa/apasortcite//global/global/global}
+    \entry{carrenocorrea2026}{report}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=c0b15525018093311ac693b56fde8475}{%
+           family={Carreño\bibnamedelima Correa},
+           familyi={C\bibinitperiod\bibinitdelim C\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=058aa99afe9b23c1b2719428bffb91ef}{%
+           family={Rabelero},
+           familyi={R\bibinitperiod},
+           given={María},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3e265f57862d98ab8a7cda4cd190ba0c}{%
+           family={Velázquez},
+           familyi={V\bibinitperiod},
+           given={Julio\bibnamedelima Ricardo},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {Instituto de Astronomía, Universidad Nacional Autónoma de México}%
+      }
+      \strng{namehash}{6f35f208f8a87ce224c8ae1dd8df94fc}
+      \strng{fullhash}{03c280ef113f9ae63fdc67d795a03477}
+      \strng{fullhashraw}{03c280ef113f9ae63fdc67d795a03477}
+      \strng{bibnamehash}{03c280ef113f9ae63fdc67d795a03477}
+      \strng{authorbibnamehash}{03c280ef113f9ae63fdc67d795a03477}
+      \strng{authornamehash}{6f35f208f8a87ce224c8ae1dd8df94fc}
+      \strng{authorfullhash}{03c280ef113f9ae63fdc67d795a03477}
+      \strng{authorfullhashraw}{03c280ef113f9ae63fdc67d795a03477}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Clasificación morfológica de galaxias mediante fusión multimodal de imágenes {DESI Legacy} y espectros integrados {MaNGA}}
+      \field{type}{Proyecto Integrador}
+      \field{year}{2026}
+    \endentry
+    \entry{he2016}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=6b4b60e909e78633945f3f9c9dc83e01}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Kaiming},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5e72bc22dbcf0984c6d113d280e36990}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Xiangyu},
+           giveni={X\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bb295293acacd54387339079ebbe4ead}{%
+           family={Ren},
+           familyi={R\bibinitperiod},
+           given={Shaoqing},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f85751488058842b5777c7b4074077b5}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Jian},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6edb98fe38401d2fe4a026f5ce6e8451}
+      \strng{fullhash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{fullhashraw}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{bibnamehash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{authorbibnamehash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{authornamehash}{6edb98fe38401d2fe4a026f5ce6e8451}
+      \strng{authorfullhash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{authorfullhashraw}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}
+      \field{month}{6}
+      \field{title}{Deep Residual Learning for Image Recognition}
+      \field{year}{2016}
+      \field{pages}{770\bibrangedash 778}
+      \range{pages}{9}
+    \endentry
+    \entry{vazquezmata2025}{article}{}{}
+      \name{author}{9}{}{%
+        {{un=0,uniquepart=base,hash=f2417a4cd6122714b0d62ec75c38ec65}{%
+           family={Vázquez-Mata},
+           familyi={V\bibinithyphendelim M\bibinitperiod},
+           given={J.\bibnamedelimi A.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=32397c284ff0464d6c9d0eaeb3e185a8}{%
+           family={Hernández-Toledo},
+           familyi={H\bibinithyphendelim T\bibinitperiod},
+           given={H.\bibnamedelimi M.},
+           giveni={H\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=af668933c0c31afc57ee92a77b8c9c8a}{%
+           family={Avila-Reese},
+           familyi={A\bibinithyphendelim R\bibinitperiod},
+           given={V.},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=80d8457efa62f2e1dde0fba487ae429b}{%
+           family={Rodríguez-Puebla},
+           familyi={R\bibinithyphendelim P\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3102201707f9075cd7ccc667a6dd6de1}{%
+           family={Martínez-Vázquez},
+           familyi={M\bibinithyphendelim V\bibinitperiod},
+           given={L.\bibnamedelimi A.},
+           giveni={L\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bad8be1f9ffc359f4fb94d8ae0f77ef6}{%
+           family={Herrera-Endoqui},
+           familyi={H\bibinithyphendelim E\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ec85d54b911184028805780ae5cfbf70}{%
+           family={Lacerna},
+           familyi={L\bibinitperiod},
+           given={I.},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=889c346b888aaaa1945ca9793d100bb9}{%
+           family={Mascherpa},
+           familyi={M\bibinitperiod},
+           given={L.\bibnamedelimi C.},
+           giveni={L\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=65e1d41433f1f3008d3b49ff8ba21a05}{%
+           family={Morell},
+           familyi={M\bibinitperiod},
+           given={D.\bibnamedelimi F.},
+           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{fbbe530e395458e40985107528bbca3b}
+      \strng{fullhash}{cef9a55d480987caf7c040edec06d21a}
+      \strng{fullhashraw}{cef9a55d480987caf7c040edec06d21a}
+      \strng{bibnamehash}{cef9a55d480987caf7c040edec06d21a}
+      \strng{authorbibnamehash}{cef9a55d480987caf7c040edec06d21a}
+      \strng{authornamehash}{fbbe530e395458e40985107528bbca3b}
+      \strng{authorfullhash}{cef9a55d480987caf7c040edec06d21a}
+      \strng{authorfullhashraw}{cef9a55d480987caf7c040edec06d21a}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Monthly Notices of the Royal Astronomical Society}
+      \field{number}{1}
+      \field{title}{Visual morphological classification of the full {MaNGA DR17} sample: a general characterization}
+      \field{volume}{544}
+      \field{year}{2025}
+      \field{pages}{1056\bibrangedash 1084}
+      \range{pages}{29}
+      \verb{doi}
+      \verb 10.1093/mnras/staf1784
+      \endverb
+    \endentry
+  \enddatalist
+  \datalist[entry]{apa/global//global/global/global}
+    \entry{carrenocorrea2026}{report}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=c0b15525018093311ac693b56fde8475}{%
+           family={Carreño\bibnamedelima Correa},
+           familyi={C\bibinitperiod\bibinitdelim C\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=058aa99afe9b23c1b2719428bffb91ef}{%
+           family={Rabelero},
+           familyi={R\bibinitperiod},
+           given={María},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3e265f57862d98ab8a7cda4cd190ba0c}{%
+           family={Velázquez},
+           familyi={V\bibinitperiod},
+           given={Julio\bibnamedelima Ricardo},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {Instituto de Astronomía, Universidad Nacional Autónoma de México}%
+      }
+      \strng{namehash}{6f35f208f8a87ce224c8ae1dd8df94fc}
+      \strng{fullhash}{03c280ef113f9ae63fdc67d795a03477}
+      \strng{fullhashraw}{03c280ef113f9ae63fdc67d795a03477}
+      \strng{bibnamehash}{03c280ef113f9ae63fdc67d795a03477}
+      \strng{authorbibnamehash}{03c280ef113f9ae63fdc67d795a03477}
+      \strng{authornamehash}{6f35f208f8a87ce224c8ae1dd8df94fc}
+      \strng{authorfullhash}{03c280ef113f9ae63fdc67d795a03477}
+      \strng{authorfullhashraw}{03c280ef113f9ae63fdc67d795a03477}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Clasificación morfológica de galaxias mediante fusión multimodal de imágenes {DESI Legacy} y espectros integrados {MaNGA}}
+      \field{type}{Proyecto Integrador}
+      \field{year}{2026}
+    \endentry
+    \entry{he2016}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=6b4b60e909e78633945f3f9c9dc83e01}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Kaiming},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5e72bc22dbcf0984c6d113d280e36990}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Xiangyu},
+           giveni={X\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bb295293acacd54387339079ebbe4ead}{%
+           family={Ren},
+           familyi={R\bibinitperiod},
+           given={Shaoqing},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f85751488058842b5777c7b4074077b5}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Jian},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6edb98fe38401d2fe4a026f5ce6e8451}
+      \strng{fullhash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{fullhashraw}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{bibnamehash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{authorbibnamehash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{authornamehash}{6edb98fe38401d2fe4a026f5ce6e8451}
+      \strng{authorfullhash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{authorfullhashraw}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}
+      \field{month}{6}
+      \field{title}{Deep Residual Learning for Image Recognition}
+      \field{year}{2016}
+      \field{pages}{770\bibrangedash 778}
+      \range{pages}{9}
+    \endentry
+    \entry{vazquezmata2025}{article}{}{}
+      \name{author}{9}{}{%
+        {{un=0,uniquepart=base,hash=f2417a4cd6122714b0d62ec75c38ec65}{%
+           family={Vázquez-Mata},
+           familyi={V\bibinithyphendelim M\bibinitperiod},
+           given={J.\bibnamedelimi A.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=32397c284ff0464d6c9d0eaeb3e185a8}{%
+           family={Hernández-Toledo},
+           familyi={H\bibinithyphendelim T\bibinitperiod},
+           given={H.\bibnamedelimi M.},
+           giveni={H\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=af668933c0c31afc57ee92a77b8c9c8a}{%
+           family={Avila-Reese},
+           familyi={A\bibinithyphendelim R\bibinitperiod},
+           given={V.},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=80d8457efa62f2e1dde0fba487ae429b}{%
+           family={Rodríguez-Puebla},
+           familyi={R\bibinithyphendelim P\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3102201707f9075cd7ccc667a6dd6de1}{%
+           family={Martínez-Vázquez},
+           familyi={M\bibinithyphendelim V\bibinitperiod},
+           given={L.\bibnamedelimi A.},
+           giveni={L\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bad8be1f9ffc359f4fb94d8ae0f77ef6}{%
+           family={Herrera-Endoqui},
+           familyi={H\bibinithyphendelim E\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ec85d54b911184028805780ae5cfbf70}{%
+           family={Lacerna},
+           familyi={L\bibinitperiod},
+           given={I.},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=889c346b888aaaa1945ca9793d100bb9}{%
+           family={Mascherpa},
+           familyi={M\bibinitperiod},
+           given={L.\bibnamedelimi C.},
+           giveni={L\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=65e1d41433f1f3008d3b49ff8ba21a05}{%
+           family={Morell},
+           familyi={M\bibinitperiod},
+           given={D.\bibnamedelimi F.},
+           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{fbbe530e395458e40985107528bbca3b}
+      \strng{fullhash}{cef9a55d480987caf7c040edec06d21a}
+      \strng{fullhashraw}{cef9a55d480987caf7c040edec06d21a}
+      \strng{bibnamehash}{cef9a55d480987caf7c040edec06d21a}
+      \strng{authorbibnamehash}{cef9a55d480987caf7c040edec06d21a}
+      \strng{authornamehash}{fbbe530e395458e40985107528bbca3b}
+      \strng{authorfullhash}{cef9a55d480987caf7c040edec06d21a}
+      \strng{authorfullhashraw}{cef9a55d480987caf7c040edec06d21a}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Monthly Notices of the Royal Astronomical Society}
+      \field{number}{1}
+      \field{title}{Visual morphological classification of the full {MaNGA DR17} sample: a general characterization}
+      \field{volume}{544}
+      \field{year}{2025}
+      \field{pages}{1056\bibrangedash 1084}
+      \range{pages}{29}
+      \verb{doi}
+      \verb 10.1093/mnras/staf1784
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 

@@ -1,0 +1,371 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{apa/apasortcite//global/global/global}
+    \entry{anthropic2026claude}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=f431db65cea024a5f19eab835afefee2}{%
+           family={{Anthropic}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{fullhash}{f431db65cea024a5f19eab835afefee2}
+      \strng{fullhashraw}{f431db65cea024a5f19eab835afefee2}
+      \strng{bibnamehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authorbibnamehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authornamehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authorfullhash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authorfullhashraw}{f431db65cea024a5f19eab835afefee2}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Claude (Sonnet 5.5) [Modelo de lenguaje grande]}
+      \field{year}{2026}
+      \verb{urlraw}
+      \verb https://claude.ai
+      \endverb
+      \verb{url}
+      \verb https://claude.ai
+      \endverb
+    \endentry
+    \entry{bundy2015}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=6034e15f4464e1cbd1aebdc823843712}{%
+           family={Bundy},
+           familyi={B\bibinitperiod},
+           given={Kevin},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a116eeccd4bfffd1e2ad60d6437df3cc}
+      \strng{fullhash}{a116eeccd4bfffd1e2ad60d6437df3cc}
+      \strng{fullhashraw}{a116eeccd4bfffd1e2ad60d6437df3cc}
+      \strng{bibnamehash}{a116eeccd4bfffd1e2ad60d6437df3cc}
+      \strng{authorbibnamehash}{a116eeccd4bfffd1e2ad60d6437df3cc}
+      \strng{authornamehash}{a116eeccd4bfffd1e2ad60d6437df3cc}
+      \strng{authorfullhash}{a116eeccd4bfffd1e2ad60d6437df3cc}
+      \strng{authorfullhashraw}{a116eeccd4bfffd1e2ad60d6437df3cc}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Astrophysical Journal}
+      \field{number}{1}
+      \field{title}{Overview of the {SDSS-IV MaNGA} Survey: Mapping Nearby Galaxies at Apache Point Observatory}
+      \field{volume}{798}
+      \field{year}{2015}
+      \field{pages}{7}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/0004-637X/798/1/7
+      \endverb
+    \endentry
+    \entry{dey2019}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=58602e3c4b0e137591baf07f7a992fbc}{%
+           family={Dey},
+           familyi={D\bibinitperiod},
+           given={Arjun},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6da9351fb386e79f0a126352483621e8}
+      \strng{fullhash}{6da9351fb386e79f0a126352483621e8}
+      \strng{fullhashraw}{6da9351fb386e79f0a126352483621e8}
+      \strng{bibnamehash}{6da9351fb386e79f0a126352483621e8}
+      \strng{authorbibnamehash}{6da9351fb386e79f0a126352483621e8}
+      \strng{authornamehash}{6da9351fb386e79f0a126352483621e8}
+      \strng{authorfullhash}{6da9351fb386e79f0a126352483621e8}
+      \strng{authorfullhashraw}{6da9351fb386e79f0a126352483621e8}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Astronomical Journal}
+      \field{number}{5}
+      \field{title}{Overview of the DESI Legacy Imaging Surveys}
+      \field{volume}{157}
+      \field{year}{2019}
+      \field{pages}{168}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3847/1538-3881/ab089d
+      \endverb
+    \endentry
+    \entry{miller2022}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c41411769fd972add78f7652d57a6afc}{%
+           family={Miller},
+           familyi={M\bibinitperiod},
+           given={Tim},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c41411769fd972add78f7652d57a6afc}
+      \strng{fullhash}{c41411769fd972add78f7652d57a6afc}
+      \strng{fullhashraw}{c41411769fd972add78f7652d57a6afc}
+      \strng{bibnamehash}{c41411769fd972add78f7652d57a6afc}
+      \strng{authorbibnamehash}{c41411769fd972add78f7652d57a6afc}
+      \strng{authornamehash}{c41411769fd972add78f7652d57a6afc}
+      \strng{authorfullhash}{c41411769fd972add78f7652d57a6afc}
+      \strng{authorfullhashraw}{c41411769fd972add78f7652d57a6afc}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Project Leadership and Society}
+      \field{title}{Stakeholder roles in {AI} projects}
+      \field{volume}{3}
+      \field{year}{2022}
+      \field{pages}{100068}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.plas.2022.100068
+      \endverb
+    \endentry
+    \entry{vazquezmata2022}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c159f12bfa4f981a7338b7713dcf6c29}{%
+           family={Vázquez-Mata},
+           familyi={V\bibinithyphendelim M\bibinitperiod},
+           given={José\bibnamedelima A.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9f354c83415cc1014f5a7e4ccf2c0c93}
+      \strng{fullhash}{9f354c83415cc1014f5a7e4ccf2c0c93}
+      \strng{fullhashraw}{9f354c83415cc1014f5a7e4ccf2c0c93}
+      \strng{bibnamehash}{9f354c83415cc1014f5a7e4ccf2c0c93}
+      \strng{authorbibnamehash}{9f354c83415cc1014f5a7e4ccf2c0c93}
+      \strng{authornamehash}{9f354c83415cc1014f5a7e4ccf2c0c93}
+      \strng{authorfullhash}{9f354c83415cc1014f5a7e4ccf2c0c93}
+      \strng{authorfullhashraw}{9f354c83415cc1014f5a7e4ccf2c0c93}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Monthly Notices of the Royal Astronomical Society}
+      \field{number}{2}
+      \field{title}{Visual morphology of MaNGA galaxies}
+      \field{volume}{512}
+      \field{year}{2022}
+      \field{pages}{2222\bibrangedash 2244}
+      \range{pages}{23}
+    \endentry
+  \enddatalist
+  \datalist[entry]{apa/global//global/global/global}
+    \entry{anthropic2026claude}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=f431db65cea024a5f19eab835afefee2}{%
+           family={{Anthropic}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{fullhash}{f431db65cea024a5f19eab835afefee2}
+      \strng{fullhashraw}{f431db65cea024a5f19eab835afefee2}
+      \strng{bibnamehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authorbibnamehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authornamehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authorfullhash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authorfullhashraw}{f431db65cea024a5f19eab835afefee2}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Claude (Sonnet 5.5) [Modelo de lenguaje grande]}
+      \field{year}{2026}
+      \verb{urlraw}
+      \verb https://claude.ai
+      \endverb
+      \verb{url}
+      \verb https://claude.ai
+      \endverb
+    \endentry
+    \entry{bundy2015}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=6034e15f4464e1cbd1aebdc823843712}{%
+           family={Bundy},
+           familyi={B\bibinitperiod},
+           given={Kevin},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a116eeccd4bfffd1e2ad60d6437df3cc}
+      \strng{fullhash}{a116eeccd4bfffd1e2ad60d6437df3cc}
+      \strng{fullhashraw}{a116eeccd4bfffd1e2ad60d6437df3cc}
+      \strng{bibnamehash}{a116eeccd4bfffd1e2ad60d6437df3cc}
+      \strng{authorbibnamehash}{a116eeccd4bfffd1e2ad60d6437df3cc}
+      \strng{authornamehash}{a116eeccd4bfffd1e2ad60d6437df3cc}
+      \strng{authorfullhash}{a116eeccd4bfffd1e2ad60d6437df3cc}
+      \strng{authorfullhashraw}{a116eeccd4bfffd1e2ad60d6437df3cc}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Astrophysical Journal}
+      \field{number}{1}
+      \field{title}{Overview of the {SDSS-IV MaNGA} Survey: Mapping Nearby Galaxies at Apache Point Observatory}
+      \field{volume}{798}
+      \field{year}{2015}
+      \field{pages}{7}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/0004-637X/798/1/7
+      \endverb
+    \endentry
+    \entry{dey2019}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=58602e3c4b0e137591baf07f7a992fbc}{%
+           family={Dey},
+           familyi={D\bibinitperiod},
+           given={Arjun},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6da9351fb386e79f0a126352483621e8}
+      \strng{fullhash}{6da9351fb386e79f0a126352483621e8}
+      \strng{fullhashraw}{6da9351fb386e79f0a126352483621e8}
+      \strng{bibnamehash}{6da9351fb386e79f0a126352483621e8}
+      \strng{authorbibnamehash}{6da9351fb386e79f0a126352483621e8}
+      \strng{authornamehash}{6da9351fb386e79f0a126352483621e8}
+      \strng{authorfullhash}{6da9351fb386e79f0a126352483621e8}
+      \strng{authorfullhashraw}{6da9351fb386e79f0a126352483621e8}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Astronomical Journal}
+      \field{number}{5}
+      \field{title}{Overview of the DESI Legacy Imaging Surveys}
+      \field{volume}{157}
+      \field{year}{2019}
+      \field{pages}{168}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3847/1538-3881/ab089d
+      \endverb
+    \endentry
+    \entry{miller2022}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c41411769fd972add78f7652d57a6afc}{%
+           family={Miller},
+           familyi={M\bibinitperiod},
+           given={Tim},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c41411769fd972add78f7652d57a6afc}
+      \strng{fullhash}{c41411769fd972add78f7652d57a6afc}
+      \strng{fullhashraw}{c41411769fd972add78f7652d57a6afc}
+      \strng{bibnamehash}{c41411769fd972add78f7652d57a6afc}
+      \strng{authorbibnamehash}{c41411769fd972add78f7652d57a6afc}
+      \strng{authornamehash}{c41411769fd972add78f7652d57a6afc}
+      \strng{authorfullhash}{c41411769fd972add78f7652d57a6afc}
+      \strng{authorfullhashraw}{c41411769fd972add78f7652d57a6afc}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Project Leadership and Society}
+      \field{title}{Stakeholder roles in {AI} projects}
+      \field{volume}{3}
+      \field{year}{2022}
+      \field{pages}{100068}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.plas.2022.100068
+      \endverb
+    \endentry
+    \entry{vazquezmata2022}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c159f12bfa4f981a7338b7713dcf6c29}{%
+           family={Vázquez-Mata},
+           familyi={V\bibinithyphendelim M\bibinitperiod},
+           given={José\bibnamedelima A.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9f354c83415cc1014f5a7e4ccf2c0c93}
+      \strng{fullhash}{9f354c83415cc1014f5a7e4ccf2c0c93}
+      \strng{fullhashraw}{9f354c83415cc1014f5a7e4ccf2c0c93}
+      \strng{bibnamehash}{9f354c83415cc1014f5a7e4ccf2c0c93}
+      \strng{authorbibnamehash}{9f354c83415cc1014f5a7e4ccf2c0c93}
+      \strng{authornamehash}{9f354c83415cc1014f5a7e4ccf2c0c93}
+      \strng{authorfullhash}{9f354c83415cc1014f5a7e4ccf2c0c93}
+      \strng{authorfullhashraw}{9f354c83415cc1014f5a7e4ccf2c0c93}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Monthly Notices of the Royal Astronomical Society}
+      \field{number}{2}
+      \field{title}{Visual morphology of MaNGA galaxies}
+      \field{volume}{512}
+      \field{year}{2022}
+      \field{pages}{2222\bibrangedash 2244}
+      \range{pages}{23}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
