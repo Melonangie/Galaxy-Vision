@@ -1,0 +1,34 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Contexto de negocio y problema}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}El problema científico como problema de ``negocio''}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Planteamiento original (Avance 0)}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Criterios de éxito acordados}{2}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Cambio de enfoque: el enfoque finalmente adoptado}{2}{subsection.1.4}%
+\contentsline {section}{\numberline {2}Datos y preparación}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Fuentes y unidad de análisis (Avance 1)}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Preparación y cohorte (Avance 2)}{3}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Metodología y modelos}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Protocolo común}{4}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Línea base y ablación (Avance 3)}{4}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Modelos candidatos: rediseño del experto espectral (Avance 4)}{5}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Selección del modelo final (Avance 5)}{6}{subsection.3.4}%
+\contentsline {paragraph}{Un experto espectral más fuerte no garantizó una mejor fusión.}{6}{section*.2}%
+\contentsline {paragraph}{La fusión tardía tampoco mejoró.}{6}{section*.3}%
+\contentsline {paragraph}{La decisión que importó.}{6}{section*.4}%
+\contentsline {section}{\numberline {4}Resultados y validación}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Modelo final frente a línea base y umbrales}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Complementariedad: los errores no son idénticos}{7}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Dónde se equivoca el modelo: la frontera morfológica}{7}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Significado de los errores en el contexto del negocio}{8}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Limitaciones de validez integradas al resultado}{8}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Implementación y operación}{8}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Requisitos para producción y responsables sugeridos}{8}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Arquitectura de despliegue}{8}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Monitoreo}{10}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Conclusiones clave}{10}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Hallazgos principales}{10}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Limitaciones}{10}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Trabajo futuro}{11}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Referencias y anexos}{11}{section.7}%
+\contentsline {subsection}{Anexo A. Glosario}{12}{section*.6}%
+\contentsline {subsection}{Anexo B. Trazabilidad}{12}{section*.7}%

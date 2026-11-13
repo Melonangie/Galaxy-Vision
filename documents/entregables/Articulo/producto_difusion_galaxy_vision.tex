@@ -1,0 +1,136 @@
+\documentclass[letterpaper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}\setstretch{1.15}
+\usepackage{graphicx,booktabs,float}
+\usepackage[font=small,labelfont=bf,labelsep=colon]{caption}
+\usepackage{csquotes}
+\usepackage[style=apa,backend=biber]{biblatex}
+\addbibresource{referencias.bib}
+\usepackage[hidelinks]{hyperref}
+\title{\textbf{Clasificación morfológica de galaxias mediante imágenes, espectros integrados y poblaciones estelares}}
+\author{Alexander Carreño \quad María Rabelero \quad Julio Ricardo Velázquez\\Equipo 26: Galaxy Vision\\Instituto de Astronomía, UNAM}
+\date{Noviembre 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+La clasificación morfológica de galaxias es fundamental para estudiar su formación y evolución, pero la clasificación visual experta limita la escalabilidad frente al creciente volumen de observaciones astronómicas. Este proyecto evaluó modelos de aprendizaje profundo para distinguir galaxias tempranas y tardías utilizando imágenes ópticas de Legacy Survey, espectros integrados MaNGA y propiedades de poblaciones estelares derivadas mediante STARLIGHT. Se construyó una cohorte alineada de 9,351 galaxias, dividida mediante un protocolo estratificado persistente en 6,545 objetos de entrenamiento, 1,403 de validación y 1,403 de prueba. Los resultados muestran que la información visual constituye la referencia predictiva más fuerte. El clasificador visual seleccionado alcanzó ROC-AUC de 0.9667, exactitud de 0.8952 y exactitud balanceada de 0.8980. Frente al umbral de aceptación heredado de exactitud 0.829, representa una mejora absoluta de 0.0662. El mejor modelo espectral, patch-BiGRU sobre FLUX\_FoV, elevó el ROC-AUC de 0.8572 de la CNN1D de referencia a 0.9170. Las fusiones evaluadas no demostraron una mejora frente a la imagen sola, aunque las poblaciones estelares corrigieron 51.6\% de los errores de ResNet-18. Los errores se concentran en la frontera morfológica T-Type 0--1. Los resultados respaldan utilizar el clasificador visual como referencia y evaluar posteriormente una fusión adaptativa y calibrada.
+\end{abstract}
+
+\section{Contexto de negocio y problema}
+El beneficiario es el Instituto de Astronomía de la Universidad Nacional Autónoma de México, específicamente el grupo de Galaxias y Cosmología. El proyecto busca automatizar la clasificación morfológica binaria de galaxias a partir del catálogo visual asociado con MaNGA: temprana para $Ttype\leq0$ y tardía para $1\leq Ttype\leq10$. La hipótesis inicial proponía que combinar imágenes y espectros superaría a una modalidad aislada. La evidencia experimental cambió el enfoque: la imagen domina el rendimiento, la concatenación directa no demuestra mejora y los errores entre modalidades no son idénticos. La decisión central pasó de agregar modalidades a estudiar cuándo confiar en cada experto.
+
+\section{Datos y preparación}
+El proyecto integra imágenes RGB de Legacy Survey, espectros MaNGA y poblaciones estelares derivadas mediante STARLIGHT. El manifest maestro contiene 10,014 objetos y la cohorte alineada utilizada en los experimentos comparables contiene 9,351 galaxias. Las imágenes son de $256\times256$ píxeles en bandas $g,r,z$. Se encontraron 10,013 FITS espectrales; las representaciones de modelado utilizan 4,096 puntos y máscaras de validez. STARLIGHT aporta 45 plantillas y 90 características de poblaciones, pero no constituye una observación independiente porque deriva de FLUX\_FoV.
+
+El EDA de imágenes detectó diferencias de orientación FITS/JPEG; corregir el volteo vertical aumentó la correlación media de 0.731 a 0.980. También se identificaron diferencias norte-sur con riesgo de contaminación instrumental. En espectros se verificaron integridad, cobertura, normalización, marco de reposo e interpolación común.
+
+\begin{table}[H]\centering
+\caption{Cohorte experimental común.}\label{tab:cohorte}
+\begin{tabular}{lrrr}\toprule
+Partición & Total & Tardías & Tempranas\\\midrule
+Entrenamiento & 6545 & 4078 & 2467\\
+Validación & 1403 & 874 & 529\\
+Prueba & 1403 & 875 & 528\\\bottomrule
+\end{tabular}\end{table}
+
+El split estratificado persistente usa semilla 42. Ttype, Type y label se excluyeron como predictores y el conjunto de prueba quedó reservado.
+
+\section{Metodología y modelos}
+El baseline visual fue ResNet-18, entrenado con BCEWithLogitsLoss y AdamW, con selección por ROC-AUC de validación y early stopping. Alcanzó AUC de validación 0.9644 y en test ROC-AUC 0.9633, accuracy 0.8881 y macro F1 0.8812.
+
+La ablación comparó CNN visual, ResNet-18, CNN1D sobre FLUX\_FoV, CNN1D sobre espectro STARLIGHT, MLP de poblaciones y fusiones multimodales.
+
+\begin{table}[H]\centering
+\caption{Ablación principal en test.}\label{tab:ablacion}
+\begin{tabular}{lcc}\toprule
+Modelo & ROC-AUC & Accuracy\\\midrule
+Imagen CNN & 0.9623 & 0.901\\
+Imagen ResNet-18 & 0.9633 & 0.888\\
+RGB + espectro + poblaciones & 0.9650 & 0.890\\
+Poblaciones STARLIGHT & 0.8949 & 0.838\\
+Espectro STARLIGHT CNN1D & 0.8642 & 0.789\\
+Espectro FoV CNN1D & 0.8572 & 0.795\\\bottomrule
+\end{tabular}\end{table}
+
+La diferencia de AUC entre la fusión trimodal y ResNet-18 fue aproximadamente +0.0017, menor que la incertidumbre estimada de AUC de aproximadamente 0.005, por lo que la mejora no se considera demostrada.
+
+La rama espectral se replanteó con atención y mecanismos recurrentes. Patch-BiGRU obtuvo AUC 0.9170 y accuracy 0.8525; CNN+BiGRU, 0.9122; control de atención, 0.9011; CNN1D de referencia, 0.8572. La mejora de patch-BiGRU respecto a CNN1D fue +0.0598 AUC, aunque arquitectura y optimización cambiaron simultáneamente.
+
+La referencia visual final alcanzó ROC-AUC 0.9667, accuracy 0.8952 y balanced accuracy 0.8980. Una fusión con encoder espectral obtuvo AUC 0.9334 y accuracy 0.8617, por debajo del control visual.
+
+\section{Resultados y validación}
+\begin{table}[H]\centering
+\caption{Modelo final, baseline y umbral heredado.}\label{tab:final}
+\begin{tabular}{lccc}\toprule
+Referencia & ROC-AUC & Accuracy & Balanced accuracy\\\midrule
+Umbral heredado & -- & 0.8290 & --\\
+ResNet-18 baseline & 0.9633 & 0.8881 & 0.8825\\
+CNN visual seleccionada & 0.9667 & 0.8952 & 0.8980\\\bottomrule
+\end{tabular}\end{table}
+
+El modelo seleccionado supera el umbral de accuracy por $0.8952-0.8290=0.0662$, equivalente a 6.62 puntos porcentuales. Frente a ResNet-18, el aumento de AUC es 0.0034.
+
+El análisis de error aporta una conclusión adicional. ResNet-18 produjo 157 errores sobre 1,403 muestras de prueba y el experto de poblaciones clasificó adecuadamente 51.6\% de esos casos. Un oráculo retrospectivo RGB+poblaciones alcanzaría accuracy 0.946, evidencia de complementariedad, no de un modelo desplegable. La fusión tardía global sólo produjo aproximadamente +0.0005 AUC, por lo que complementariedad no equivale a mejora automática del ensamble.
+
+La frontera T-Type 0--1 contiene 16.1\% de las galaxias pero 47.8\% de los errores RGB. La tasa de error RGB en la frontera es 33.2\%, frente a 7.0\% fuera de ella. Esto apunta a ambigüedad de etiqueta y continuidad física, no sólo a limitación algorítmica.
+
+Limitaciones: una sola semilla en varios experimentos; contaminación regional potencial; dependencia de STARLIGHT respecto a FLUX\_FoV; cambios simultáneos de arquitectura y optimización; un único split; y ambigüedad de etiquetas cerca de T-Type 0--1.
+
+\section{Implementación y operación}
+La primera versión productiva debería desplegar la CNN visual como experto principal y conservar la multimodalidad como evolución experimental.
+
+\begin{figure}[H]\centering
+\fbox{\begin{minipage}{0.85\linewidth}\centering
+Legacy Survey / MaNGA\\$\downarrow$\\
+Validación de datos e identidad\\$\downarrow$\\
+Manifest y preprocesamiento\\$\downarrow$\\
+Encoder RGB / experto alternativo\\$\downarrow$\\
+Calibración y gate\\$\downarrow$\\
+Probabilidad morfológica\\$\downarrow$\\
+Predicción + logs + métricas
+\end{minipage}}
+\caption{Arquitectura lógica propuesta para inferencia y monitoreo.}\label{fig:arquitectura}
+\end{figure}
+
+\begin{table}[H]\centering
+\caption{Responsabilidades sugeridas para operación.}
+\begin{tabular}{p{0.43\linewidth}p{0.43\linewidth}}\toprule
+Componente & Responsable sugerido\\\midrule
+Semántica y etiquetas & Especialista de dominio IA-UNAM\\
+Ingesta Legacy/MaNGA & Data Engineer\\
+Preprocesamiento y manifest & Data Engineer / ML Engineer\\
+Entrenamiento y validación & Data Scientist\\
+Serving & ML Engineer\\
+Infraestructura & MLOps / Cloud Engineer\\
+Validación científica & Sponsors IA-UNAM\\
+Monitoreo & ML Engineer + especialista de dominio\\\bottomrule
+\end{tabular}\end{table}
+
+El monitoreo debe cubrir disponibilidad e integridad de datos, distribución de probabilidades, ROC-AUC, balanced accuracy, recall por clase, matriz de confusión, Expected Calibration Error, Brier score y desempeño por subgrupos, con atención diferenciada a T-Type 0--1. Una versión nueva debe demostrar ausencia de leakage y ganancia reproducible frente al experto RGB antes de promoción.
+
+\section{Conclusiones clave}
+La información visual es la referencia predictiva dominante y satisface el umbral heredado. El espectro contiene señal útil: patch-BiGRU elevó el AUC de 0.8572 a 0.9170. No obstante, las fusiones evaluadas no justifican su complejidad operativa frente al experto visual. El análisis de errores demuestra complementariedad y concentra la principal dificultad en la frontera T-Type 0--1.
+
+El trabajo futuro debe repetir experimentos con 3--5 semillas, usar intervalos pareados, evaluar ECE/Brier y probar late fusion, stacking out-of-fold o un gate pequeño sin acceder al test durante el ajuste. Una hipótesis para el decisor es
+\[
+p_{final}=\alpha(x)p_{RGB}+[1-\alpha(x)]p_{experto}.
+\]
+
+\section{Referencias y anexos}
+\printbibliography[heading=none]
+
+\appendix
+\section{Definición y preparación de etiquetas}
+Documentar la transformación de T-Type, valores fuera de rango y controles de fuga.
+\section{Pipeline de preparación}
+Incluir preparación de imágenes, espectros, máscaras, manifest y cohorte.
+\section{Configuraciones experimentales}
+Incluir hiperparámetros, semillas, arquitecturas y early stopping.
+\section{Resultados extendidos}
+Incluir matrices de confusión, curvas ROC y desempeño por T-Type.
+\section{Análisis de errores}
+Incluir casos representativos, especialmente en T-Type 0--1.
+\end{document}

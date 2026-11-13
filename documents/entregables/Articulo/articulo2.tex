@@ -1,0 +1,350 @@
+% Artículo del Proyecto Integrador (Producto de difusión) - Galaxy Vision
+% Formato: carta, una columna, 11 pt, márgenes de 2.5 cm, interlineado 1.15. Referencias APA 7.
+% Compilar con pdfLaTeX + Biber (Overleaf). Archivos: logo.jpeg (opcional), referencias.bib, carpeta imagenes/.
+\documentclass[letterpaper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\geometry{headheight=52pt,headsep=0.3cm}
+\usepackage{setspace}
+\setstretch{1.15}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[font=small,labelfont=bf,labelsep=colon]{caption}
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyhead[C]{\IfFileExists{logo.jpeg}{\includegraphics[height=1.2cm]{logo.jpeg}}{}}%
+  \fancyfoot[C]{\thepage}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.6ex plus 0.4ex minus 0.2ex}{1ex}
+\usepackage{csquotes}
+\usepackage[style=apa,backend=biber]{biblatex}      % APA 7
+\addbibresource{referencias.bib}
+\usepackage[hidelinks]{hyperref}
+\urlstyle{same}
+\graphicspath{ {imagenes/} }
+\title{\textbf{Clasificación morfológica de galaxias mediante fusión multimodal de imágenes DESI Legacy y espectros integrados MaNGA}}
+\author{Alexander Carreño\quad María Rabelero\\[2pt] Julio Ricardo Velázquez\\[6pt]
+  \normalsize Proyecto Integrador · Maestría en Inteligencia Artificial Aplicada \\[6pt]
+  \normalsize Asesores: Dr. José Antonio Vázquez Mata y Dr. Hector Manuel Hernandez Toledo · 9 de Noviembre 2026}
+\date{\vspace{-2ex}}
+\begin{document}
+\maketitle
+% --- Resumen (sin número) ---
+\begin{abstract}
+La morfología de las galaxias se asigna hoy por inspección visual experta, un proceso que no escala al volumen de los nuevos sondeos. Con el Instituto de Astronomía de la UNAM evaluamos si combinar imágenes ópticas del DESI Legacy Survey con espectros integrados MaNGA y poblaciones estelares STARLIGHT mejora la clasificación binaria temprana/tardía frente a una sola modalidad. Usamos una cohorte de 9,351 galaxias con una partición estratificada fija de 6,545/1,403/1,403 galaxias y un protocolo de entrenamiento común. Las imágenes dominaron: una red convolucional compacta de 1.2 millones de parámetros obtuvo en prueba un ROC-AUC de 0.9667, una exactitud de 0.8952 y una exactitud balanceada de 0.8980, frente a 0.9633, 0.8881 y 0.8825 del baseline ResNet-18, y superó en 6.6 puntos el umbral de aceptación de exactitud de 0.829. Los codificadores espectrales con atención y BiGRU elevaron el AUC espectral de 0.857 a 0.917, pero la fusión por concatenación no superó a la imagen sola; con el codificador espectral más fuerte la redujo en 0.033 de AUC (IC 95\,\%: $-0.045$ a $-0.023$). Las poblaciones estelares corrigen el 51.6\,\% de los errores visuales, pero ninguna regla de combinación probada aprovecha esa complementariedad. El 48\,\% de los errores se concentra en la frontera T-Type 0--1, que reúne al 16\,\% de las galaxias. Recomendamos desplegar el clasificador visual con triaje por confianza y revisión experta, y mantener la fusión adaptativa como línea de investigación.
+\end{abstract}
+
+\noindent\textbf{Palabras clave:} morfología de galaxias, aprendizaje profundo, fusión multimodal, MaNGA, DESI Legacy Survey.
+
+% =====================================================================
+\section{Contexto de negocio y problema}
+
+\subsection{Institución y proceso impactado}
+El beneficiario del proyecto es el grupo de investigación en Galaxias y Cosmología del Instituto de Astronomía de la UNAM (IA-UNAM), responsable del \emph{Visual Morphology Value Added Catalogue} del sondeo MaNGA \parencite{vazquezmata2022, bundy2015}. Ese catálogo, construido por inspección visual experta, es la fuente de etiquetas del proyecto. Los patrocinadores, el Dr.~José Antonio Vázquez Mata y el Dr.~Héctor Manuel Hernández Toledo, son además autores del catálogo; esa coincidencia reduce dos riesgos señalados por CRISP-ML(Q): la separación entre expertos de dominio y científicos de datos, y el desalineamiento entre objetivos de negocio y objetivos de aprendizaje automático \parencite{studer2021}.
+
+La morfología resume la historia de formación estelar de una galaxia. La secuencia de Hubble \parencite{hubble1926} se codifica numéricamente con el índice T-Type: los valores T-Type $\leq 0$ corresponden a galaxias tempranas (elípticas y lenticulares) y $1 \leq$ T-Type $\leq 10$ a tardías (espirales e irregulares). El proceso que se busca transformar es la generación de catálogos morfológicos. La clasificación visual depende de la profundidad, la resolución, la inclinación y la relación señal-ruido de la imagen; en MaNGA cerca del 10\,\% de las galaxias tiene clasificación dudosa y 67 objetos quedaron fuera de las clases definidas \parencite{vazquezmata2022}.
+
+\subsection{Problema y motivación}
+Los catálogos visuales más extensos basados en imágenes de calidad tipo Hubble reúnen entre 20 y 30 mil galaxias, y los de ciencia ciudadana alcanzan alrededor de medio millón \parencite{lintott2008}. El Legacy Survey of Space and Time del Observatorio Vera C.~Rubin observará miles de millones de galaxias \parencite{ivezic2019}, por lo que repetir el esfuerzo humano de MaNGA a esa escala es inviable. La institución necesita convertir su capital experto en un clasificador automático, reproducible y versionado que asigne una clase y una probabilidad a galaxias no vistas, y que identifique los casos que todavía requieren revisión humana.
+
+\subsection{Enfoque inicial y enfoque adoptado}
+En el planteamiento (Avance~0) el problema se formuló como clasificación supervisada binaria resuelta con aprendizaje profundo \emph{multimodal}. La hipótesis central era que la imagen aporta la estructura espacial (bulbo, disco, brazos) y el espectro aporta la composición física (edad, metalicidad, formación estelar), de modo que su fusión superaría a cualquier modalidad aislada. Las preguntas clave eran si la fusión mejora significativamente a la imagen, cuánta información morfológica contiene el espectro y cómo se comporta el clasificador en la zona de transición.
+
+Los resultados obligaron a un cambio de enfoque, que documentamos aquí de forma explícita. La imagen resultó la referencia difícil de superar, y la fusión por concatenación no produjo una mejora demostrable; en un caso la empeoró. El enfoque \textbf{finalmente adoptado} es un clasificador \emph{visual} compacto con triaje por confianza: el modelo etiqueta automáticamente las galaxias de alta confianza y envía las de baja confianza a revisión experta. La fusión multimodal no se descarta, pero se reformula como investigación de un decisor adaptativo que aprenda, galaxia por galaxia, cuándo confiar en la imagen y cuándo en el experto físico (Sección~\ref{sec:conclusiones}).
+
+\subsection{Criterio de éxito}
+La métrica primaria de selección y comparación es el ROC-AUC en el conjunto de prueba, porque mide la capacidad de ordenar galaxias por probabilidad de ser tardías con independencia del umbral, y es la base del triaje. Se reportan además la exactitud y la exactitud balanceada a umbral 0.5, esta última por el desbalance de clases (62\,\% tardías). El umbral de aceptación del proyecto es una exactitud de 0.829, heredada del trabajo previo del grupo y acordada con los patrocinadores; adicionalmente, cualquier modelo candidato debe superar al baseline del Avance~3 bajo el mismo protocolo.
+
+% =====================================================================
+\section{Datos y preparación}
+
+\subsection{Fuentes y cohorte}
+Cada galaxia se describe con tres modalidades vinculadas por el identificador MaNGA (\texttt{name}). La Tabla~\ref{tab:datos} resume las fuentes. El catálogo morfológico entregado por los patrocinadores contiene 10,126 registros con nueve columnas (identificador, coordenadas, \texttt{Type}, \texttt{Ttype}, \texttt{nsa\_z}, \texttt{LogMass}, \texttt{incl} y \texttt{PETRO\_TH90}). Las imágenes se descargaron del DESI Legacy Imaging Survey \parencite{dey2019}; los espectros integrados provienen de MaNGA MPL-11 \parencite{bundy2015}; y los productos de síntesis de poblaciones estelares se obtuvieron con STARLIGHT \parencite{cidfernandes2005}.
+
+\begin{table}[H]
+  \centering
+  \caption{Fuentes de datos y disponibilidad. Cifras de los cuadernos de los Avances~1 y~2 y del informe de avances.}
+  \label{tab:datos}
+  \small
+  \begin{tabular}{p{3.2cm}p{5.6cm}p{5.4cm}}
+    \toprule
+    Modalidad & Contenido & Disponibilidad y tratamiento \\
+    \midrule
+    Catálogo morfológico & \texttt{Ttype}, \texttt{Type}, $z$, masa, inclinación, \texttt{PETRO\_TH90} & 10,126 registros; fuente de etiquetas \\
+    Imagen RGB (Legacy) & Capas ls-dr11, bandas $g,r,z$; 256$\times$256 px; 7 encuadres & 10,006 imágenes por factor de encuadre \\
+    Espectro MaNGA & \texttt{FLUX\_FoV} y \texttt{FLUX\_1RE} con errores & 10,013 FITS de 10,014 objetos; 4096 puntos en marco de reposo \\
+    STARLIGHT & Espectro sintético y fracciones por plantilla & 45 plantillas; 90 variables de población \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+El manifiesto maestro reúne 10,014 filas; tras exigir las tres modalidades y una etiqueta válida queda una \textbf{cohorte alineada de 9,351 galaxias}. La partición estratificada con semilla 42 es única y persistente para todas las ramas y experimentos (Tabla~\ref{tab:split}); el conjunto de prueba se reservó y las columnas \texttt{Ttype}, \texttt{Type} y la etiqueta se excluyeron como entradas.
+
+\begin{table}[H]
+  \centering
+  \caption{Partición estratificada de la cohorte (semilla 42), común a todos los modelos.}
+  \label{tab:split}
+  \begin{tabular}{lrrr}
+    \toprule
+    Partición & Total & Tardías (1) & Tempranas (0) \\
+    \midrule
+    Entrenamiento & 6,545 & 4,078 & 2,467 \\
+    Validación    & 1,403 &   874 &   529 \\
+    Prueba        & 1,403 &   875 &   528 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Análisis exploratorio y calidad de datos}
+El Avance~1 identificó tres problemas que condicionaron el resto del proyecto. Primero, la \textbf{validez de las etiquetas}: el criterio acordado define las tardías como $1 \leq$ T-Type $\leq 10$, pero 67 galaxias tienen \texttt{Ttype} $= 11$; se marcaron como fuera de rango y se excluyeron del subconjunto etiquetado, a la espera de confirmar con los patrocinadores si deben tratarse como tardías extremas. Segundo, la \textbf{calidad de los metadatos}: \texttt{nsa\_z} contiene valores centinela $-9999$, y faltan valores en \texttt{LogMass} e \texttt{incl} (10,098 presentes) y en \texttt{PETRO\_TH90} (10,093 presentes); estos campos se usaron solo para encuadre y análisis de errores, nunca como entradas del clasificador. Tercero, la \textbf{dependencia entre modalidades}: STARLIGHT no es una observación independiente, porque sus productos se derivan del mismo espectro \texttt{FLUX\_FoV}. Esta redundancia explica después por qué fusionar espectro y poblaciones no aporta (0.896 frente a 0.895 de AUC).
+
+\subsection{Ingeniería de características}
+El Avance~2 construyó la preparación de cada modalidad. Para la imagen se adoptó un campo de visión adaptativo, $\mathrm{FoV} = k \cdot \texttt{PETRO\_TH90}$, que homogeneiza el tamaño aparente de las galaxias; se generaron siete encuadres por galaxia, y el encuadre aleatorio entre factores vecinos se probó como aumento de datos. Los espectros se llevaron al marco de reposo, se remuestrearon a una malla común de 4096 puntos para que cada posición del vector represente la misma longitud de onda y se acompañaron de una máscara que ignora las zonas sin datos. Las poblaciones STARLIGHT se resumieron en 90 variables (fracciones de luz y de masa actual en 45 plantillas de edad y metalicidad), renormalizadas.
+
+La infraestructura se diseñó para que los experimentos fueran comparables: un manifiesto con particiones persistentes alimenta un \texttt{GalaxyDataset} multimodal; los codificadores por modalidad se intercambian sin reescribir el ciclo de entrenamiento, y cada corrida guarda configuración, historial, métricas, predicciones y \emph{checkpoint}. Todos los modelos usan AdamW \parencite{loshchilov2019}, entropía cruzada binaria y selección del \emph{checkpoint} por AUC de validación, implementados en PyTorch \parencite{paszke2019} y evaluados con scikit-learn \parencite{pedregosa2011}.
+
+% =====================================================================
+\section{Metodología y modelos}
+
+\subsection{Baseline (Avance 3)}
+El baseline debía establecer el piso de desempeño obligatorio con un modelo comparable a la rama visual de las fusiones. Se eligió una ResNet-18 \parencite{he2016} sobre la imagen RGB, que en prueba obtuvo un ROC-AUC de 0.9633, una exactitud de 0.8881 y una exactitud balanceada de 0.8825, con 157 errores en 1,403 galaxias. Su diagnóstico mostró sobreajuste claro (pérdida final de entrenamiento 0.159 frente a 0.317 en validación). Una CNN compacta de cuatro bloques, entrenada desde cero, alcanzó un AUC de 0.9623 y una exactitud de 0.901 con un sobreajuste más leve (0.237 frente a 0.287); extender el entrenamiento de 38 a 46 épocas no mejoró la prueba.
+
+\subsection{Modelos candidatos (Avance 4)}
+Bajo el mismo protocolo se compararon modelos de una sola modalidad y concatenaciones de ramas (Figura~\ref{fig:ablacion}). Las tres señales no visuales quedaron claramente por debajo de la imagen: la CNN1D sobre el espectro FoV obtuvo 0.8572 de AUC, sobre el espectro STARLIGHT 0.8642, y el perceptrón multicapa sobre las 90 variables de población 0.8949 (exactitud 0.8375). La mejor fusión, trimodal (imagen + espectro + poblaciones), alcanzó 0.9650, apenas $+0.0017$ sobre la ResNet-18, una diferencia menor que la incertidumbre del AUC estimada en $\approx 0.005$: \emph{mejora no demostrada}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\linewidth]{fig_ablacion.png}
+  \caption{Ablación por modalidad en el conjunto de prueba (1,403 galaxias). La barra indica el ROC-AUC y la anotación la exactitud a umbral 0.5. Las ramas no visuales quedan por debajo de la imagen y la fusión trimodal no se separa del baseline más allá de la incertidumbre del AUC.}
+  \label{fig:ablacion}
+\end{figure}
+
+El diagnóstico de las curvas de pérdida cambió la pregunta. La CNN1D espectral no sobreajustaba: se estancaba (0.461 en entrenamiento frente a 0.475 en validación). La hipótesis fue que el \emph{pooling} global descartaba las relaciones entre el continuo, el quiebre de 4000\,Å y las líneas de emisión. Se probaron tres codificadores más expresivos, con mayor tasa de aprendizaje ($3\times10^{-4}$) y recorte de gradiente: un control con atención sin recurrencia, una CNN seguida de una BiGRU \parencite{cho2014} y una variante que lee el espectro como 128 parches de 32 puntos con una BiGRU de dos capas. La Figura~\ref{fig:espectros} muestra que el espectro contenía más señal de la que extraía la CNN1D: el AUC sobre el espectro FoV subió de 0.8572 a 0.9170 (exactitud de 0.795 a 0.852). Como cambiaron a la vez el optimizador y el codificador, la ganancia no puede atribuirse solo a la recurrencia; de hecho, la atención sin recurrencia ya alcanza 0.9011 en FoV y 0.9066 en STARLIGHT.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.88\linewidth]{fig_espectros.png}
+  \caption{ROC-AUC en prueba de los codificadores espectrales. Barras azules: espectro FoV observado; barras ocres: espectro STARLIGHT modelado. La línea discontinua marca el baseline visual. Ningún codificador espectral alcanza a la imagen.}
+  \label{fig:espectros}
+\end{figure}
+
+\subsection{La decisión que importó (Avance 5)}
+El Avance~5 respondió la pregunta central con un experimento controlado: fusionar la CNN compacta con el mejor experto espectral individual sobre STARLIGHT (CNN con atención), frente a un \emph{control de solo imagen} con la misma red, la misma tasa de aprendizaje y el mismo entrenamiento, que difiere únicamente en no recibir el espectro. El resultado fue concluyente en sentido contrario a la hipótesis inicial: el control de imagen obtuvo 0.9667 de AUC y la fusión 0.9334, una caída de $-0.0333$ con intervalo de confianza del 95\,\% por \emph{bootstrap} pareado de $[-0.0447, -0.0227]$, que excluye el cero (Tabla~\ref{tab:pareado}). La fusión alcanzó su mejor \emph{checkpoint} en la época 4 de 12, lo que sugiere que la rama espectral introduce atajos y memorización aunque, aislada, sea más informativa.
+
+\begin{table}[H]
+  \centering
+  \caption{Diferencias pareadas de ROC-AUC en prueba (fusión imagen + espectro STARLIGHT con atención, menos cada referencia). IC 95\,\% por \emph{bootstrap} pareado de 1000 remuestreos sobre las mismas 1,403 galaxias. Fuente: cuaderno \texttt{avance5-final-image}.}
+  \label{tab:pareado}
+  \begin{tabular}{lrcc}
+    \toprule
+    Referencia & $\Delta$AUC & IC 95\,\% & ¿Excluye 0? \\
+    \midrule
+    Control solo imagen (CNN compacta) & $-0.0333$ & $[-0.0447, -0.0227]$ & Sí \\
+    ResNet-18 + CNN1D (fusión previa)  & $-0.0298$ & $[-0.0401, -0.0203]$ & Sí \\
+    ResNet-18 solo imagen (baseline)   & $-0.0299$ & $[-0.0413, -0.0189]$ & Sí \\
+    CNN con atención solo espectro     & $+0.0268$ & $[+0.0139, +0.0393]$ & Sí \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Esta es la decisión que definió el proyecto: \textbf{el modelo final es el clasificador visual compacto}, no una fusión. Las razones son tres. Es el único modelo que supera al baseline en las tres métricas; concatenar un experto espectral más fuerte empeora el desempeño de forma estadísticamente defendible; y es el más barato de operar, con 1.2 millones de parámetros y una sola modalidad de entrada que ya existe para todo el cielo del norte. La complementariedad de las poblaciones estelares, que sí existe, se analiza en la Sección~\ref{sec:resultados} y define el trabajo futuro.
+
+% =====================================================================
+\section{Resultados y validación}
+\label{sec:resultados}
+
+\subsection{Modelo final frente a baseline y umbral}
+La Tabla~\ref{tab:final} compara el modelo final con el baseline y con el umbral de aceptación. En la métrica primaria, el ROC-AUC sube de 0.9633 a 0.9667 (lift de $+0.0034$; IC 95\,\% del modelo final $[0.959, 0.975]$). La exactitud pasa de 0.8881 a 0.8952 ($+0.0071$), lo que equivale a 147 errores en lugar de 157 sobre las mismas 1,403 galaxias, y la exactitud balanceada mejora más ($+0.0155$, de 0.8825 a 0.8980), señal de que la ganancia beneficia sobre todo a la clase minoritaria de tempranas. Frente al umbral de aceptación de 0.829, la exactitud observada de 0.8952 deja una \textbf{brecha favorable de $+0.0662$} (6.6 puntos porcentuales).
+
+\begin{table}[H]
+  \centering
+  \caption{Desempeño en prueba (1,403 galaxias) del modelo final, del baseline y del umbral de aceptación. El lift y la brecha se calculan como diferencia simple. Fuente: cuadernos \texttt{avance3-baseline} y \texttt{avance5-final-image}.}
+  \label{tab:final}
+  \begin{tabular}{lcccc}
+    \toprule
+    Modelo & ROC-AUC & Exactitud & Exact.\ balanceada & F1 tardía \\
+    \midrule
+    Umbral de aceptación & -- & 0.829 & -- & -- \\
+    Baseline ResNet-18 & 0.9633 & 0.8881 & 0.8825 & -- \\
+    \textbf{Final: CNN compacta (1.2 M)} & \textbf{0.9667} & \textbf{0.8952} & \textbf{0.8980} & \textbf{0.9135} \\
+    \midrule
+    Lift final vs.\ baseline & $+0.0034$ & $+0.0071$ & $+0.0155$ & -- \\
+    Brecha final vs.\ umbral & -- & $+0.0662$ & -- & -- \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+El lift en AUC debe leerse con cautela. Es inferior a la incertidumbre de $\approx 0.005$ estimada para el AUC con este tamaño de prueba, de modo que la superioridad sobre el baseline \emph{no está demostrada} en la métrica primaria; lo que sí está demostrado es que el modelo final cumple con holgura el umbral, iguala o supera al baseline en todas las métricas y lo hace con un modelo más pequeño y menos sobreajustado. El modelo final procede, además, de una sola corrida con una sola semilla.
+
+\subsection{Complementariedad no explotada}
+El análisis por galaxia sobre las mismas 1,403 observaciones de prueba mostró que los errores de la imagen y de las poblaciones no coinciden. De los 157 errores de la ResNet-18, solo 76 son compartidos con el MLP de poblaciones; el 51.6\,\% (81) los clasifica correctamente el experto físico. Un oráculo que eligiera siempre la respuesta correcta entre ambos llevaría la exactitud de 0.888 a 0.946. Ese oráculo usa conocimiento retrospectivo de la etiqueta y, por tanto, demuestra un \emph{potencial}, no un clasificador realizable. Las reglas de combinación probadas no capturaron ese potencial: la fusión tardía con peso global fijo obtuvo $\Delta\mathrm{AUC} = +0.0005$ (IC 95\,\%: $-0.0012$ a $+0.0022$), y tampoco se encontró una propiedad STARLIGHT individual que separara significativamente los errores tras la corrección de Bonferroni.
+
+\subsection{Dónde y por qué falla el modelo}
+Los errores no se distribuyen al azar. La frontera T-Type 0--1, donde se encuentran lenticulares y espirales muy tempranas, reúne al 16.1\,\% de las galaxias pero concentra el 47.8\,\% de los errores de la imagen; allí la tasa de error es de 33.2\,\%, mientras que en el resto de la secuencia es de solo 7.0\,\% (Figura~\ref{fig:frontera}). Esta zona es también la de mayor ambigüedad en la etiqueta experta, por lo que una parte de estos errores refleja incertidumbre del propio criterio humano y no solo limitaciones del modelo. La superposición entre clases y la existencia de errores de alta confianza impiden una regla sencilla basada solo en la incertidumbre.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\linewidth]{fig_frontera.png}
+  \caption{Concentración de errores del clasificador visual en la frontera T-Type 0--1. Izquierda: proporción de galaxias y de errores que caen en la frontera. Derecha: tasa de error dentro y fuera de ella.}
+  \label{fig:frontera}
+\end{figure}
+
+\subsection{Significado de los errores para el negocio}
+Para el IA-UNAM, un error no tiene el mismo costo en todas partes. Una tardía clasificada como temprana sesga las estadísticas de fracción de discos y de formación estelar hacia sistemas más evolucionados, el mismo sesgo hacia tipos tempranos que ya afecta a la clasificación visual con imágenes poco profundas. Una temprana clasificada como tardía contamina las muestras de espirales usadas para estudiar brazos y barras. Con una exactitud de 0.8952, un catálogo de un millón de galaxias tendría del orden de cien mil asignaciones erróneas si se usara sin control; pero, dado que casi la mitad se concentra en una franja identificable, la estrategia adecuada es el triaje. Las galaxias lejos de la frontera, con error de 7.0\,\%, pueden catalogarse automáticamente, y la revisión humana debe dirigirse a la franja ambigua. El catálogo debe publicar siempre la probabilidad junto con la clase, para que cada estudio elija su propio compromiso entre pureza y completitud.
+
+\subsection{Validez y limitaciones de la evaluación}
+Cuatro supuestos limitan el alcance de estas cifras. (1) \emph{Validez de etiquetas}: la verdad de referencia es una clasificación visual con incertidumbre propia, especialmente en la frontera; y las 67 galaxias con \texttt{Ttype} $= 11$ quedaron fuera. (2) \emph{Reutilización del conjunto de prueba}: todos los candidatos se compararon sobre la misma prueba, de modo que existe riesgo de sobreajuste de la selección; las diferencias pequeñas deben confirmarse con varias semillas. (3) \emph{Contaminación entre modalidades}: STARLIGHT deriva del mismo espectro FoV, por lo que espectro y poblaciones no son evidencia independiente. (4) \emph{Dominio}: el modelo se entrenó con imágenes Legacy del cielo norte y galaxias cercanas de MaNGA; su desempeño en LSST, con otra profundidad y otro hemisferio, no se ha evaluado. La calibración (ECE y Brier) y el desempeño por inclinación, masa y corrimiento al rojo, previstos en el plan, quedan pendientes de reporte completo.
+
+% =====================================================================
+\section{Implementación y operación}
+
+\subsection{Requisitos para producción y responsables}
+La Tabla~\ref{tab:requisitos} enumera los requisitos para operar la solución y propone un responsable para cada uno. Los roles siguen la clasificación de partes interesadas en proyectos de IA de \textcite{miller2022}: propietario del proyecto, controlador de datos, equipo de desarrollo y operadores, a los que se añade la representación de los usuarios científicos del catálogo.
+
+\begin{table}[H]
+  \centering
+  \caption{Requisitos para operar el clasificador y responsables sugeridos.}
+  \label{tab:requisitos}
+  \small
+  \begin{tabular}{p{3.6cm}p{6.6cm}p{4.2cm}}
+    \toprule
+    Requisito & Descripción & Responsable sugerido \\
+    \midrule
+    Gobierno y aceptación & Aprobar versiones del modelo, umbrales de triaje y criterios de retiro & Patrocinadores, grupo Galaxias y Cosmología (propietario) \\
+    Datos de entrada & Acceso estable a cutouts Legacy y catálogo con \texttt{PETRO\_TH90}; contrato de esquema & Controlador de datos del grupo (IA-UNAM) \\
+    Etiquetas y auditoría & Definir la regla para \texttt{Ttype} $= 11$; mantener un conjunto de auditoría etiquetado por expertos & Patrocinadores como validadores expertos \\
+    Pipeline reproducible & Preprocesamiento, inferencia por lotes, versionado de datos, código y \emph{checkpoints} & Equipo de ciencia de datos (Galaxy Vision) \\
+    Infraestructura & GPU o CPU para lotes, almacenamiento de imágenes y resultados, respaldos & Área de cómputo del IA-UNAM (operador) \\
+    Calibración y umbrales & Calibrar $p$ y fijar bandas de confianza con datos de validación, nunca de prueba & Equipo de ciencia de datos con aprobación del propietario \\
+    Revisión humana & Atender la cola de baja confianza y registrar decisiones & Investigadores y estudiantes del grupo \\
+    Publicación & Catálogo versionado con $p$, clase, versión del modelo y revisor & Grupo Galaxias y Cosmología \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Arquitectura de despliegue}
+La solución se despliega como un servicio de inferencia por lotes, no en tiempo real, porque los sondeos liberan datos por versiones. La Figura~\ref{fig:arquitectura} muestra las cuatro etapas. En la \emph{ingesta}, un catálogo de entrada con identificador, coordenadas y \texttt{PETRO\_TH90} dispara la descarga de cutouts $g,r,z$ de la capa ls-dr11. En el \emph{preprocesamiento}, se valida el esquema y la calidad de la imagen y se aplica exactamente el mismo recorte adaptativo y la misma normalización del entrenamiento; cada lote queda registrado en un manifiesto versionado. En la \emph{inferencia}, la CNN compacta produce $p(\text{tardía})$, que se calibra y se asigna a una banda de confianza. En la \emph{decisión}, las galaxias de alta confianza reciben su etiqueta automáticamente y las de baja confianza pasan a una cola de revisión experta; ambas terminan en un catálogo versionado. Las etiquetas producidas por la revisión alimentan un conjunto de auditoría que permite medir el desempeño en operación y decidir reentrenamientos controlados. LSST aparece como fuente futura que requiere validación de dominio antes de usarse.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{fig_arquitectura.png}
+  \caption{Arquitectura de despliegue propuesta: ingesta, preprocesamiento idéntico al de entrenamiento, inferencia por lotes con la CNN compacta, triaje por confianza y catálogo versionado. La franja inferior resume el monitoreo transversal y el ciclo de mejora.}
+  \label{fig:arquitectura}
+\end{figure}
+
+\subsection{Monitoreo}
+Un modelo de catálogo puede degradarse en silencio: no hay un usuario que reporte cada error. Por ello el monitoreo se organiza en cuatro frentes (Tabla~\ref{tab:monitoreo}). Los umbrales de alerta son propuestas iniciales que el propietario debe aprobar.
+
+\begin{table}[H]
+  \centering
+  \caption{Aspectos a supervisar durante la operación, indicador y disparador sugerido.}
+  \label{tab:monitoreo}
+  \small
+  \begin{tabular}{p{3.0cm}p{6.2cm}p{5.2cm}}
+    \toprule
+    Aspecto & Indicador & Disparador sugerido \\
+    \midrule
+    Deriva de entradas & Distribución de \texttt{PETRO\_TH90}, brillo y tamaño de cutouts, bandas faltantes, cobertura de $z$ & Desplazamiento significativo frente a la cohorte de entrenamiento \\
+    Deriva de salidas & Fracción predicha de tardías (62\,\% en entrenamiento) y forma de la distribución de $p$ & Cambio sostenido sin explicación astrofísica \\
+    Desempeño auditado & Exactitud, exactitud balanceada y AUC sobre el conjunto de auditoría experta & Exactitud por debajo de 0.829 (umbral de aceptación) \\
+    Calibración & ECE y Brier sobre auditoría; curva de confiabilidad & Deterioro respecto a la versión aprobada \\
+    Carga de revisión & Fracción enviada a revisión y tamaño de la cola & Capacidad de los revisores excedida \\
+    Operación & Latencia por lote, fallos de descarga, imágenes rechazadas & Fallos recurrentes o lotes incompletos \\
+    Trazabilidad & Versión de modelo, datos y código en cada predicción & Cualquier predicción sin versión registrada \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Un reentrenamiento solo debe publicarse si supera a la versión vigente en el conjunto de auditoría con varias semillas, y nunca debe calibrarse ni seleccionarse con el conjunto de prueba \parencite{guo2017, sculley2015}.
+
+% =====================================================================
+\section{Conclusiones clave}
+\label{sec:conclusiones}
+
+\subsection{Hallazgos principales}
+\begin{enumerate}
+  \item \textbf{La imagen es la referencia difícil de superar.} Una CNN compacta de 1.2 millones de parámetros obtiene un ROC-AUC de 0.9667, una exactitud de 0.8952 y una exactitud balanceada de 0.8980, supera el umbral de aceptación de 0.829 por 6.6 puntos y mejora al baseline ResNet-18 en todas las métricas (lift de $+0.0034$ en AUC, dentro de la incertidumbre).
+  \item \textbf{El espectro no era débil por falta de información.} Con codificadores de atención y BiGRU, el AUC espectral sube de 0.857 a 0.917; el límite inicial era de representación y optimización, no de contenido.
+  \item \textbf{Concatenar no basta y puede perjudicar.} La fusión con el mejor experto espectral reduce el AUC en 0.0333 con un intervalo que excluye el cero; la mejor fusión trimodal solo suma $+0.0017$, sin significancia.
+  \item \textbf{La complementariedad existe pero no está explotada.} Las poblaciones estelares corrigen el 51.6\,\% de los errores visuales, y un oráculo llevaría la exactitud a 0.946; ninguna regla probada lo aprovecha.
+  \item \textbf{La dificultad se concentra en la frontera T-Type 0--1}, con el 47.8\,\% de los errores en el 16.1\,\% de las galaxias, lo que justifica operar con triaje por confianza.
+\end{enumerate}
+
+\subsection{Limitaciones}
+Los resultados provienen de una corrida y una semilla por configuración, por lo que las diferencias pequeñas no son concluyentes. Las etiquetas son visuales y tienen ambigüedad intrínseca en la frontera, y la regla para \texttt{Ttype} $= 11$ sigue pendiente. El conjunto de prueba se reutilizó para comparar muchos candidatos. STARLIGHT y el espectro FoV comparten origen, lo que limita su aporte conjunto. En el experimento espectral cambiaron simultáneamente el optimizador y la arquitectura. Finalmente, no se ha evaluado la transferencia a LSST, y la calibración y el análisis por subgrupos no se han reportado de forma completa.
+
+\subsection{Trabajo futuro}
+Las líneas de trabajo se derivan directamente de los resultados. (1) \emph{Reproducibilidad}: repetir el modelo final y el baseline con 3--5 semillas e intervalos pareados en AUC y exactitud balanceada, para confirmar o descartar el lift. (2) \emph{Calibración y triaje}: medir ECE y Brier, calibrar $p$ y estimar qué fracción de galaxias debe ir a revisión para alcanzar una exactitud objetivo en la parte automática. (3) \emph{Fusión adaptativa}: sustituir la concatenación por un decisor por galaxia, $p_{\text{final}} = \alpha(x)\,p_{\text{RGB}} + [1-\alpha(x)]\,p_{\text{experto}}$, aprendido con predicciones fuera de pliegue sobre entrenamiento y validación, y comparado siempre contra la imagen sola. (4) \emph{Frontera morfológica}: estudiar con los patrocinadores la franja T-Type 0--1, ya sea con etiquetas de mayor resolución o con un esquema de tres clases. (5) \emph{Transferencia}: validar el modelo con imágenes más profundas antes de su uso en LSST.
+
+% --- Declaración de uso de IA (antes de las referencias) ---
+\section*{Declaración de uso de inteligencia artificial}
+Se utilizó \textcite{microsoft2026copilot} para apoyar la estructuración y redacción del borrador de este artículo y para generar las figuras a partir de las cifras reportadas en los cuadernos. Todas las cifras fueron verificadas por el equipo contra los cuadernos entregados. La responsabilidad final sobre el contenido entregado recae en los autores.
+
+% --- Referencias ---
+\printbibliography[title={Referencias}]
+
+% --- Anexos ---
+\clearpage
+\appendix
+\section{Resultados completos de los codificadores espectrales}
+\label{anx:espectros}
+La Tabla~\ref{tab:anx-esp} detalla los resultados resumidos en la Figura~\ref{fig:espectros}.
+
+\begin{table}[H]
+  \centering
+  \caption{ROC-AUC y exactitud en prueba de los codificadores espectrales. Referencia CNN1D con tasa de aprendizaje $10^{-4}$; variantes con $3\times10^{-4}$, recorte de gradiente 1.0 y mayor capacidad.}
+  \label{tab:anx-esp}
+  \begin{tabular}{lcccc}
+    \toprule
+    & \multicolumn{2}{c}{Espectro FoV} & \multicolumn{2}{c}{Espectro STARLIGHT} \\
+    Codificador & AUC & Exactitud & AUC & Exactitud \\
+    \midrule
+    CNN1D + \emph{pooling} global (ref.) & 0.8572 & 0.795 & 0.8642 & 0.789 \\
+    CNN profunda + atención & 0.9011 & 0.842 & 0.9066 & 0.842 \\
+    CNN + BiGRU (256 tokens) & 0.9122 & 0.847 & 0.9064 & 0.838 \\
+    Patch (128$\times$32) + BiGRU & 0.9170 & 0.852 & 0.8997 & 0.821 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Familias de modelos evaluadas}
+\label{anx:familias}
+\begin{table}[H]
+  \centering
+  \caption{Resumen de experimentos y resultado en prueba. Fuente: Avance~0 revisado e informe de avances.}
+  \label{tab:anx-fam}
+  \small
+  \begin{tabular}{p{4.6cm}p{4.4cm}p{5.2cm}}
+    \toprule
+    Experimento & Arquitectura & Resultado \\
+    \midrule
+    Solo imagen & CNN compacta 4 bloques & AUC 0.9623; exactitud 0.901 \\
+    Solo imagen, FoV aleatorio & CNN compacta con aumento de encuadre & Evalúa generalización por encuadre \\
+    Solo imagen (baseline) & ResNet-18 & AUC 0.9633; exactitud 0.888 \\
+    Solo imagen, control (final) & CNN compacta, lr $3\times10^{-4}$ & AUC 0.9667; exactitud 0.8952 \\
+    Solo poblaciones & MLP sobre 90 variables & AUC 0.8949; exactitud 0.8375 \\
+    Espectro + poblaciones & CNN1D + MLP & AUC 0.896 frente a 0.895 \\
+    Imagen + espectro FoV & ResNet-18 + CNN1D & AUC igual a la imagen sola \\
+    Imagen + espectro SL & CNN compacta + CNN con atención & AUC 0.9334; exactitud 0.862 \\
+    Imagen + espectro + poblaciones & ResNet-18 + CNN1D + MLP & AUC 0.9650; exactitud 0.890 \\
+    Fusión tardía, $\alpha$ fijo & Promedio ponderado de probabilidades & $\Delta$AUC $+0.0005$ [$-0.0012$, $+0.0022$] \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Repositorio y cuadernos}
+\label{anx:repo}
+El código, los cuadernos de los Avances~1 a~5 y los documentos del proyecto están en \url{https://github.com/Melonangie/Galaxy-Vision}. Los cuadernos de avances se encuentran en \texttt{Notebooks/avances} y el código de experimentación en \texttt{Notebooks/julio}.
+
+\end{document}
