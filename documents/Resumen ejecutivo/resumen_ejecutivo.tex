@@ -1,0 +1,284 @@
+% Plantilla del artículo del Proyecto Integrador (Resumen ejecutivo)
+% Formato requerido: carta, una columna, 11 pt, márgenes de 2.5 cm, interlineado 1.15.
+% Extensión: 3 páginas sin contar anexos. Referencias: APA 7.
+% Compila con pdfLaTeX (opción predeterminada de Overleaf) + Biber.
+% Logos: logo.jpeg (Tec) y logo_empresa.png (IA-UNAM; agregar el archivo a la carpeta) .
+% Si un archivo no existe, se muestra un recuadro de marcador.
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\setstretch{1.15}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{csquotes}
+\usepackage[hidelinks]{hyperref}
+
+% Estilo de referencias: APA 7
+\usepackage[style=apa,backend=biber]{biblatex}
+\addbibresource{referencias.bib}
+
+% --- Complementos del resumen ejecutivo ---
+\usepackage{xcolor}
+\setlength{\parindent}{1.5em}
+
+% --- Encabezado: logos solo en la primera página ---
+\usepackage{fancyhdr}
+\geometry{headheight=52pt,headsep=0.3cm}
+\renewcommand{\headrulewidth}{0pt}
+\newcommand{\logo}[2]{%
+  \IfFileExists{#1}%
+    {\includegraphics[height=1.2cm]{#1}}%
+    {\fbox{\parbox[c][1.1cm][c]{3cm}{\centering\sffamily\small #2}}}}
+\fancypagestyle{primera}{%
+  \fancyhf{}%
+  \fancyhead[L]{\logo{logo.jpeg}{Logo Tec}}%
+  \fancyhead[R]{\logo{logo_unam.png}{Logo de el Instituto de Astronomia de la UNAM}}%
+  \fancyfoot[C]{\thepage}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+
+% --- Recuadros de cifras (texto grande) ---
+% \cifra{fondo}{color del texto}{valor}{etiqueta}{unidad}
+\newcommand{\cifra}[5]{%
+  \begingroup\setlength{\fboxsep}{5pt}%
+  \colorbox{#1}{\parbox[t]{\dimexpr\linewidth-2\fboxsep\relax}{%
+    \setstretch{1}\color{#2}{\Large\bfseries #3}\par
+    #4%
+    \ifx\relax#5\relax\else\par{\footnotesize #5}\fi}}%
+  \endgroup}
+\newcommand{\cifragris}[4]{\cifra{black!8}{black}{#1}{#2}{#3}}
+\newcommand{\cifraacento}[4]{\cifra{blue!10}{blue!55!black}{#1}{#2}{#3}}
+
+\newcommand{\nota}[1]{{\footnotesize\textit{Nota.} #1\par}}
+
+\begin{document}
+\thispagestyle{primera}
+
+% --- Título y datos ---
+\noindent{\LARGE\bfseries Clasificación automática de la morfología de galaxias para la explotación de datos del Observatorio Vera C.\ Rubin\par}
+\smallskip
+\noindent{\large\textcolor{black!60}{Resumen ejecutivo dirigido al Instituto de Astronomía de la UNAM}\par}
+\medskip
+
+\noindent\begingroup\setlength{\fboxsep}{7pt}%
+\colorbox{black!8}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\small\setstretch{1.1}%
+\textcolor{black!60}{Integrantes:} Alexander Carreño Correa, Julio Ricardo Velázquez Hernández, María de los Ángeles Rabelero Campos\\
+\textcolor{black!60}{Programa:} Proyecto Integrador · Maestría en Inteligencia Artificial Aplicada · \textcolor{black!60}{Equipo:} 26\\
+\textcolor{black!60}{Asesores:} Dr. José Antonio Vázquez Mata y Dr. Hector Manuel Hernandez Toledo \quad \textcolor{black!60}{Fecha:} Noviembre de 2026}}%
+\endgroup\par\medskip
+
+% --- Problema y solución ---
+\noindent El Observatorio Vera C.\ Rubin generará alrededor de 20 TB de imágenes por noche, un volumen que vuelve inviable que los investigadores clasifiquen a mano la forma de cada galaxia, dato esencial para estudiar su historia y evolución. Hoy esa clasificación depende del criterio visual de especialistas. Para el Instituto de Astronomía de la UNAM (IA-UNAM), el reto es llegar a las primeras imágenes de Rubin con un clasificador automático, reproducible y que informe qué tan seguro está de cada decisión. Proponemos un modelo de aprendizaje profundo que, a partir de una imagen del Legacy Survey, indica si una galaxia es temprana (elíptica o lenticular) o tardía (espiral o irregular): las dudosas pasan a revisión experta y el resto se resuelve automáticamente. Se entrenó y evaluó con 9,351 galaxias del proyecto MaNGA clasificadas por el IA-UNAM, y su flujo de trabajo se validó antes con 24,273 galaxias de Galaxy Zoo, donde una red convolucional compacta alcanzó 96.8\,\% de exactitud frente a 87.0\,\% del mejor método clásico, en línea con la literatura \parencite{barchi2020}.
+
+% --- Cifras de desempeño del modelo ---
+\medskip
+\noindent
+\begin{minipage}[t]{0.235\linewidth}\cifraacento{0.962}{AUC (imagen sola)}{1,403 galaxias de prueba}{}\end{minipage}\hfill
+\begin{minipage}[t]{0.235\linewidth}\cifragris{90\,\%}{Exactitud}{umbral 0.5}{}\end{minipage}\hfill
+\begin{minipage}[t]{0.235\linewidth}\cifragris{0.88}{AUC de la confianza}{separa aciertos de errores}{}\end{minipage}\hfill
+\begin{minipage}[t]{0.235\linewidth}\cifragris{48\,\%}{De los errores}{en el 16\,\% de las galaxias}{}\end{minipage}
+\medskip
+
+% --- Desempeño ---
+\noindent Ante una galaxia tardía y una temprana tomadas al azar, el modelo asigna mayor probabilidad de ser tardía a la correcta el 96\,\% de las veces, y su confianza permite decidir qué casos revisar. Los errores se concentran en la frontera entre lenticulares y espirales tempranas (33\,\% de error frente a 7\,\% en el resto). Incorporar espectros o poblaciones estelares no aportó una mejora demostrable (mejor combinación: AUC 0.967, +0.003 sobre la imagen, dentro del margen de error; Anexo~C), por lo que la solución usa solo imagen, la fuente más económica de obtener.
+
+% --- Beneficios cuantificables (mensuales) ---
+\medskip
+\noindent
+\begin{minipage}[t]{0.31\linewidth}\cifragris{$-$35\,h}{Ahorro de tiempo}{horas/mes ($-$70\,\%)}{}\end{minipage}\hfill
+\begin{minipage}[t]{0.31\linewidth}\cifragris{$-$MXN 8,750}{Costos operativos}{MXN/mes}{}\end{minipage}\hfill
+\begin{minipage}[t]{0.31\linewidth}\cifragris{+233\,\%}{Capacidad de procesamiento}{de 6,400 a 21,333 galaxias/mes por especialista}{}\end{minipage}
+
+\smallskip
+\noindent{\footnotesize\textcolor{black!60}{Escenario base de 2,000 galaxias/mes y 30\,\% de casos a revisión. Cálculo y supuestos (propios, por confirmar con el IA-UNAM) en el Anexo~A.}}
+\medskip
+
+\noindent El principal beneficio no es el ahorro monetario, sino la capacidad de atender el flujo de datos de Rubin, algo inviable de lograr manualmente. Los beneficios intangibles son cuatro. \textbf{Toma de decisiones:} la confianza de cada predicción dirige la atención experta a donde más se necesita. \textbf{Calidad:} un criterio uniforme y reproducible mejora la comparabilidad entre estudios. \textbf{Simplificación del trabajo:} el investigador pasa de clasificar a supervisar. \textbf{Innovación:} el código reutilizable posiciona al IA-UNAM para explotar los datos de Rubin desde su inicio.
+
+% --- Inversión y costos (TCO a 12 meses) ---
+\medskip
+\noindent
+\begin{minipage}[t]{0.235\linewidth}\cifragris{MXN 108,000}{Desarrollo y validación}{}{}\end{minipage}\hfill
+\begin{minipage}[t]{0.235\linewidth}\cifragris{MXN 54,000}{Implementación}{}{}\end{minipage}\hfill
+\begin{minipage}[t]{0.235\linewidth}\cifragris{MXN 61,200}{Operación, cómputo y respaldo}{}{}\end{minipage}\hfill
+\begin{minipage}[t]{0.235\linewidth}\cifraacento{MXN 245,520}{TCO 12 meses}{incluye 10\,\% de contingencia}{}\end{minipage}
+\medskip
+
+\noindent El desglose por servicio está en el Anexo~B. En el escenario base, el ahorro directo (MXN 8,750 al mes) no recupera la inversión en un año (28 meses), pero con 5,000 galaxias al mes sí lo hace (11 meses). Por ello \textbf{recomendamos aprobar un primer tramo de MXN 132,000} (54\,\% del total) para consolidar y validar el modelo, y liberar el resto solo si se cumplen tres condiciones: (a) AUC $\geq$ 0.95 con al menos tres semillas en 2,000 galaxias nuevas; (b) al menos 70\,\% de las galaxias resueltas automáticamente con exactitud $\geq$ 95\,\%; y (c) desempeño equivalente en las regiones norte y sur del cielo.
+
+% --- Riesgos y mitigación ---
+\medskip
+\noindent El riesgo de mayor impacto es el cambio de dominio al pasar de MaNGA a imágenes de Rubin, pues un modelo puede degradarse sin que se note cuando cambian los datos \parencite{babic2021}. La Tabla~\ref{tab:rie} resume los cinco riesgos principales.
+
+\begin{table}[!ht]
+\centering
+\caption{Principales riesgos y medidas de mitigación}\label{tab:rie}
+\small
+\begin{tabular}{@{}p{0.46\linewidth}@{\hspace{0.06\linewidth}}p{0.46\linewidth}@{}}
+\toprule
+\textbf{Riesgo} & \textbf{Mitigación}\\
+\midrule
+Validación limitada (una semilla y una partición; comparaciones con solo 50 galaxias) & Repetir con $\geq$ 3 semillas y 2,000 galaxias nuevas, con intervalos de confianza\\[3pt]
+Errores concentrados en la frontera lenticular--espiral temprana & Revisión experta de casos de baja confianza y reporte del error por tipo morfológico\\[3pt]
+Atajos y sesgos de observación (telescopio norte/sur, masa, inclinación) & Particiones por grupo y evaluación por región\\[3pt]
+Cambio de dominio de MaNGA a imágenes de Rubin & Revalidar con una muestra etiquetada de Rubin, monitorear y reentrenar\\[3pt]
+Criterio único de etiquetado y dependencia de un servicio externo de imágenes & Documentar el criterio, revisar casos frontera con el IA-UNAM y conservar copia local\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% --- Transferencia y continuidad ---
+\section*{Transferencia y continuidad}
+Al cierre se entregará al IA-UNAM el repositorio con el código documentado y reproducible (datos, entrenamiento, evaluación e inferencia), los modelos entrenados con su configuración y semillas, el informe técnico de experimentos \parencite{carreno2026}, una guía de operación y reentrenamiento, y dos sesiones de capacitación. El código se distribuye con licencia Apache 2.0 para que otros grupos lo reutilicen otorgando los créditos correspondientes.
+
+\section*{Declaración de uso de inteligencia artificial}
+Se utilizó \textcite{anthropic2026claude} (Claude Sonnet 5.5) como apoyo en la redacción, estructura y formato de este documento. La responsabilidad final sobre el contenido entregado recae en los autores.
+
+% --- Referencias (biblatex + Biber, solo lo citado) ---
+\printbibliography[title={Referencias}]
+
+% --- Anexos ---
+\clearpage
+\section*{Anexo A. Supuestos y cálculo de los beneficios mensuales}
+\renewcommand{\thetable}{A\arabic{table}}\setcounter{table}{0}
+\begin{table}[!ht]
+\caption{Supuestos del escenario base}
+\small
+\begin{tabular}{@{}p{4cm}p{3cm}p{8.5cm}@{}}
+\toprule
+Variable & Valor & Base o justificación\\
+\midrule
+Volumen mensual a clasificar & 2,000 galaxias/mes & Escenario base propuesto por el equipo; confirmar con el IA-UNAM (Tabla A3)\\
+Tiempo de clasificación visual & 1.5 min por galaxia & Supuesto; se cronometrará en una muestra durante el tramo 1\\
+Fracción enviada a revisión experta & 30\,\% & Supuesto: la confianza identifica los errores (AUC 0.88) y el 48\,\% de ellos se concentra en el 16\,\% de las galaxias; se medirá en el tramo 1\\
+Horas productivas por especialista & 160 h/mes & Jornada completa\\
+Costo horario del especialista & MXN 250/h & Referencia supuesta: MXN 40,000 mensuales $\div$ 160 h\\
+Costo horario de perfil técnico & MXN 450/h & Referencia supuesta de mercado para desarrollo y ciencia de datos\\
+\bottomrule
+\end{tabular}
+\nota{Ningún supuesto proviene de mediciones del IA-UNAM; todos deben validarse antes de comprometer la inversión.}
+\end{table}
+
+\begin{table}[!ht]
+\caption{Cálculo de los indicadores mensuales}
+\small
+\begin{tabular}{@{}p{5.5cm}p{4cm}p{6cm}@{}}
+\toprule
+Indicador & Fórmula & Resultado\\
+\midrule
+Horas de clasificación manual & $2{,}000 \times 1.5 \div 60$ & 50 h/mes\\
+Horas con el modelo (revisión) & $30\,\% \times 50$ h & 15 h/mes\\
+Ahorro de tiempo & $50 - 15$ & 35 h/mes (70\,\%)\\
+Ahorro en costos operativos & $35$ h $\times$ MXN 250 & MXN 8,750/mes\\
+Capacidad manual por especialista & $160 \times 60 \div 1.5$ & 6,400 galaxias/mes\\
+Capacidad con el modelo & $6{,}400 \div 30\,\%$ & 21,333 galaxias/mes (+233\,\%)\\
+Ahorro acumulado en 12 meses & $8{,}750 \times 12$ & MXN 105,000\\
+Recuperación de la inversión & $245{,}520 \div 8{,}750$ & $\approx$ 28 meses\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!ht]
+\caption{Sensibilidad al volumen mensual (30\,\% de casos a revisión)}
+\small
+\centering
+\begin{tabular}{cccc}
+\toprule
+Galaxias por mes & Ahorro (h/mes) & Ahorro (MXN/mes) & Recuperación (meses)\\
+\midrule
+2,000 & 35 & 8,750 & 28.1\\
+5,000 & 87.5 & 21,875 & 11.2\\
+10,000 & 175 & 43,750 & 5.6\\
+\bottomrule
+\end{tabular}
+\nota{Ahorro = volumen $\times$ 1.5 min $\div$ 60 $\times$ (1 $-$ 30\,\%) $\times$ MXN 250/h. Recuperación = MXN 245,520 $\div$ ahorro mensual.}
+\end{table}
+
+\section*{Anexo B. Desglose del costo total de propiedad a 12 meses}
+\renewcommand{\thetable}{B\arabic{table}}\setcounter{table}{0}
+\begin{table}[!ht]
+\caption{Costo total de propiedad por servicio (MXN)}
+\small
+\begin{tabular}{@{}p{3.6cm}p{9.4cm}r@{}}
+\toprule
+Servicio & Detalle y supuesto & Costo (MXN)\\
+\midrule
+Desarrollo y validación & 240 h $\times$ MXN 450/h: consolidación del modelo, $\geq$ 3 semillas, $\geq$ 2,000 galaxias nuevas, calibración de la confianza & 108,000\\
+Implementación e integración & 120 h $\times$ MXN 450/h: flujo de inferencia, documentación y dos sesiones de capacitación & 54,000\\
+Operación y mantenimiento & 8 h/mes $\times$ 12 meses $\times$ MXN 450/h: monitoreo y reentrenamiento & 43,200\\
+Cómputo en la nube & 300 h de GPU $\times$ MXN 40/h & 12,000\\
+Almacenamiento y respaldo & MXN 500/mes $\times$ 12 meses & 6,000\\
+\midrule
+Subtotal & & 223,200\\
+Contingencia & 10\,\% del subtotal & 22,320\\
+\textbf{Total (12 meses)} & & \textbf{245,520}\\
+\bottomrule
+\end{tabular}
+\nota{Tramo 1 recomendado = (desarrollo y validación + cómputo) $\times$ 1.10 = (108,000 + 12,000) $\times$ 1.10 = MXN 132,000. Quedan fuera las licencias (software de código abierto) y el tiempo del personal del IA-UNAM, considerado en las horas de revisión de la Tabla A2.}
+\end{table}
+
+\section*{Anexo C. Resultados complementarios}
+\renewcommand{\thetable}{C\arabic{table}}\setcounter{table}{0}
+\begin{table}[!ht]
+\caption{Desempeño por tipo de información utilizada (1,403 galaxias de prueba)}
+\small
+\centering
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Configuración evaluada & AUC & Exactitud\\
+\midrule
+Imagen, red convolucional compacta (propuesto) & 0.962 & 0.901\\
+Imagen, ResNet-18 & 0.963 & 0.888\\
+Imagen + espectro + poblaciones estelares (concatenación) & 0.965 & 0.890\\
+Imagen + espectro (fusión por tokens, mejor variante) & 0.967 & 0.902\\
+Espectro solo (mejor variante) & 0.917 & 0.853\\
+Poblaciones estelares solas & 0.895 & 0.838\\
+\bottomrule
+\end{tabular}
+\nota{Umbral 0.5, una semilla y una partición. AUC: probabilidad de ordenar correctamente una galaxia tardía y una temprana. Fuente: \textcite{carreno2026}.}
+\end{table}
+
+\begin{table}[!ht]
+\caption{Error de la imagen sola (ResNet-18) por tipo morfológico}
+\small
+\centering
+\begin{tabular}{@{}clc@{}}
+\toprule
+Tipo morfológico (Ttype) & Tipo aproximado & Error de clasificación\\
+\midrule
+$-5$ & Elíptica & 3.0\,\%\\
+$-2$ & Lenticular (S0) & 21.5\,\%\\
+0 & Lenticular--espiral (S0a) & 34.6\,\%\\
+1 & Espiral temprana (Sa) & 32.4\,\%\\
+2 & Espiral (Sab) & 17.0\,\%\\
+3 o más & Espirales tardías & $\leq$ 4.5\,\%\\
+\bottomrule
+\end{tabular}
+\nota{Fuente: \textcite{carreno2026}. Los tipos 0 y 1 concentran el 48\,\% de los errores con el 16\,\% de las galaxias.}
+\end{table}
+
+\begin{table}[!ht]
+\caption{Validación del flujo de trabajo en Galaxy Zoo (elíptica frente a espiral)}
+\small
+\centering
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Modelo & Exactitud & AUC\\
+\midrule
+Mejor método clásico (HistGradientBoosting) & 86.95\,\% & 0.937\\
+Red convolucional compacta & 96.8\,\% & 0.996\\
+\bottomrule
+\end{tabular}
+\nota{3,641 galaxias de prueba de un subconjunto de 24,273 con consenso de voluntarios $\geq$ 80\,\%. Tarea distinta de la de MaNGA; las cifras no son comparables entre sí.}
+\end{table}
+
+\noindent\textbf{Limitaciones.} Todas las cifras provienen de una sola semilla y una sola partición; los intervalos de confianza reflejan únicamente el muestreo de las galaxias de prueba. Los comparativos de variantes de imagen se hicieron con 50 galaxias y no distinguen diferencias menores a $\pm$0.05 de AUC.
+
+\end{document}

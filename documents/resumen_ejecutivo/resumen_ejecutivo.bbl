@@ -1,0 +1,435 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{apa/apasortcite//global/global/global}
+    \entry{anthropic2026claude}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=f431db65cea024a5f19eab835afefee2}{%
+           family={{Anthropic}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{fullhash}{f431db65cea024a5f19eab835afefee2}
+      \strng{fullhashraw}{f431db65cea024a5f19eab835afefee2}
+      \strng{bibnamehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authorbibnamehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authornamehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authorfullhash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authorfullhashraw}{f431db65cea024a5f19eab835afefee2}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Claude (Claude Sonnet 5.5) [Modelo de lenguaje grande]}
+      \field{year}{2026}
+      \verb{urlraw}
+      \verb https://claude.ai
+      \endverb
+      \verb{url}
+      \verb https://claude.ai
+      \endverb
+    \endentry
+    \entry{babic2021}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=f79136b36eeb4c1448661c544fae2ab1}{%
+           family={Babic},
+           familyi={B\bibinitperiod},
+           given={Boris},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3625b083e5602a58cfbddc34d6d06b3e}{%
+           family={Cohen},
+           familyi={C\bibinitperiod},
+           given={I.\bibnamedelimi Glenn},
+           giveni={I\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c2bc38e5297f5661e8484ca36bc12e2c}{%
+           family={Evgeniou},
+           familyi={E\bibinitperiod},
+           given={Theodoros},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d8b826e46af50f75789e9fc34bd01a2c}{%
+           family={Gerke},
+           familyi={G\bibinitperiod},
+           given={Sara},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{1e5b97305553e3633cbfa38d9f1d92e5}
+      \strng{fullhash}{707cc54d88c02d59e42f1bb8f41484ee}
+      \strng{fullhashraw}{707cc54d88c02d59e42f1bb8f41484ee}
+      \strng{bibnamehash}{707cc54d88c02d59e42f1bb8f41484ee}
+      \strng{authorbibnamehash}{707cc54d88c02d59e42f1bb8f41484ee}
+      \strng{authornamehash}{1e5b97305553e3633cbfa38d9f1d92e5}
+      \strng{authorfullhash}{707cc54d88c02d59e42f1bb8f41484ee}
+      \strng{authorfullhashraw}{707cc54d88c02d59e42f1bb8f41484ee}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Harvard Business Review}
+      \field{title}{When Machine Learning Goes Off the Rails}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://hbr.org/2021/01/when-machine-learning-goes-off-the-rails
+      \endverb
+      \verb{url}
+      \verb https://hbr.org/2021/01/when-machine-learning-goes-off-the-rails
+      \endverb
+    \endentry
+    \entry{barchi2020}{article}{}{}
+      \name{author}{10}{}{%
+        {{un=0,uniquepart=base,hash=a967126829e429b327cfd5fcb399ca93}{%
+           family={Barchi},
+           familyi={B\bibinitperiod},
+           given={P.\bibnamedelimi H.},
+           giveni={P\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ebe1665d881e8301039530ed8dca8b04}{%
+           family={Carvalho},
+           familyi={C\bibinitperiod},
+           given={R.\bibnamedelimi R.},
+           giveni={R\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0,
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=f026d00d099970ed2fe118e7cdae69f7}{%
+           family={Rosa},
+           familyi={R\bibinitperiod},
+           given={R.\bibnamedelimi R.},
+           giveni={R\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=52889c5af20b1d727a586c4bd47e7466}{%
+           family={Sautter},
+           familyi={S\bibinitperiod},
+           given={R.\bibnamedelimi A.},
+           giveni={R\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1e2b24b37c7a03922fdb064043c141ad}{%
+           family={Soares-Santos},
+           familyi={S\bibinithyphendelim S\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7d1b5113a0038ab6a896f883adfc0716}{%
+           family={Marques},
+           familyi={M\bibinitperiod},
+           given={B.\bibnamedelimi A.\bibnamedelimi D.},
+           giveni={B\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3c918832b99d032c4cdb920e931f004e}{%
+           family={Clua},
+           familyi={C\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e852fedde9319660bef0c7fce4bfeb3a}{%
+           family={Gonçalves},
+           familyi={G\bibinitperiod},
+           given={T.\bibnamedelimi S.},
+           giveni={T\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=256c183f9830c18c07bf895351ed838d}{%
+           family={Sá-Freitas},
+           familyi={S\bibinithyphendelim F\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod},
+           givenun=0,
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=dbc4e580d37eb720f2e01b6e6d29047e}{%
+           family={Moura},
+           familyi={M\bibinitperiod},
+           given={T.\bibnamedelimi C.},
+           giveni={T\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{561dc7df1e5da0bc701e7612a6d494df}
+      \strng{fullhash}{15fee43719180b1840940ee8fe0944c0}
+      \strng{fullhashraw}{15fee43719180b1840940ee8fe0944c0}
+      \strng{bibnamehash}{15fee43719180b1840940ee8fe0944c0}
+      \strng{authorbibnamehash}{15fee43719180b1840940ee8fe0944c0}
+      \strng{authornamehash}{561dc7df1e5da0bc701e7612a6d494df}
+      \strng{authorfullhash}{15fee43719180b1840940ee8fe0944c0}
+      \strng{authorfullhashraw}{15fee43719180b1840940ee8fe0944c0}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eid}{100334}
+      \field{journaltitle}{Astronomy and Computing}
+      \field{title}{Machine and deep learning applied to galaxy morphology -- A comparative study}
+      \field{volume}{30}
+      \field{year}{2020}
+      \verb{doi}
+      \verb 10.1016/j.ascom.2019.100334
+      \endverb
+    \endentry
+    \entry{carreno2026}{report}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c0b15525018093311ac693b56fde8475}{%
+           family={Carreño\bibnamedelima Correa},
+           familyi={C\bibinitperiod\bibinitdelim C\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {Tecnológico de Monterrey}%
+      }
+      \strng{namehash}{c0b15525018093311ac693b56fde8475}
+      \strng{fullhash}{c0b15525018093311ac693b56fde8475}
+      \strng{fullhashraw}{c0b15525018093311ac693b56fde8475}
+      \strng{bibnamehash}{c0b15525018093311ac693b56fde8475}
+      \strng{authorbibnamehash}{c0b15525018093311ac693b56fde8475}
+      \strng{authornamehash}{c0b15525018093311ac693b56fde8475}
+      \strng{authorfullhash}{c0b15525018093311ac693b56fde8475}
+      \strng{authorfullhashraw}{c0b15525018093311ac693b56fde8475}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Análisis de los experimentos de ablación: imágenes, espectros y poblaciones {STARLIGHT}}
+      \field{type}{Informe técnico no publicado}
+      \field{year}{2026}
+    \endentry
+  \enddatalist
+  \datalist[entry]{apa/global//global/global/global}
+    \entry{anthropic2026claude}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=f431db65cea024a5f19eab835afefee2}{%
+           family={{Anthropic}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{fullhash}{f431db65cea024a5f19eab835afefee2}
+      \strng{fullhashraw}{f431db65cea024a5f19eab835afefee2}
+      \strng{bibnamehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authorbibnamehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authornamehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authorfullhash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authorfullhashraw}{f431db65cea024a5f19eab835afefee2}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Claude (Claude Sonnet 5.5) [Modelo de lenguaje grande]}
+      \field{year}{2026}
+      \verb{urlraw}
+      \verb https://claude.ai
+      \endverb
+      \verb{url}
+      \verb https://claude.ai
+      \endverb
+    \endentry
+    \entry{babic2021}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=f79136b36eeb4c1448661c544fae2ab1}{%
+           family={Babic},
+           familyi={B\bibinitperiod},
+           given={Boris},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3625b083e5602a58cfbddc34d6d06b3e}{%
+           family={Cohen},
+           familyi={C\bibinitperiod},
+           given={I.\bibnamedelimi Glenn},
+           giveni={I\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c2bc38e5297f5661e8484ca36bc12e2c}{%
+           family={Evgeniou},
+           familyi={E\bibinitperiod},
+           given={Theodoros},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d8b826e46af50f75789e9fc34bd01a2c}{%
+           family={Gerke},
+           familyi={G\bibinitperiod},
+           given={Sara},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{1e5b97305553e3633cbfa38d9f1d92e5}
+      \strng{fullhash}{707cc54d88c02d59e42f1bb8f41484ee}
+      \strng{fullhashraw}{707cc54d88c02d59e42f1bb8f41484ee}
+      \strng{bibnamehash}{707cc54d88c02d59e42f1bb8f41484ee}
+      \strng{authorbibnamehash}{707cc54d88c02d59e42f1bb8f41484ee}
+      \strng{authornamehash}{1e5b97305553e3633cbfa38d9f1d92e5}
+      \strng{authorfullhash}{707cc54d88c02d59e42f1bb8f41484ee}
+      \strng{authorfullhashraw}{707cc54d88c02d59e42f1bb8f41484ee}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Harvard Business Review}
+      \field{title}{When Machine Learning Goes Off the Rails}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://hbr.org/2021/01/when-machine-learning-goes-off-the-rails
+      \endverb
+      \verb{url}
+      \verb https://hbr.org/2021/01/when-machine-learning-goes-off-the-rails
+      \endverb
+    \endentry
+    \entry{barchi2020}{article}{}{}
+      \name{author}{10}{}{%
+        {{un=0,uniquepart=base,hash=a967126829e429b327cfd5fcb399ca93}{%
+           family={Barchi},
+           familyi={B\bibinitperiod},
+           given={P.\bibnamedelimi H.},
+           giveni={P\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ebe1665d881e8301039530ed8dca8b04}{%
+           family={Carvalho},
+           familyi={C\bibinitperiod},
+           given={R.\bibnamedelimi R.},
+           giveni={R\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0,
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=f026d00d099970ed2fe118e7cdae69f7}{%
+           family={Rosa},
+           familyi={R\bibinitperiod},
+           given={R.\bibnamedelimi R.},
+           giveni={R\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=52889c5af20b1d727a586c4bd47e7466}{%
+           family={Sautter},
+           familyi={S\bibinitperiod},
+           given={R.\bibnamedelimi A.},
+           giveni={R\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1e2b24b37c7a03922fdb064043c141ad}{%
+           family={Soares-Santos},
+           familyi={S\bibinithyphendelim S\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7d1b5113a0038ab6a896f883adfc0716}{%
+           family={Marques},
+           familyi={M\bibinitperiod},
+           given={B.\bibnamedelimi A.\bibnamedelimi D.},
+           giveni={B\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3c918832b99d032c4cdb920e931f004e}{%
+           family={Clua},
+           familyi={C\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e852fedde9319660bef0c7fce4bfeb3a}{%
+           family={Gonçalves},
+           familyi={G\bibinitperiod},
+           given={T.\bibnamedelimi S.},
+           giveni={T\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=256c183f9830c18c07bf895351ed838d}{%
+           family={Sá-Freitas},
+           familyi={S\bibinithyphendelim F\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod},
+           givenun=0,
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=dbc4e580d37eb720f2e01b6e6d29047e}{%
+           family={Moura},
+           familyi={M\bibinitperiod},
+           given={T.\bibnamedelimi C.},
+           giveni={T\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{561dc7df1e5da0bc701e7612a6d494df}
+      \strng{fullhash}{15fee43719180b1840940ee8fe0944c0}
+      \strng{fullhashraw}{15fee43719180b1840940ee8fe0944c0}
+      \strng{bibnamehash}{15fee43719180b1840940ee8fe0944c0}
+      \strng{authorbibnamehash}{15fee43719180b1840940ee8fe0944c0}
+      \strng{authornamehash}{561dc7df1e5da0bc701e7612a6d494df}
+      \strng{authorfullhash}{15fee43719180b1840940ee8fe0944c0}
+      \strng{authorfullhashraw}{15fee43719180b1840940ee8fe0944c0}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eid}{100334}
+      \field{journaltitle}{Astronomy and Computing}
+      \field{title}{Machine and deep learning applied to galaxy morphology -- A comparative study}
+      \field{volume}{30}
+      \field{year}{2020}
+      \verb{doi}
+      \verb 10.1016/j.ascom.2019.100334
+      \endverb
+    \endentry
+    \entry{carreno2026}{report}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c0b15525018093311ac693b56fde8475}{%
+           family={Carreño\bibnamedelima Correa},
+           familyi={C\bibinitperiod\bibinitdelim C\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {Tecnológico de Monterrey}%
+      }
+      \strng{namehash}{c0b15525018093311ac693b56fde8475}
+      \strng{fullhash}{c0b15525018093311ac693b56fde8475}
+      \strng{fullhashraw}{c0b15525018093311ac693b56fde8475}
+      \strng{bibnamehash}{c0b15525018093311ac693b56fde8475}
+      \strng{authorbibnamehash}{c0b15525018093311ac693b56fde8475}
+      \strng{authornamehash}{c0b15525018093311ac693b56fde8475}
+      \strng{authorfullhash}{c0b15525018093311ac693b56fde8475}
+      \strng{authorfullhashraw}{c0b15525018093311ac693b56fde8475}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Análisis de los experimentos de ablación: imágenes, espectros y poblaciones {STARLIGHT}}
+      \field{type}{Informe técnico no publicado}
+      \field{year}{2026}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
