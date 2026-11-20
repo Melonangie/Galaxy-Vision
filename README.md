@@ -25,6 +25,57 @@ Esta sección reorganiza el enunciado original sin cambiar su significado. Las m
 
 > 💡 **Sugerencia (criterios de éxito).** "Lo más fiable posible" debe convertirse en criterios de éxito medibles en la fase 1 (*Business & Data Understanding*). Sin ellos, la tarea final de la fase 4 (*Compare results with defined success criteria*) no se puede cerrar. En la §4.6 se proponen criterios concretos.
 
+|Type  |  Ttype|
+|---|---|
+|E  | -5|
+|E(dSph) |-5|
+|E+E |-5|
+|Edc |-5|
+|S0  |-2|
+|S0(dwarf)   |-2|
+|SAB0    |-2|
+|SB0 |-2|
+|S0a| 0|
+|SAB0a  | 0|
+|SB0a   | 0|
+|Sa | 1|
+|SABa   | 1|
+|SBa| 1|
+|Sab| 2|
+|SABab  | 2|
+|SBab   | 2|
+|SABb   | 3|
+|Sb | 3|
+|SBb| 3|
+|SABbc  | 4|
+|SBbc   | 4|
+|Sbc| 4|
+|SABc   | 5|
+|Sc | 5|
+|SABcd  | 6|
+|SBcd   | 6|
+|Scd| 6|
+|SABd   | 7|
+|SBd| 7|
+|Sd | 7|
+|SABdm  | 8|
+|SBdm   | 8|
+|Sdm| 8|
+|SABm   | 9|
+|SBm| 9|
+|Sm | 9|
+|BCD |10|
+|dIrr    |10|
+|dSph    |10|
+|dwarf   |10|
+|Irr |10|
+|IrrAB   |10|
+|IrrB    |10|
+|interacting |11|
+|S   |11|
+|S-merger    |11|
+|SAB-merger  |11|
+
 ### 0.2 Fuentes de datos
 
 | Fuente | Contenido | Uso en el proyecto |
